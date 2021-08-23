@@ -1,10 +1,8 @@
+import SubApp from "./SubApp";
 
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      
-    </div>
+    <SubApp />
   );
 }
 
