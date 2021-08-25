@@ -1,3 +1,8 @@
+const fetchApi = async (request: string) =>
+  await fetch(request)
+    .then((response) => response.json())
+    .then((data) => data);
+
 interface Source {
   id: string | null;
   name: string | null;
@@ -14,7 +19,7 @@ interface Article {
   content: string | null;
 }
 
-interface NewsEverythingResponse {
+interface NewsResponse {
   status: string;
   totalResults: number;
   articles: Article[];
@@ -22,7 +27,7 @@ interface NewsEverythingResponse {
 
 type SortType = "relevancy" | "popularity" | "publishedAt";
 
-// CREATE A CLASS AFTERWARDS!!!
+// NEWS EVEYRTHING
 export interface INewsEverythingRequest {
   apiKey: string;
   q: string;
@@ -61,14 +66,9 @@ export class NewsEverythingRequest implements INewsEverythingRequest {
   }
 }
 
-const fetchApi = async (request: string) =>
-  await fetch(request)
-    .then((response) => response.json())
-    .then((data) => data);
-
 export const getNewsEverything = async (
   request: INewsEverythingRequest
-): Promise<NewsEverythingResponse> => {
+): Promise<NewsResponse> => {
   const endpoint = `${process.env.REACT_APP_NEWS_API}/everything`;
 
   let queryString = `${endpoint}/?apiKey=${request.apiKey}&q=${request.q}&qInTitle=${request.qInTitle}`;
@@ -84,7 +84,7 @@ export const getNewsEverything = async (
       }
     });
 
-    console.log(sources)
+    console.log(sources);
 
     queryString += `&sources=${sources}`;
   }
@@ -118,6 +118,62 @@ export const getNewsEverything = async (
   }
 
   queryString += `&from=${request.from}&to=${request.to}&language=${request.language}&sortBy=${request.sortBy}&pageSize=${request.pageSize}&page=${request.page}`;
+
+  return await fetchApi(queryString);
+};
+
+// NEWS TOP-HEADLINES
+export interface INewsTopHeadlinesRequest {
+  apiKey: string;
+  q: string;
+  sources: string[];
+  country: string;
+  category: string;
+  pageSize: number;
+  page: number;
+}
+
+export class NewsTopHeadlinesRequest implements INewsTopHeadlinesRequest {
+  apiKey = process.env.REACT_APP_NEWS_API_KEY || "";
+  q = "";
+  sources = [];
+  country = "us";
+  category = "general";
+  pageSize = 20;
+  page = 1;
+
+  constructor(configOverride?: Partial<INewsTopHeadlinesRequest>) {
+    if (configOverride) {
+      Object.assign(this, configOverride);
+      this.q = encodeURIComponent(this.q);
+    }
+  }
+}
+
+export const getNewsTopHeadlines = async (
+  request: INewsTopHeadlinesRequest
+): Promise<NewsResponse> => {
+  const endpoint = `${process.env.REACT_APP_NEWS_API}/top-headlines`;
+
+  let queryString = `${endpoint}/?apiKey=${request.apiKey}&q=${request.q}`;
+
+  let sources = "";
+
+  if (request.sources?.length) {
+    request.sources?.forEach((source, sourceIndex) => {
+      if (sourceIndex === 0) {
+        sources += `${source}`;
+      } else {
+        sources += `,${source}`;
+      }
+    });
+
+    console.log(sources);
+
+    queryString += `&sources=${sources}`;
+  }
+
+  queryString += `&country=${request.country}&category=${request.category}&pageSize=${request.pageSize}&page=${request.page}`;
 
   return await fetchApi(queryString);
 };

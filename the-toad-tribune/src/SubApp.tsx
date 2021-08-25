@@ -1,5 +1,10 @@
 import { useEffect } from "react";
-import { getNewsEverything, NewsEverythingRequest } from "./api";
+import {
+  getNewsEverything,
+  getNewsTopHeadlines,
+  NewsEverythingRequest,
+  NewsTopHeadlinesRequest,
+} from "./api";
 import {
   Ads,
   Animals,
@@ -19,7 +24,7 @@ const SubApp = () => {
       q: "new york",
       sources: ["abc-news", "engadget"],
     });
-    getNewsEverything(request).then((res) => console.log("In Subapp", res));
+    getNewsEverything(request).then((res) => res);
   }, []);
 
   return (

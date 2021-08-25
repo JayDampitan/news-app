@@ -1,3 +1,13 @@
-import { getNewsEverything, NewsEverythingRequest } from "./newsApi";
+import {
+  getNewsEverything,
+  getNewsTopHeadlines,
+  NewsEverythingRequest,
+  NewsTopHeadlinesRequest,
+} from "./newsApi";
 
-export { getNewsEverything, NewsEverythingRequest };
+export {
+  getNewsEverything,
+  getNewsTopHeadlines,
+  NewsEverythingRequest,
+  NewsTopHeadlinesRequest,
+};
