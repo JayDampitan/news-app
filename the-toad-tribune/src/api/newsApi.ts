@@ -84,8 +84,6 @@ export const getNewsEverything = async (
       }
     });
 
-    console.log(sources);
-
     queryString += `&sources=${sources}`;
   }
 
@@ -167,8 +165,6 @@ export const getNewsTopHeadlines = async (
         sources += `,${source}`;
       }
     });
-
-    console.log(sources);
 
     queryString += `&sources=${sources}`;
   }
