@@ -8,7 +8,7 @@ interface Source {
   name: string | null;
 }
 
-interface Article {
+export interface Article {
   source: Source;
   author: string;
   title: string;
@@ -19,7 +19,7 @@ interface Article {
   content: string | null;
 }
 
-interface NewsResponse {
+export interface NewsResponse {
   status: string;
   totalResults: number;
   articles: Article[];

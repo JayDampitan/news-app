@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { NewsResponse } from "./api/newsApi";
 import {
   getNewsEverything,
   getNewsTopHeadlines,
@@ -19,12 +20,19 @@ import {
 } from "./layout";
 
 const SubApp = () => {
+  const [mainArticle, setMainArticle] = useState<NewsResponse>({
+    status: "",
+    totalResults: 0,
+    articles: [],
+  });
+
+  const dataGrabber = () => {
+    const topHeadlinesRequest = new NewsTopHeadlinesRequest();
+    getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
+  };
+
   useEffect(() => {
-    const request = new NewsEverythingRequest({
-      q: "new york",
-      sources: ["abc-news", "engadget"],
-    });
-    getNewsEverything(request).then((res) => res);
+    dataGrabber();
   }, []);
 
   return (
@@ -32,7 +40,7 @@ const SubApp = () => {
       <Layout
         Ads={<Ads />}
         Animals={<Animals />}
-        MainArticle={<MainArticle />}
+        MainArticle={<MainArticle mainArticle={mainArticle} />}
         Movies={<Movies />}
         Navigation={<Navigation />}
         Politics={<Politics />}
