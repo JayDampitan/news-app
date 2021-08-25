@@ -20,7 +20,6 @@ import {
 } from "./layout";
 
 const SubApp = () => {
-  // useState<IAccountDetails[] | []>([]);
   const [mainArticle, setMainArticle] = useState<NewsResponse>({
     status: "",
     totalResults: 0,
