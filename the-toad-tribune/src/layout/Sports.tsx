@@ -43,7 +43,7 @@ const Sports: React.FC<SportsProps> = ({ sportsArticle }) => {
 
         {article?.description}
       </div>
-      <Image src={article.urlToImage} />
+      <Image src={article?.urlToImage} />
   </SportsStyles>
   );
 };
