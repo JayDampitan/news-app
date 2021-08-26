@@ -54,19 +54,24 @@ const SubApp = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
 
-    const animalsArticleRequest = new NewsEverythingRequest({q: "animal"});
-    getNewsEverything(animalsArticleRequest).then(res => setAnimalArticle(res));
+    const animalsArticleRequest = new NewsEverythingRequest({ q: "animal" });
+    getNewsEverything(animalsArticleRequest).then((res) =>
+      setAnimalArticle(res)
+    );
 
     const sportsArticleRequest = new NewsEverythingRequest({ q: "sports" });
     getNewsEverything(sportsArticleRequest).then((res) =>
       setSportsArticle(res)
     );
-    const politicsArticleRequest = new NewsEverythingRequest({q: "politics"});
-    getNewsEverything(politicsArticleRequest).then(res => setPoliticsArticle(res));
+    const politicsArticleRequest = new NewsEverythingRequest({ q: "politics" });
+    getNewsEverything(politicsArticleRequest).then((res) =>
+      setPoliticsArticle(res)
+    );
 
     const moviesEverythingRequest = new NewsEverythingRequest({ q: "movies" });
-    getNewsEverything(moviesEverythingRequest).then((res) => setMoviesArticle(res));
-    
+    getNewsEverything(moviesEverythingRequest).then((res) =>
+      setMoviesArticle(res)
+    );
   };
 
   useEffect(() => {

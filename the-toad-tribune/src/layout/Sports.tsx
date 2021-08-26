@@ -9,12 +9,12 @@ interface SportsProps {
 const Sports: React.FC<SportsProps> = ({ sportsArticle }) => {
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
     usePagination();
-  
+
   const article = sportsArticle.articles?.[pageNumber];
 
   return (
-  <SportsStyles>
-    <button
+    <SportsStyles>
+      <button
         onClick={() => {
           sportsArticle.articles.length - 1 === pageNumber
             ? startBeginning()
@@ -44,7 +44,7 @@ const Sports: React.FC<SportsProps> = ({ sportsArticle }) => {
         {article?.description}
       </div>
       <Image src={article?.urlToImage} />
-  </SportsStyles>
+    </SportsStyles>
   );
 };
 
