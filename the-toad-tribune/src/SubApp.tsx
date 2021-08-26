@@ -26,9 +26,18 @@ const SubApp = () => {
     articles: [],
   });
 
+  const [stonksArticle, setStonksArticle] = useState<NewsResponse>({
+    status: "",
+    totalResults: 0,
+    articles: [],
+  });
+
   const dataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
+
+    const stonksHeadlinesRequest = new NewsEverythingRequest({q: "stocks"});
+    getNewsEverything(stonksHeadlinesRequest).then((res) => setStonksArticle(res));
   };
 
   useEffect(() => {
@@ -45,7 +54,7 @@ const SubApp = () => {
         Navigation={<Navigation />}
         Politics={<Politics />}
         Sports={<Sports />}
-        Stonks={<Stonks />}
+        Stonks={<Stonks stonksArticle={stonksArticle} />}
         Weather={<Weather />}
       />
     </div>
