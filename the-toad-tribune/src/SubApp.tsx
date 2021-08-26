@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NewsResponse } from "./api/newsApi";
 import {
   getNewsEverything,
@@ -32,12 +32,21 @@ const SubApp = () => {
     articles: [],
   });
 
+  const [politicsArticle, setPoliticsArticle] = useState<NewsResponse>({
+    status: "",
+    totalResults: 0,
+    articles: [],
+  });
+
   const dataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
 
     const animalsArticleRequest = new NewsEverythingRequest({q: "animal"});
     getNewsEverything(animalsArticleRequest).then(res => setAnimalArticle(res))
+
+    const politicsArticleRequest = new NewsEverythingRequest({q: "politics"});
+    getNewsEverything(politicsArticleRequest).then(res => setPoliticsArticle(res))
   };
 
   useEffect(() => {
@@ -52,7 +61,7 @@ const SubApp = () => {
         MainArticle={<MainArticle mainArticle={mainArticle} />}
         Movies={<Movies />}
         Navigation={<Navigation />}
-        Politics={<Politics />}
+        Politics={<Politics politicsArticle={politicsArticle} />}
         Sports={<Sports />}
         Stonks={<Stonks />}
         Weather={<Weather />}
