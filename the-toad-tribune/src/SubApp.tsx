@@ -41,11 +41,15 @@ const SubApp = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
 
-    const moviesEverythingRequest = new NewsEverythingRequest({ q: 'movies' });
-    getNewsEverything(moviesEverythingRequest).then((res) => setMoviesArticle(res));
-    
-    const animalsArticleRequest = new NewsEverythingRequest({q: "animal"});
-    getNewsEverything(animalsArticleRequest).then(res => setAnimalArticle(res))
+    const moviesEverythingRequest = new NewsEverythingRequest({ q: "movies" });
+    getNewsEverything(moviesEverythingRequest).then((res) =>
+      setMoviesArticle(res)
+    );
+
+    const animalsArticleRequest = new NewsEverythingRequest({ q: "animal" });
+    getNewsEverything(animalsArticleRequest).then((res) =>
+      setAnimalArticle(res)
+    );
   };
 
   useEffect(() => {

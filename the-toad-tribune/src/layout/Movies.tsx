@@ -47,7 +47,7 @@ const Movies: React.FC<MoviesProps> = ({ moviesArticle }) => {
     </MoviesStyles>
   ) : (
     <p>Loading....</p>
-  )
+  );
 };
 
 export default Movies;
@@ -55,8 +55,8 @@ export default Movies;
 const MoviesStyles = styled.div`
   background-color: purple;
   grid-area: 6/6/10/9;
-  margin-bottom: .5em;
-`
+  margin-bottom: 0.5em;
+`;
 
 const Image = styled.img`
   height: 100%;
