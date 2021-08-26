@@ -25,6 +25,11 @@ const SubApp = () => {
     totalResults: 0,
     articles: [],
   });
+  const [moviesArticle, setMoviesArticle] = useState<NewsResponse>({
+    status: "",
+    totalResults: 0,
+    articles: [],
+  });
 
   const [animalArticle, setAnimalArticle] = useState<NewsResponse>({
     status: "",
@@ -36,8 +41,15 @@ const SubApp = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
 
-    const animalsArticleRequest = new NewsEverythingRequest({q: "animal"});
-    getNewsEverything(animalsArticleRequest).then(res => setAnimalArticle(res))
+    const moviesEverythingRequest = new NewsEverythingRequest({ q: "movies" });
+    getNewsEverything(moviesEverythingRequest).then((res) =>
+      setMoviesArticle(res)
+    );
+
+    const animalsArticleRequest = new NewsEverythingRequest({ q: "animal" });
+    getNewsEverything(animalsArticleRequest).then((res) =>
+      setAnimalArticle(res)
+    );
   };
 
   useEffect(() => {
@@ -50,7 +62,7 @@ const SubApp = () => {
         Ads={<Ads />}
         Animals={<Animals animalArticle={animalArticle} />}
         MainArticle={<MainArticle mainArticle={mainArticle} />}
-        Movies={<Movies />}
+        Movies={<Movies moviesArticle={moviesArticle} />}
         Navigation={<Navigation />}
         Politics={<Politics />}
         Sports={<Sports />}
