@@ -1,22 +1,18 @@
 import styled from "styled-components";
-import { NewsResponse } from "../api/newsApi";
+import { NewsProps } from "../api/newsApi";
 import { usePagination } from "../hooks";
 
-interface MoviesProps {
-  moviesArticle: NewsResponse;
-}
-
-const Movies: React.FC<MoviesProps> = ({ moviesArticle }) => {
+const Movies: React.FC<NewsProps> = ({ articleResponse }) => {
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
     usePagination();
 
-  const article = moviesArticle.articles?.[pageNumber];
+  const article = articleResponse.articles?.[pageNumber];
 
-  return moviesArticle.articles.length ? (
+  return articleResponse.articles.length ? (
     <MoviesStyles>
       <button
         onClick={() => {
-          moviesArticle.articles.length - 1 === pageNumber
+          articleResponse.articles.length - 1 === pageNumber
             ? startBeginning()
             : onNextButton();
         }}
@@ -27,7 +23,7 @@ const Movies: React.FC<MoviesProps> = ({ moviesArticle }) => {
       <button
         onClick={() => {
           pageNumber === 0
-            ? startEnd(moviesArticle.articles.length - 1)
+            ? startEnd(articleResponse.articles.length - 1)
             : onPrevButton();
         }}
       >
@@ -43,7 +39,7 @@ const Movies: React.FC<MoviesProps> = ({ moviesArticle }) => {
 
         {article?.description}
       </div>
-      <Image src={article.urlToImage} />
+      <Image src={article?.urlToImage} />
     </MoviesStyles>
   ) : (
     <p>Loading....</p>

@@ -1,22 +1,18 @@
 import styled from "styled-components";
 import { usePagination } from "../hooks";
-import { NewsResponse } from "../api/newsApi";
+import { NewsProps } from "../api/newsApi";
 
-interface PoliticsProps {
-  politicsArticle: NewsResponse;
-}
-
-const Politics: React.FC<PoliticsProps> = ({ politicsArticle }) => {
+const Politics: React.FC<NewsProps> = ({ articleResponse }) => {
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
     usePagination();
 
-  const article = politicsArticle.articles?.[pageNumber];
+  const article = articleResponse.articles?.[pageNumber];
 
-  return politicsArticle.articles.length ? (
+  return articleResponse.articles.length ? (
     <PoliticsStyles>
       <button
         onClick={() => {
-          politicsArticle.articles.length - 1 === pageNumber
+          articleResponse.articles.length - 1 === pageNumber
             ? startBeginning()
             : onNextButton();
         }}
@@ -26,7 +22,7 @@ const Politics: React.FC<PoliticsProps> = ({ politicsArticle }) => {
       <button
         onClick={() => {
           pageNumber === 0
-            ? startEnd(politicsArticle.articles.length - 1)
+            ? startEnd(articleResponse.articles.length - 1)
             : onPrevButton();
         }}
         className="add-class"
@@ -35,11 +31,14 @@ const Politics: React.FC<PoliticsProps> = ({ politicsArticle }) => {
       </button>
       <div>
         {article?.title}
+
         {article?.author}
+
         {article?.publishedAt}
+
         {article?.description}
       </div>
-      <Image src={article.urlToImage} />
+      <Image src={article?.urlToImage} />
     </PoliticsStyles>
   ) : (
     <p>Loading...</p>

@@ -3,6 +3,10 @@ const fetchApi = async (request: string) =>
     .then((response) => response.json())
     .then((data) => data);
 
+export interface NewsProps {
+  articleResponse: INewsResponse;
+}
+
 interface Source {
   id: string | null;
   name: string | null;
@@ -19,10 +23,16 @@ export interface Article {
   content: string | null;
 }
 
-export interface NewsResponse {
+export interface INewsResponse {
   status: string;
   totalResults: number;
   articles: Article[];
+}
+
+export class NewsResponse implements INewsResponse {
+  status = "ok";
+  totalResults = 0;
+  articles = [];
 }
 
 type SortType = "relevancy" | "popularity" | "publishedAt";
