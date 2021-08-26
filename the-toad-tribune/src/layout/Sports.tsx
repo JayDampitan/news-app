@@ -1,22 +1,18 @@
 import styled from "styled-components";
-import { NewsResponse } from "../api/newsApi";
+import { NewsProps } from "../api/newsApi";
 import { usePagination } from "../hooks";
 
-interface SportsProps {
-  sportsArticle: NewsResponse;
-}
-
-const Sports: React.FC<SportsProps> = ({ sportsArticle }) => {
+const Sports: React.FC<NewsProps> = ({ articleResponse }) => {
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
     usePagination();
 
-  const article = sportsArticle.articles?.[pageNumber];
+  const article = articleResponse.articles?.[pageNumber];
 
   return (
     <SportsStyles>
       <button
         onClick={() => {
-          sportsArticle.articles.length - 1 === pageNumber
+          articleResponse.articles.length - 1 === pageNumber
             ? startBeginning()
             : onNextButton();
         }}
@@ -27,7 +23,7 @@ const Sports: React.FC<SportsProps> = ({ sportsArticle }) => {
       <button
         onClick={() => {
           pageNumber === 0
-            ? startEnd(sportsArticle.articles.length - 1)
+            ? startEnd(articleResponse.articles.length - 1)
             : onPrevButton();
         }}
       >

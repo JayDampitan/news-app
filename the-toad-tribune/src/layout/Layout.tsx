@@ -42,13 +42,13 @@ const Layout: React.FC<LayoutProps> = ({
 export default Layout;
 
 const MainLayoutStyles = styled.div`
-height: 100vh;
-width: 100vw;
-background-color: green;
-display: grid;
-grid-row-gap: 0.5em;
-grid-column-gap: 0.5em;
-grid-template-columns: repeat(9, 1fr);
-grid-template-rows: repeat(9, 1fr);
-position: fixed;
-`
+  height: 100vh;
+  width: 100vw;
+  background-color: green;
+  display: grid;
+  grid-row-gap: 0.5em;
+  grid-column-gap: 0.5em;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  position: fixed;
+`;

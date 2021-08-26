@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NewsResponse } from "./api/newsApi";
+import { INewsResponse, NewsResponse } from "./api/newsApi";
 import {
   getNewsEverything,
   getNewsTopHeadlines,
@@ -20,41 +20,20 @@ import {
 } from "./layout";
 
 const SubApp = () => {
-  const [mainArticle, setMainArticle] = useState<NewsResponse>({
-    status: "",
-    totalResults: 0,
-    articles: [],
-  });
 
-  const [moviesArticle, setMoviesArticle] = useState<NewsResponse>({
-    status: "",
-    totalResults: 0,
-    articles: [],
-  });
+  const defaultNewsResponse = new NewsResponse();
 
-  const [animalArticle, setAnimalArticle] = useState<NewsResponse>({
-    status: "",
-    totalResults: 0,
-    articles: [],
-  });
+  const [mainArticle, setMainArticle] = useState<INewsResponse>(defaultNewsResponse);
 
-  const [sportsArticle, setSportsArticle] = useState<NewsResponse>({
-    status: "",
-    totalResults: 0,
-    articles: [],
-  });
+  const [moviesArticle, setMoviesArticle] = useState<INewsResponse>(defaultNewsResponse);
 
-  const [politicsArticle, setPoliticsArticle] = useState<NewsResponse>({
-    status: "",
-    totalResults: 0,
-    articles: [],
-  });
+  const [animalArticle, setAnimalArticle] = useState<INewsResponse>(defaultNewsResponse);
 
-  const [stonksArticle, setStonksArticle] = useState<NewsResponse>({
-    status: "",
-    totalResults: 0,
-    articles: [],
-  });
+  const [sportsArticle, setSportsArticle] = useState<INewsResponse>(defaultNewsResponse);
+
+  const [politicsArticle, setPoliticsArticle] = useState<INewsResponse>(defaultNewsResponse);
+
+  const [stonksArticle, setStonksArticle] = useState<INewsResponse>(defaultNewsResponse);
 
   const dataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
@@ -90,13 +69,13 @@ const SubApp = () => {
     <div>
       <Layout
         Ads={<Ads />}
-        Animals={<Animals animalArticle={animalArticle} />}
-        MainArticle={<MainArticle mainArticle={mainArticle} />}
-        Movies={<Movies moviesArticle={moviesArticle} />}
+        Animals={<Animals articleResponse={animalArticle} />}
+        MainArticle={<MainArticle articleResponse={mainArticle} />}
+        Movies={<Movies articleResponse={moviesArticle} />}
         Navigation={<Navigation />}
-        Politics={<Politics politicsArticle={politicsArticle} />}
-        Sports={<Sports sportsArticle={sportsArticle} />}
-        Stonks={<Stonks stonksArticle={stonksArticle} />}
+        Politics={<Politics articleResponse={politicsArticle} />}
+        Sports={<Sports articleResponse={sportsArticle} />}
+        Stonks={<Stonks articleResponse={stonksArticle} />}
         Weather={<Weather />}
       />
     </div>
