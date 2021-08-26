@@ -25,6 +25,7 @@ const SubApp = () => {
     totalResults: 0,
     articles: [],
   });
+
   const [moviesArticle, setMoviesArticle] = useState<NewsResponse>({
     status: "",
     totalResults: 0,
@@ -32,6 +33,12 @@ const SubApp = () => {
   });
 
   const [animalArticle, setAnimalArticle] = useState<NewsResponse>({
+    status: "",
+    totalResults: 0,
+    articles: [],
+  });
+
+  const [sportsArticle, setSportsArticle] = useState<NewsResponse>({
     status: "",
     totalResults: 0,
     articles: [],
@@ -53,11 +60,19 @@ const SubApp = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
 
-    const animalsArticleRequest = new NewsEverythingRequest({q: "animal"});
-    getNewsEverything(animalsArticleRequest).then(res => setAnimalArticle(res));
+    const animalsArticleRequest = new NewsEverythingRequest({ q: "animal" });
+    getNewsEverything(animalsArticleRequest).then((res) =>
+      setAnimalArticle(res)
+    );
 
-    const politicsArticleRequest = new NewsEverythingRequest({q: "politics"});
-    getNewsEverything(politicsArticleRequest).then(res => setPoliticsArticle(res));
+    const sportsArticleRequest = new NewsEverythingRequest({ q: "sports" });
+    getNewsEverything(sportsArticleRequest).then((res) =>
+      setSportsArticle(res)
+    );
+    const politicsArticleRequest = new NewsEverythingRequest({ q: "politics" });
+    getNewsEverything(politicsArticleRequest).then((res) =>
+      setPoliticsArticle(res)
+    );
 
     const moviesEverythingRequest = new NewsEverythingRequest({ q: "movies" });
     getNewsEverything(moviesEverythingRequest).then((res) => setMoviesArticle(res));
@@ -80,7 +95,7 @@ const SubApp = () => {
         Movies={<Movies moviesArticle={moviesArticle} />}
         Navigation={<Navigation />}
         Politics={<Politics politicsArticle={politicsArticle} />}
-        Sports={<Sports />}
+        Sports={<Sports sportsArticle={sportsArticle} />}
         Stonks={<Stonks stonksArticle={stonksArticle} />}
         Weather={<Weather />}
       />
