@@ -1,22 +1,18 @@
 import styled from "styled-components";
-import { NewsResponse } from "../api/newsApi";
+import { NewsProps } from "../api/newsApi";
 import { usePagination } from "../hooks";
 
-interface MainArticleProps {
-  mainArticle: NewsResponse;
-}
-
-const MainArticle: React.FC<MainArticleProps> = ({ mainArticle }) => {
+const MainArticle: React.FC<NewsProps> = ({ articleResponse }) => {
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
     usePagination();
 
-  const article = mainArticle.articles?.[pageNumber];
+  const article = articleResponse.articles?.[pageNumber];
 
-  return mainArticle.articles.length ? (
+  return articleResponse.articles.length ? (
     <MainArticleStyles>
       <button
         onClick={() => {
-          mainArticle.articles.length - 1 === pageNumber
+          articleResponse.articles.length - 1 === pageNumber
             ? startBeginning()
             : onNextButton();
         }}
@@ -26,7 +22,7 @@ const MainArticle: React.FC<MainArticleProps> = ({ mainArticle }) => {
       <button
         onClick={() => {
           pageNumber === 0
-            ? startEnd(mainArticle.articles.length - 1)
+            ? startEnd(articleResponse.articles.length - 1)
             : onPrevButton();
         }}
         className="add-class"
@@ -35,11 +31,14 @@ const MainArticle: React.FC<MainArticleProps> = ({ mainArticle }) => {
       </button>
       <div>
         {article?.title}
+
         {article?.author}
+
         {article?.publishedAt}
+
         {article?.description}
       </div>
-      <Image src={article.urlToImage} />
+      <Image src={article?.urlToImage} />
     </MainArticleStyles>
   ) : (
     <p>Loading...</p>

@@ -1,22 +1,18 @@
 import styled from "styled-components";
-import { NewsResponse } from "../api/newsApi";
+import { NewsProps } from "../api/newsApi";
 import { usePagination } from "../hooks";
 
-interface StonksProps {
-  stonksArticle: NewsResponse;
-}
-
-const StonksArticle: React.FC<StonksProps> = ({ stonksArticle }) => {
+const StonksArticle: React.FC<NewsProps> = ({ articleResponse }) => {
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
     usePagination();
 
-  const article = stonksArticle.articles?.[pageNumber];
+  const article = articleResponse.articles?.[pageNumber];
 
-  return stonksArticle.articles.length ? (
+  return articleResponse.articles.length ? (
     <StonksStyles>
       <button
         onClick={() => {
-          stonksArticle.articles.length - 1 === pageNumber
+          articleResponse.articles.length - 1 === pageNumber
             ? startBeginning()
             : onNextButton();
         }}
@@ -26,7 +22,7 @@ const StonksArticle: React.FC<StonksProps> = ({ stonksArticle }) => {
       <button
         onClick={() => {
           pageNumber === 0
-            ? startEnd(stonksArticle.articles.length - 1)
+            ? startEnd(articleResponse.articles.length - 1)
             : onPrevButton();
         }}
         className="add-class"
@@ -35,11 +31,14 @@ const StonksArticle: React.FC<StonksProps> = ({ stonksArticle }) => {
       </button>
       <div>
         {article?.title}
+
         {article?.author}
+
         {article?.publishedAt}
+
         {article?.description}
       </div>
-      <Image src={article.urlToImage} />
+      <Image src={article?.urlToImage} />
     </StonksStyles>
   ) : (
     <p>Loading...</p>
@@ -58,4 +57,3 @@ const Image = styled.img`
   width: 100%;
   overflow: none;
 `;
-

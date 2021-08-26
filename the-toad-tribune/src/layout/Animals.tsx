@@ -1,22 +1,18 @@
 import styled from "styled-components";
 import { usePagination } from "../hooks";
-import { NewsResponse } from "../api/newsApi";
+import { NewsProps } from "../api/newsApi";
 
-interface AnimalsProps {
-  animalArticle: NewsResponse;
-}
-
-const Animals: React.FC<AnimalsProps> = ({ animalArticle }) => {
+const Animals: React.FC<NewsProps> = ({ articleResponse }) => {
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
     usePagination();
 
-  const article = animalArticle.articles?.[pageNumber];
+  const article = articleResponse.articles?.[pageNumber];
 
-  return animalArticle.articles.length ? (
+  return articleResponse.articles.length ? (
     <AnimalsStyles>
       <button
         onClick={() => {
-          animalArticle.articles.length - 1 === pageNumber
+          articleResponse.articles.length - 1 === pageNumber
             ? startBeginning()
             : onNextButton();
         }}
@@ -26,7 +22,7 @@ const Animals: React.FC<AnimalsProps> = ({ animalArticle }) => {
       <button
         onClick={() => {
           pageNumber === 0
-            ? startEnd(animalArticle.articles.length - 1)
+            ? startEnd(articleResponse.articles.length - 1)
             : onPrevButton();
         }}
         className="add-class"
@@ -35,11 +31,14 @@ const Animals: React.FC<AnimalsProps> = ({ animalArticle }) => {
       </button>
       <div>
         {article?.title}
+
         {article?.author}
+
         {article?.publishedAt}
+
         {article?.description}
       </div>
-      <Image src={article.urlToImage} />
+      <Image src={article?.urlToImage} />
     </AnimalsStyles>
   ) : (
     <p>Loading...</p>
