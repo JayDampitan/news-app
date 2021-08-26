@@ -3,19 +3,18 @@ import { usePagination } from "../hooks";
 import { NewsResponse } from "../api/newsApi";
 
 interface AnimalsProps {
-  animalArticle: NewsResponse
+  animalArticle: NewsResponse;
 }
 
 const Animals: React.FC<AnimalsProps> = ({ animalArticle }) => {
-
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
-  usePagination();
+    usePagination();
 
   const article = animalArticle.articles?.[pageNumber];
 
   return animalArticle.articles.length ? (
     <AnimalsStyles>
-           <button
+      <button
         onClick={() => {
           animalArticle.articles.length - 1 === pageNumber
             ? startBeginning()
@@ -42,8 +41,7 @@ const Animals: React.FC<AnimalsProps> = ({ animalArticle }) => {
       </div>
       <Image src={article.urlToImage} />
     </AnimalsStyles>
-
-  ): (
+  ) : (
     <p>Loading...</p>
   );
 };
@@ -53,8 +51,8 @@ export default Animals;
 const AnimalsStyles = styled.div`
   background-color: white;
   grid-area: 8/3/10/6;
-  margin-bottom: .5em;
-`
+  margin-bottom: 0.5em;
+`;
 const Image = styled.img`
   height: 100%;
   width: 100%;

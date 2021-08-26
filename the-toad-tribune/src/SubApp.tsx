@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NewsResponse } from "./api/newsApi";
 import {
   getNewsEverything,
@@ -37,6 +37,12 @@ const SubApp = () => {
     articles: [],
   });
 
+  const [politicsArticle, setPoliticsArticle] = useState<NewsResponse>({
+    status: "",
+    totalResults: 0,
+    articles: [],
+  });
+
   const [stonksArticle, setStonksArticle] = useState<NewsResponse>({
     status: "",
     totalResults: 0,
@@ -47,15 +53,14 @@ const SubApp = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
 
-    const moviesEverythingRequest = new NewsEverythingRequest({ q: "movies" });
-    getNewsEverything(moviesEverythingRequest).then((res) =>
-      setMoviesArticle(res)
-    );
+    const animalsArticleRequest = new NewsEverythingRequest({q: "animal"});
+    getNewsEverything(animalsArticleRequest).then(res => setAnimalArticle(res));
 
-    const animalsArticleRequest = new NewsEverythingRequest({ q: "animal" });
-    getNewsEverything(animalsArticleRequest).then((res) =>
-      setAnimalArticle(res)
-    );
+    const politicsArticleRequest = new NewsEverythingRequest({q: "politics"});
+    getNewsEverything(politicsArticleRequest).then(res => setPoliticsArticle(res));
+
+    const moviesEverythingRequest = new NewsEverythingRequest({ q: "movies" });
+    getNewsEverything(moviesEverythingRequest).then((res) => setMoviesArticle(res));
 
     const stonksHeadlinesRequest = new NewsEverythingRequest({q: "stocks"});
     getNewsEverything(stonksHeadlinesRequest).then((res) => 
@@ -74,7 +79,7 @@ const SubApp = () => {
         MainArticle={<MainArticle mainArticle={mainArticle} />}
         Movies={<Movies moviesArticle={moviesArticle} />}
         Navigation={<Navigation />}
-        Politics={<Politics />}
+        Politics={<Politics politicsArticle={politicsArticle} />}
         Sports={<Sports />}
         Stonks={<Stonks stonksArticle={stonksArticle} />}
         Weather={<Weather />}
