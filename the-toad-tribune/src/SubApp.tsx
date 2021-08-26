@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NewsResponse } from "./api/newsApi";
 import {
   getNewsEverything,
@@ -44,24 +44,29 @@ const SubApp = () => {
     articles: [],
   });
 
+  const [politicsArticle, setPoliticsArticle] = useState<NewsResponse>({
+    status: "",
+    totalResults: 0,
+    articles: [],
+  });
+
   const dataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
 
-    const moviesEverythingRequest = new NewsEverythingRequest({ q: "movies" });
-    getNewsEverything(moviesEverythingRequest).then((res) =>
-      setMoviesArticle(res)
-    );
-
-    const animalsArticleRequest = new NewsEverythingRequest({ q: "animal" });
-    getNewsEverything(animalsArticleRequest).then((res) =>
-      setAnimalArticle(res)
-    );
+    const animalsArticleRequest = new NewsEverythingRequest({q: "animal"});
+    getNewsEverything(animalsArticleRequest).then(res => setAnimalArticle(res));
 
     const sportsArticleRequest = new NewsEverythingRequest({ q: "sports" });
     getNewsEverything(sportsArticleRequest).then((res) =>
       setSportsArticle(res)
     );
+    const politicsArticleRequest = new NewsEverythingRequest({q: "politics"});
+    getNewsEverything(politicsArticleRequest).then(res => setPoliticsArticle(res));
+
+    const moviesEverythingRequest = new NewsEverythingRequest({ q: "movies" });
+    getNewsEverything(moviesEverythingRequest).then((res) => setMoviesArticle(res));
+    
   };
 
   useEffect(() => {
@@ -76,7 +81,7 @@ const SubApp = () => {
         MainArticle={<MainArticle mainArticle={mainArticle} />}
         Movies={<Movies moviesArticle={moviesArticle} />}
         Navigation={<Navigation />}
-        Politics={<Politics />}
+        Politics={<Politics politicsArticle={politicsArticle} />}
         Sports={<Sports sportsArticle={sportsArticle} />}
         Stonks={<Stonks />}
         Weather={<Weather />}
