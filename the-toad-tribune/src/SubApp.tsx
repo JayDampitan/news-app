@@ -26,6 +26,12 @@ const SubApp = () => {
     articles: [],
   });
 
+  const [animalArticle, setAnimalArticle] = useState<NewsResponse>({
+    status: "",
+    totalResults: 0,
+    articles: [],
+  });
+
   const [stonksArticle, setStonksArticle] = useState<NewsResponse>({
     status: "",
     totalResults: 0,
@@ -35,6 +41,9 @@ const SubApp = () => {
   const dataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
+
+    const animalsArticleRequest = new NewsEverythingRequest({q: "animal"});
+    getNewsEverything(animalsArticleRequest).then(res => setAnimalArticle(res))
 
     const stonksHeadlinesRequest = new NewsEverythingRequest({q: "stocks"});
     getNewsEverything(stonksHeadlinesRequest).then((res) => setStonksArticle(res));
@@ -48,7 +57,7 @@ const SubApp = () => {
     <div>
       <Layout
         Ads={<Ads />}
-        Animals={<Animals />}
+        Animals={<Animals animalArticle={animalArticle} />}
         MainArticle={<MainArticle mainArticle={mainArticle} />}
         Movies={<Movies />}
         Navigation={<Navigation />}
