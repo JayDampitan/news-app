@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { NewsProps } from "../api/newsApi";
 import { usePagination } from "../hooks";
 
-const Movies: React.FC<NewsProps> = ({ articleResponse }) => {
+const Movies: React.FC<NewsProps> = ({
+  articleResponse,
+  renderMoreInfoPage,
+}) => {
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
     usePagination();
 
@@ -29,7 +32,7 @@ const Movies: React.FC<NewsProps> = ({ articleResponse }) => {
       >
         Previous Button
       </button>
-
+      <button onClick={() => renderMoreInfoPage()}> More Information </button>
       <div>
         {article?.title}
 
