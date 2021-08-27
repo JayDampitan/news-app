@@ -2,6 +2,7 @@ import fetchApi from "./fetchApi"
 
 export interface NewsProps {
   articleResponse: INewsResponse;
+  renderMoreInfoPage: Function;
 }
 
 interface Source {

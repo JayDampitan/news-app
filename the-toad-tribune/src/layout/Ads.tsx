@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { AdsProp } from "../api/adsApi";
 
 const Ads: React.FC<AdsProp> = ({ adsResponse, adsDataGrabber }) => {
- 
   return (
     <AdsStyles>
       <h4>Joke of the Day</h4>
