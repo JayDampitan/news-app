@@ -1,7 +1,4 @@
-const fetchApi = async (request: string) =>
-  await fetch(request)
-    .then((response) => response.json())
-    .then((data) => data);
+import fetchApi from "./fetchApi"
 
 export interface NewsProps {
   articleResponse: INewsResponse;
