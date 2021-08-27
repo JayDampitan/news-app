@@ -58,18 +58,8 @@ const Layout: React.FC<LayoutProps> = ({
     }
   };
 
-  // const renderMoreArticleInfo = () => {
-  //   return(
-  //     <MoreInfoStyles>
-  //       {Navigation}
-  //       {MainArticle}
-  //     </MoreInfoStyles>
-  //   )
-  // };
-
   return (
     <>
-      {/* {isMoreInfo ? renderMoreArticleInfo() : renderMainLayout()} */}
       {isMainLayout && renderPage("MainLayout")}
       {isMoreInfo && renderPage("MoreInfo")}
       {isSearchPage && renderPage("SearchPage")}
