@@ -5,9 +5,12 @@ import AdsResponse from "./api/adsApi"
 import {
   getNewsEverything,
   getNewsTopHeadlines,
+  getWeather,
   NewsEverythingRequest,
   NewsTopHeadlinesRequest,
+  WeatherRequest,
 } from "./api";
+
 import {
   Ads,
   Animals,
@@ -73,8 +76,10 @@ const SubApp = () => {
   };
 
   useEffect(() => {
-    newsDataGrabber();
-    adsDataGrabber();
+    // newsDataGrabber();
+    // adsDataGrabber();
+    const weatherRequest = new WeatherRequest();
+    getWeather(weatherRequest).then((res) => console.log(res));
   }, []);
 
   return (

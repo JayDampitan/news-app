@@ -8,7 +8,7 @@ const MainArticle: React.FC<NewsProps> = ({ articleResponse }) => {
 
   const article = articleResponse.articles?.[pageNumber];
 
-  return articleResponse.articles.length ? (
+  return articleResponse.articles?.length ? (
     <MainArticleStyles>
       <button
         onClick={() => {

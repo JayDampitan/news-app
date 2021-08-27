@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 const Weather = () => {
   return <WeatherStyles>Weather</WeatherStyles>;
 };
