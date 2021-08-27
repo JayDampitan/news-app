@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { INewsResponse, NewsResponse } from "./api/newsApi";
+import { IAdsResponse } from "./api/adsApi";
+import AdsResponse from "./api/adsApi"
 import {
   getNewsEverything,
   getNewsTopHeadlines,
@@ -18,10 +20,12 @@ import {
   Stonks,
   Weather,
 } from "./layout";
+import { getAds } from "./api/adsApi";
 
 const SubApp = () => {
 
   const defaultNewsResponse = new NewsResponse();
+  const defaultAdsResponse = new AdsResponse();
 
   const [mainArticle, setMainArticle] = useState<INewsResponse>(defaultNewsResponse);
 
@@ -35,7 +39,9 @@ const SubApp = () => {
 
   const [stonksArticle, setStonksArticle] = useState<INewsResponse>(defaultNewsResponse);
 
-  const dataGrabber = () => {
+  const [ads, setAds] = useState<IAdsResponse>(defaultAdsResponse)
+
+  const newsDataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
 
@@ -59,16 +65,22 @@ const SubApp = () => {
     const stonksHeadlinesRequest = new NewsEverythingRequest({q: "stocks"});
     getNewsEverything(stonksHeadlinesRequest).then((res) => 
       setStonksArticle(res));
+
+  };
+
+  const adsDataGrabber = () => {
+    getAds().then(res => setAds(res));
   };
 
   useEffect(() => {
-    dataGrabber();
+    newsDataGrabber();
+    adsDataGrabber();
   }, []);
 
   return (
     <div>
       <Layout
-        Ads={<Ads />}
+        Ads={<Ads adsResponse={ads} adsDataGrabber={adsDataGrabber} />}
         Animals={<Animals articleResponse={animalArticle} />}
         MainArticle={<MainArticle articleResponse={mainArticle} />}
         Movies={<Movies articleResponse={moviesArticle} />}

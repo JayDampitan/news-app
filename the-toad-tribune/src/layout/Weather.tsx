@@ -1,17 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Weather = () => {
-  return (
-  <WeatherStyles>
-    Weather
-  </WeatherStyles>
-  )
-}
+  return <WeatherStyles>Weather</WeatherStyles>;
+};
 
 export default Weather;
 
 const WeatherStyles = styled.div`
-background-color: yellow;
+  background-color: yellow;
   grid-area: 2/9/4/10;
-  margin-right: .5em;
+  margin-right: 0.5em;
 `;
