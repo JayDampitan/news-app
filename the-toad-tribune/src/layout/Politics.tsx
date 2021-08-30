@@ -41,16 +41,30 @@ const Politics: React.FC<NewsProps> = ({
       >
         More Information
       </button>
-      <div>
-        {article?.title}
+     
+      <ImageContainer>
+        <Image src={article?.urlToImage} />
+      </ImageContainer>
+     
+      <PoliticsContentContainer>
+        <PoliticsTitle>
+          {article?.title}
+        </PoliticsTitle>
 
-        {article?.author}
+          <PoliticsAuthors>
+            {article?.author}
+          </PoliticsAuthors>
 
-        {article?.publishedAt}
+          <PoliticsPublishedDate>
+            {article?.publishedAt}
+          </PoliticsPublishedDate>
+        
+          <PoliticsDescription>
+          {article?.description}
+          </PoliticsDescription>
+      </PoliticsContentContainer>
 
-        {article?.description}
-      </div>
-      <Image src={article?.urlToImage} />
+
     </PoliticsStyles>
   ) : (
     <p>Loading...</p>
@@ -63,6 +77,8 @@ const PoliticsStyles = styled.div`
   background-color: grey;
   grid-area: 2/1/7/3;
   margin-left: 0.5em;
+  border-radius: 10px;
+  overflow: hidden;
 `;
 
 const Image = styled.img`
@@ -70,3 +86,34 @@ const Image = styled.img`
   width: 100%;
   overflow: none;
 `;
+
+const ImageContainer = styled.div`
+  max-height: 50%;
+  max-width: 100%;
+`;
+
+const PoliticsContentContainer = styled.div`
+  min-height: 50%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: .4rem .6rem .6rem .6rem;
+`;
+
+const PoliticsTitle = styled.h3`
+  margin: .3rem;
+`;
+
+const PoliticsAuthors = styled.h4`
+  margin: .4rem;
+  
+`;
+
+const PoliticsPublishedDate = styled.h5`
+margin: 0 .4rem .2rem .4rem;
+`;
+
+const PoliticsDescription = styled.p`
+`;
+
+
