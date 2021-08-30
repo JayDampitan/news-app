@@ -1,5 +1,9 @@
 import fetchApi from "./fetchApi"
 
+export interface WeatherProp {
+  weatherResponse: IWeatherResponse;
+}
+
 export interface Request {
     type: string;
     query: string;
@@ -106,4 +110,23 @@ export const getWeather = async (
   let queryString = `${endpoint}?access_key=${request.access_key}&query=${request.query}&units=${request.units}`;
 
   return await fetchApi(queryString);
+}
+
+// GEOLOCATION API
+export interface Coords {
+  latitude: number;
+  longitude: number;
+  altitude: number | null;
+  accuracy: number;
+  altitudeAccuracy: number | null;
+  heading: number | null;
+}
+
+export interface GeolocationPositionSuccess {
+  coords: Coords;
+}
+
+export interface GeolocationPositionError {
+  code: number;
+  message: string;
 }

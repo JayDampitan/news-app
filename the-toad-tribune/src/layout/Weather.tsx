@@ -1,8 +1,17 @@
 import styled from "styled-components";
+import { WeatherProp } from "../api/weatherApi";
 
-
-const Weather = () => {
-  return <WeatherStyles>Weather</WeatherStyles>;
+const Weather: React.FC<WeatherProp> = ({ weatherResponse }) => {
+  console.log(weatherResponse)
+  return (
+    <WeatherStyles>
+      <img src={weatherResponse.current.weather_icons[0]} />
+      <div>{weatherResponse.current.temperature}°F</div>
+       <div>{weatherResponse.location.name}, {weatherResponse.location.region}</div>
+       <div>{weatherResponse.location.localtime}</div>
+       
+    </WeatherStyles>
+  );
 };
 
 export default Weather;

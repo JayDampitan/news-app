@@ -8,6 +8,7 @@ import {
 import { 
   getWeather,
   WeatherRequest,
+  WeatherResponse,
 } from "./weatherApi";
 
 export {
@@ -17,4 +18,5 @@ export {
   NewsEverythingRequest,
   NewsTopHeadlinesRequest,
   WeatherRequest,
+  WeatherResponse,
 };
