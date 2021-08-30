@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { INewsResponse, NewsResponse } from "./api/newsApi";
+import { IArticle, IMoreInfoPageProps, INewsResponse, NewsResponse } from "./api/newsApi";
 import { IAdsResponse } from "./api/adsApi";
 import AdsResponse from "./api/adsApi";
 import {
+  ArticleResponse,
   getNewsEverything,
   getNewsTopHeadlines,
   NewsEverythingRequest,
@@ -21,10 +22,13 @@ import {
   Weather,
 } from "./layout";
 import { getAds } from "./api/adsApi";
+import MoreInfo from "./layout/MoreInfo";
 
 const SubApp = () => {
+  const defaultArticleResponse = new ArticleResponse();
   const defaultNewsResponse = new NewsResponse();
   const defaultAdsResponse = new AdsResponse();
+
 
   const [mainArticle, setMainArticle] =
     useState<INewsResponse>(defaultNewsResponse);
@@ -41,9 +45,11 @@ const SubApp = () => {
     useState<INewsResponse>(defaultNewsResponse);
   const [ads, setAds] = useState<IAdsResponse>(defaultAdsResponse);
 
-  const [isMoreInfo, setIsMoreInfo] = useState(false);
-  const [isMainLayout, setIsMainLayout] = useState(true);
-  const [isSearchPage, setIsSearchPage] = useState(false);
+  const [isMoreInfo, setIsMoreInfo] = useState<Boolean>(false);
+  const [isMainLayout, setIsMainLayout] = useState<Boolean>(true);
+  const [isSearchPage, setIsSearchPage] = useState<Boolean>(false);
+
+  const [selectedArticle, setSelectedArticle] = useState<IArticle>(defaultArticleResponse);
 
   const newsDataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
@@ -109,6 +115,7 @@ const SubApp = () => {
           <Animals
             articleResponse={animalArticle}
             renderMoreInfoPage={renderMoreInfoPage}
+            setSelectedArticle = {setSelectedArticle}
           />
         }
         isMainLayout={isMainLayout}
@@ -118,12 +125,15 @@ const SubApp = () => {
           <MainArticle
             articleResponse={mainArticle}
             renderMoreInfoPage={renderMoreInfoPage}
+            setSelectedArticle = {setSelectedArticle}
           />
         }
+        MoreInfo={<MoreInfo selectedArticle={selectedArticle}/>}
         Movies={
           <Movies
             articleResponse={moviesArticle}
             renderMoreInfoPage={renderMoreInfoPage}
+            setSelectedArticle = {setSelectedArticle}
           />
         }
         Navigation={<Navigation />}
@@ -131,18 +141,21 @@ const SubApp = () => {
           <Politics
             articleResponse={politicsArticle}
             renderMoreInfoPage={renderMoreInfoPage}
+            setSelectedArticle = {setSelectedArticle}
           />
         }
         Sports={
           <Sports
             articleResponse={sportsArticle}
             renderMoreInfoPage={renderMoreInfoPage}
+            setSelectedArticle = {setSelectedArticle}
           />
         }
         Stonks={
           <Stonks
             articleResponse={stonksArticle}
             renderMoreInfoPage={renderMoreInfoPage}
+            setSelectedArticle = {setSelectedArticle}
           />
         }
         Weather={<Weather />}

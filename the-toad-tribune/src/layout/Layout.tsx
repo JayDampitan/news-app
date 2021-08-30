@@ -4,10 +4,11 @@ import styled from "styled-components";
 interface LayoutProps {
   Ads: JSX.Element;
   Animals: JSX.Element;
-  isMainLayout: boolean;
-  isMoreInfo: boolean;
-  isSearchPage: boolean;
+  isMainLayout: Boolean;
+  isMoreInfo: Boolean;
+  isSearchPage: Boolean;
   MainArticle: JSX.Element;
+  MoreInfo: JSX.Element;
   Movies: JSX.Element;
   Navigation: JSX.Element;
   Politics: JSX.Element;
@@ -23,6 +24,7 @@ const Layout: React.FC<LayoutProps> = ({
   isMoreInfo,
   isSearchPage,
   MainArticle,
+  MoreInfo,
   Movies,
   Navigation,
   Politics,
@@ -48,7 +50,12 @@ const Layout: React.FC<LayoutProps> = ({
         );
 
       case "MoreInfo":
-        return <MoreInfoStyles>{Navigation}</MoreInfoStyles>;
+        return (
+          <>
+            {Navigation}
+            {MoreInfo}
+          </>
+        );
 
       case "SearchPage":
         return <SearchPageStyles>{Navigation}</SearchPageStyles>;
@@ -81,11 +88,7 @@ const MainLayoutStyles = styled.div`
   position: fixed;
 `;
 
-const MoreInfoStyles = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background-color: blue;
-`;
+
 
 const SearchPageStyles = styled.div`
   height: 100vh;
