@@ -2,7 +2,7 @@ import { IMoreInfoPageProps } from "../api/newsApi";
 import styled from "styled-components";
 
 const MoreInfo: React.FC<IMoreInfoPageProps> = ({ selectedArticle }) => {
-    console.log(selectedArticle);
+   
   return (
     <MoreInfoStyles>
       {selectedArticle.title}
