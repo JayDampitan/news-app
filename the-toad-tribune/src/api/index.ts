@@ -7,10 +7,19 @@ import {
   
 } from "./newsApi";
 
+import { 
+  getWeather,
+  WeatherRequest,
+  WeatherResponse,
+} from "./weatherApi";
+
 export {
   ArticleResponse,
   getNewsEverything,
   getNewsTopHeadlines,
+  getWeather,
   NewsEverythingRequest,
   NewsTopHeadlinesRequest,
+  WeatherRequest,
+  WeatherResponse,
 };

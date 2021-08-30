@@ -2,13 +2,18 @@ import { useState, useEffect } from "react";
 import { IArticle, IMoreInfoPageProps, INewsResponse, NewsResponse } from "./api/newsApi";
 import { IAdsResponse } from "./api/adsApi";
 import AdsResponse from "./api/adsApi";
+import { Coords, GeolocationPositionError, GeolocationPositionSuccess, IWeatherResponse } from "./api/weatherApi";
 import {
   ArticleResponse,
   getNewsEverything,
   getNewsTopHeadlines,
+  getWeather,
   NewsEverythingRequest,
   NewsTopHeadlinesRequest,
+  WeatherRequest,
+  WeatherResponse,
 } from "./api";
+
 import {
   Ads,
   Animals,
@@ -28,6 +33,7 @@ const SubApp = () => {
   const defaultArticleResponse = new ArticleResponse();
   const defaultNewsResponse = new NewsResponse();
   const defaultAdsResponse = new AdsResponse();
+  const defaultWeatherResponse = new WeatherResponse();
 
 
   const [mainArticle, setMainArticle] =
@@ -44,6 +50,7 @@ const SubApp = () => {
   const [stonksArticle, setStonksArticle] =
     useState<INewsResponse>(defaultNewsResponse);
   const [ads, setAds] = useState<IAdsResponse>(defaultAdsResponse);
+  const [weather, setWeather] = useState<IWeatherResponse>(defaultWeatherResponse);
 
   const [isMoreInfo, setIsMoreInfo] = useState<Boolean>(false);
   const [isMainLayout, setIsMainLayout] = useState<Boolean>(true);
@@ -84,6 +91,28 @@ const SubApp = () => {
     getAds().then((res) => setAds(res));
   };
 
+  const weatherDataGrabber = () => {
+    const successGeo = async (
+      position: GeolocationPositionSuccess
+    ) => {
+      const { latitude, longitude } = position.coords;
+      const weatherRequest = new WeatherRequest({ query: `${latitude},${longitude}` })
+      const weatherData = await getWeather(weatherRequest);
+      setWeather(weatherData);
+    }
+    
+    const errorGeo = async (
+      error: GeolocationPositionError
+    ) => {
+      console.error(error);
+      const weatherRequest = new WeatherRequest();
+      const weatherData = await getWeather(weatherRequest);
+      setWeather(weatherData)
+    }
+
+    navigator.geolocation.getCurrentPosition(successGeo, errorGeo);
+  }
+
   const renderMoreInfoPage = () => {
     setIsMainLayout(false);
     setIsSearchPage(false);
@@ -105,6 +134,7 @@ const SubApp = () => {
   useEffect(() => {
     newsDataGrabber();
     adsDataGrabber();
+    weatherDataGrabber();
   }, []);
 
   return (
@@ -158,7 +188,7 @@ const SubApp = () => {
             setSelectedArticle = {setSelectedArticle}
           />
         }
-        Weather={<Weather />}
+        Weather={<Weather weatherResponse={weather} />}
       />
     </div>
   );
