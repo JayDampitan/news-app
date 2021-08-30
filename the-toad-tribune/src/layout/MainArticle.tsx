@@ -5,6 +5,7 @@ import { usePagination } from "../hooks";
 const MainArticle: React.FC<NewsProps> = ({
   articleResponse,
   renderMoreInfoPage,
+  setSelectedArticle,
 }) => {
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
     usePagination();
@@ -32,7 +33,14 @@ const MainArticle: React.FC<NewsProps> = ({
       >
         Previous Button
       </button>
-      <button onClick={() => renderMoreInfoPage()}> More Information </button>
+      <button
+        onClick={() => {
+          renderMoreInfoPage();
+          setSelectedArticle(article);
+        }}
+      >
+        More Information
+      </button>
       <div>
         {article?.title}
 

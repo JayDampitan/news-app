@@ -1,8 +1,10 @@
 import {
+  ArticleResponse,
   getNewsEverything,
   getNewsTopHeadlines,
   NewsEverythingRequest,
   NewsTopHeadlinesRequest,
+  
 } from "./newsApi";
 
 import { 
@@ -12,6 +14,7 @@ import {
 } from "./weatherApi";
 
 export {
+  ArticleResponse,
   getNewsEverything,
   getNewsTopHeadlines,
   getWeather,
