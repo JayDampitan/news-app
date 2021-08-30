@@ -3,6 +3,11 @@ import fetchApi from "./fetchApi"
 export interface NewsProps {
   articleResponse: INewsResponse;
   renderMoreInfoPage: Function;
+  setSelectedArticle: Function;
+}
+
+export interface IMoreInfoPageProps {
+  selectedArticle: IArticle;
 }
 
 interface Source {
@@ -10,7 +15,7 @@ interface Source {
   name: string | null;
 }
 
-export interface Article {
+export interface IArticle {
   source: Source;
   author: string;
   title: string;
@@ -24,7 +29,21 @@ export interface Article {
 export interface INewsResponse {
   status: string;
   totalResults: number;
-  articles: Article[];
+  articles: IArticle[];
+}
+
+export class ArticleResponse implements IArticle {
+  source = {
+    id: "",
+    name: "",
+  };
+  author = "";
+  title = "";
+  description = "";
+  url = "";
+  urlToImage = "";
+  publishedAt = "";
+  content = "";
 }
 
 export class NewsResponse implements INewsResponse {
