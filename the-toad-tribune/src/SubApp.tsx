@@ -22,6 +22,7 @@ import {
   Movies,
   Navigation,
   Politics,
+  SearchResults,
   Sports,
   Stonks,
   Weather,
@@ -132,9 +133,9 @@ const SubApp = () => {
   };
 
   useEffect(() => {
-    newsDataGrabber();
-    adsDataGrabber();
-    weatherDataGrabber();
+    // newsDataGrabber();
+    // adsDataGrabber();
+    // weatherDataGrabber();
   }, []);
 
   return (
@@ -174,6 +175,7 @@ const SubApp = () => {
             setSelectedArticle = {setSelectedArticle}
           />
         }
+        SearchResults={<SearchResults />}
         Sports={
           <Sports
             articleResponse={sportsArticle}

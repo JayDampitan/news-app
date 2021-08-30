@@ -12,6 +12,7 @@ interface LayoutProps {
   Movies: JSX.Element;
   Navigation: JSX.Element;
   Politics: JSX.Element;
+  SearchResults: JSX.Element;
   Sports: JSX.Element;
   Stonks: JSX.Element;
   Weather: JSX.Element;
@@ -28,6 +29,7 @@ const Layout: React.FC<LayoutProps> = ({
   Movies,
   Navigation,
   Politics,
+  SearchResults,
   Sports,
   Stonks,
   Weather,
@@ -58,7 +60,12 @@ const Layout: React.FC<LayoutProps> = ({
         );
 
       case "SearchPage":
-        return <SearchPageStyles>{Navigation}</SearchPageStyles>;
+        return (
+          <SearchPageStyles>
+            {Navigation}
+            {SearchResults}
+          </SearchPageStyles>
+        );
 
       default:
         break;
@@ -87,8 +94,6 @@ const MainLayoutStyles = styled.div`
   grid-template-rows: repeat(9, 1fr);
   position: fixed;
 `;
-
-
 
 const SearchPageStyles = styled.div`
   height: 100vh;
