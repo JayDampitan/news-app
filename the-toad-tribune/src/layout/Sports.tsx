@@ -85,6 +85,7 @@ const SportsStyles = styled.div`
 background-color: yellow;
 grid-area: 7/1/10/3;
 display: flex;
+justify-content: center;
 margin-left: 0.5em;
 margin-bottom: 0.5em;
 align-items: center;
@@ -92,8 +93,4 @@ overflow: hidden;
 border-radius: 10px;
 `;
 
-// const Image = styled.img`
-//   height: 100%;
-//   width: 100%;
-//   overflow: none;
-// `;
+

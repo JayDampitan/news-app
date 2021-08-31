@@ -5,10 +5,6 @@ export const ArticleContentContainer = styled.div`
     max-width: 90%;
     margin: 1rem .5rem;
     overflow: hidden;
-
-    :hover {
-        display:
-    }
 `;
 
 export const HeaderContainer = styled.div`
@@ -44,8 +40,8 @@ export const ArticleDescriptionContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-     height: 120px;
-     width: 300px;
+     height: 8rem;
+     width: 19rem;
 
      img {
          width: 100%;

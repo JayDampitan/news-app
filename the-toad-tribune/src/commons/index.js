@@ -1,11 +1,11 @@
 import {
     ArticleContentContainer,
-    HeaderContainer,
-    TitleContainer,
-    AuthorContainer,
-    PublishedAtContainer,
     ArticleDescriptionContainer,
-    ImageContainer
+    AuthorContainer,
+    HeaderContainer,
+    ImageContainer,
+    PublishedAtContainer,
+    TitleContainer, 
 } from './articleDesign';
 
 import { Buttons } from './buttons';
@@ -13,11 +13,11 @@ import { Buttons } from './buttons';
 
 export {
     ArticleContentContainer,
-    HeaderContainer,
-    TitleContainer,
-    AuthorContainer,
-    PublishedAtContainer,
     ArticleDescriptionContainer,
-    ImageContainer,
+    AuthorContainer,
     Buttons,
+    HeaderContainer,
+    ImageContainer,
+    PublishedAtContainer,
+    TitleContainer, 
 };
