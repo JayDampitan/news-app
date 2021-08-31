@@ -1,30 +1,36 @@
-import React, { KeyboardEvent} from "react";
+import React, { KeyboardEvent } from "react";
 import styled from "styled-components";
 import { getNewsEverything } from "../api/newsApi";
 import { NewsEverythingRequest } from "../api";
 
-
 interface INavProps {
+  renderMainLayoutPage: Function;
   renderSearchPage: Function;
   searchValue: string;
   setSearchValue: Function;
   setSerachReults: Function;
 }
 
-const Navigation: React.FC<INavProps> = ({ renderSearchPage, searchValue, setSerachReults, setSearchValue }) => {
-
+const Navigation: React.FC<INavProps> = ({
+  renderMainLayoutPage,
+  renderSearchPage,
+  searchValue,
+  setSerachReults,
+  setSearchValue,
+}) => {
   const enterSubmit = (event: KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === "Enter") {
       const searchStuff = new NewsEverythingRequest({ q: searchValue });
-      getNewsEverything(searchStuff).then((results) => setSerachReults(results.articles));
+      getNewsEverything(searchStuff).then((results) =>
+        setSerachReults(results.articles)
+      );
       renderSearchPage();
     }
   };
 
-
   return (
     <NavigationStyles>
-      <NavLogo>Logo</NavLogo>
+      <NavLogo onClick={() => renderMainLayoutPage()}>Logo</NavLogo>
       <NavTitle>The Toad Tribune</NavTitle>
       <NavSearch
         placeholder="Search"

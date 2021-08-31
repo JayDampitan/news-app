@@ -135,9 +135,9 @@ const SubApp = () => {
   };
 
   useEffect(() => {
-    // newsDataGrabber();
-    // adsDataGrabber();
-    // weatherDataGrabber();
+    newsDataGrabber();
+    adsDataGrabber();
+    weatherDataGrabber();
   }, []);
 
   return (
@@ -169,7 +169,7 @@ const SubApp = () => {
             setSelectedArticle = {setSelectedArticle}
           />
         }
-        Navigation={<Navigation renderSearchPage={renderSearchPage} searchValue={searchValue} setSearchValue={setSearchValue} setSerachReults={setSerachReults} />}
+        Navigation={<Navigation renderMainLayoutPage={renderMainLayoutPage} renderSearchPage={renderSearchPage} searchValue={searchValue} setSearchValue={setSearchValue} setSerachReults={setSerachReults} />}
         Politics={
           <Politics
             articleResponse={politicsArticle}
