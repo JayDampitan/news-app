@@ -1,6 +1,19 @@
 import styled from "styled-components";
 import { usePagination } from "../hooks";
 import { NewsProps } from "../api/newsApi";
+import { 
+  ArticleContentContainer,
+  ArticleDescriptionContainer,
+  AuthorContainer,
+  Buttons,
+  HeaderContainer,
+  ImageContainer,
+  PublishedAtContainer,
+  TitleContainer, 
+} from "../commons";
+
+import PrevIcon from "../commons/prev.png";
+import NextIcon from "../commons/next.png";
 
 const Animals: React.FC<NewsProps> = ({
   articleResponse,
@@ -14,16 +27,7 @@ const Animals: React.FC<NewsProps> = ({
 
   return articleResponse.articles.length ? (
     <AnimalsStyles>
-      <button
-        onClick={() => {
-          articleResponse.articles.length - 1 === pageNumber
-            ? startBeginning()
-            : onNextButton();
-        }}
-      >
-        Next Button
-      </button>
-      <button
+      <Buttons
         onClick={() => {
           pageNumber === 0
             ? startEnd(articleResponse.articles.length - 1)
@@ -31,26 +35,44 @@ const Animals: React.FC<NewsProps> = ({
         }}
         className="add-class"
       >
-        Previous Button
-      </button>
-      <button
+        <img src={PrevIcon} alt="" />
+      </Buttons>
+
+      <ArticleContentContainer
         onClick={() => {
           renderMoreInfoPage();
           setSelectedArticle(article);
         }}
       >
-        More Information
-      </button>
-      <div>
-        {article?.title}
+        <HeaderContainer>
+          <ImageContainer>
+            <img src={article?.urlToImage} />
+          </ImageContainer>
+          <TitleContainer>
+            <h3>{article?.title}</h3>
+            <br />
+            <AuthorContainer>
+              <h4>{article?.author}</h4>
+            </AuthorContainer>
+            <PublishedAtContainer>
+              <h5>{article?.publishedAt}</h5>
+            </PublishedAtContainer>
+          </TitleContainer>
+        </HeaderContainer>
 
-        {article?.author}
-
-        {article?.publishedAt}
-
-        {article?.description}
-      </div>
-      <Image src={article?.urlToImage} />
+        <ArticleDescriptionContainer>
+          <p>{article?.description}</p>
+        </ArticleDescriptionContainer>
+      </ArticleContentContainer>
+      <Buttons
+        onClick={() => {
+          articleResponse.articles.length - 1 === pageNumber
+            ? startBeginning()
+            : onNextButton();
+        }}
+      >
+        <img src={NextIcon} alt="" />
+      </Buttons>
     </AnimalsStyles>
   ) : (
     <p>Loading...</p>
@@ -62,10 +84,9 @@ export default Animals;
 const AnimalsStyles = styled.div`
   background-color: white;
   grid-area: 8/3/10/6;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
   margin-bottom: 0.5em;
-`;
-const Image = styled.img`
-  height: 100%;
-  width: 100%;
-  overflow: none;
 `;
