@@ -1,8 +1,18 @@
 import { useState, useEffect } from "react";
-import { IArticle, IMoreInfoPageProps, INewsResponse, NewsResponse } from "./api/newsApi";
+import {
+  IArticle,
+  IMoreInfoPageProps,
+  INewsResponse,
+  NewsResponse,
+} from "./api/newsApi";
 import { IAdsResponse } from "./api/adsApi";
 import AdsResponse from "./api/adsApi";
-import { Coords, GeolocationPositionError, GeolocationPositionSuccess, IWeatherResponse } from "./api/weatherApi";
+import {
+  Coords,
+  GeolocationPositionError,
+  GeolocationPositionSuccess,
+  IWeatherResponse,
+} from "./api/weatherApi";
 import {
   ArticleResponse,
   getNewsEverything,
@@ -36,7 +46,6 @@ const SubApp = () => {
   const defaultAdsResponse = new AdsResponse();
   const defaultWeatherResponse = new WeatherResponse();
 
-
   const [mainArticle, setMainArticle] =
     useState<INewsResponse>(defaultNewsResponse);
   const [moviesArticle, setMoviesArticle] =
@@ -51,13 +60,17 @@ const SubApp = () => {
   const [stonksArticle, setStonksArticle] =
     useState<INewsResponse>(defaultNewsResponse);
   const [ads, setAds] = useState<IAdsResponse>(defaultAdsResponse);
-  const [weather, setWeather] = useState<IWeatherResponse>(defaultWeatherResponse);
+  const [weather, setWeather] = useState<IWeatherResponse>(
+    defaultWeatherResponse
+  );
 
   const [isMoreInfo, setIsMoreInfo] = useState<Boolean>(false);
   const [isMainLayout, setIsMainLayout] = useState<Boolean>(true);
   const [isSearchPage, setIsSearchPage] = useState<Boolean>(false);
 
-  const [selectedArticle, setSelectedArticle] = useState<IArticle>(defaultArticleResponse);
+  const [selectedArticle, setSelectedArticle] = useState<IArticle>(
+    defaultArticleResponse
+  );
   const [searchValue, setSearchValue] = useState<string>("");
   const [searchResults, setSerachReults] = useState<IArticle[]>([]);
 
@@ -95,26 +108,24 @@ const SubApp = () => {
   };
 
   const weatherDataGrabber = () => {
-    const successGeo = async (
-      position: GeolocationPositionSuccess
-    ) => {
+    const successGeo = async (position: GeolocationPositionSuccess) => {
       const { latitude, longitude } = position.coords;
-      const weatherRequest = new WeatherRequest({ query: `${latitude},${longitude}` })
+      const weatherRequest = new WeatherRequest({
+        query: `${latitude},${longitude}`,
+      });
       const weatherData = await getWeather(weatherRequest);
       setWeather(weatherData);
-    }
-    
-    const errorGeo = async (
-      error: GeolocationPositionError
-    ) => {
+    };
+
+    const errorGeo = async (error: GeolocationPositionError) => {
       console.error(error);
       const weatherRequest = new WeatherRequest();
       const weatherData = await getWeather(weatherRequest);
-      setWeather(weatherData)
-    }
+      setWeather(weatherData);
+    };
 
     navigator.geolocation.getCurrentPosition(successGeo, errorGeo);
-  }
+  };
 
   const renderMoreInfoPage = () => {
     setIsMainLayout(false);
@@ -148,7 +159,7 @@ const SubApp = () => {
           <Animals
             articleResponse={animalArticle}
             renderMoreInfoPage={renderMoreInfoPage}
-            setSelectedArticle = {setSelectedArticle}
+            setSelectedArticle={setSelectedArticle}
           />
         }
         isMainLayout={isMainLayout}
@@ -158,38 +169,52 @@ const SubApp = () => {
           <MainArticle
             articleResponse={mainArticle}
             renderMoreInfoPage={renderMoreInfoPage}
-            setSelectedArticle = {setSelectedArticle}
+            setSelectedArticle={setSelectedArticle}
           />
         }
-        MoreInfo={<MoreInfo selectedArticle={selectedArticle}/>}
+        MoreInfo={<MoreInfo selectedArticle={selectedArticle} />}
         Movies={
           <Movies
             articleResponse={moviesArticle}
             renderMoreInfoPage={renderMoreInfoPage}
-            setSelectedArticle = {setSelectedArticle}
+            setSelectedArticle={setSelectedArticle}
           />
         }
-        Navigation={<Navigation renderSearchPage={renderSearchPage} searchValue={searchValue} setSearchValue={setSearchValue} setSerachReults={setSerachReults} />}
+        Navigation={
+          <Navigation
+            renderMainLayoutPage={renderMainLayoutPage}
+            renderSearchPage={renderSearchPage}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            setSerachReults={setSerachReults}
+          />
+        }
         Politics={
           <Politics
             articleResponse={politicsArticle}
             renderMoreInfoPage={renderMoreInfoPage}
-            setSelectedArticle = {setSelectedArticle}
+            setSelectedArticle={setSelectedArticle}
           />
         }
-        SearchResults={<SearchResults results={searchResults} />}
+        SearchResults={
+          <SearchResults
+            renderMoreInfoPage={renderMoreInfoPage}
+            results={searchResults}
+            setSelectedArticle={setSelectedArticle}
+          />
+        }
         Sports={
           <Sports
             articleResponse={sportsArticle}
             renderMoreInfoPage={renderMoreInfoPage}
-            setSelectedArticle = {setSelectedArticle}
+            setSelectedArticle={setSelectedArticle}
           />
         }
         Stonks={
           <Stonks
             articleResponse={stonksArticle}
             renderMoreInfoPage={renderMoreInfoPage}
-            setSelectedArticle = {setSelectedArticle}
+            setSelectedArticle={setSelectedArticle}
           />
         }
         Weather={<Weather weatherResponse={weather} />}
