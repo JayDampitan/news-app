@@ -61,10 +61,10 @@ const Layout: React.FC<LayoutProps> = ({
 
       case "SearchPage":
         return (
-          <SearchPageStyles>
+          <>
             {Navigation}
             {SearchResults}
-          </SearchPageStyles>
+          </>
         );
 
       default:
@@ -95,8 +95,3 @@ const MainLayoutStyles = styled.div`
   position: fixed;
 `;
 
-const SearchPageStyles = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background-color: grey;
-`;
