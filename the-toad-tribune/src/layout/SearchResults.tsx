@@ -58,6 +58,10 @@ const ArticleContainerStyles = styled.div`
   align-items: center;
   margin-top: 2rem;
   margin-bottom: 5rem;
+
+  a {
+    width: 6.4rem;
+  }
 `;
 
 const ArticleStyles = styled.div`
