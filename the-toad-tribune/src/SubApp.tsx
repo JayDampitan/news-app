@@ -135,9 +135,9 @@ const SubApp = () => {
   };
 
   useEffect(() => {
-    // newsDataGrabber();
-    // adsDataGrabber();
-    // weatherDataGrabber();
+    newsDataGrabber();
+    adsDataGrabber();
+    weatherDataGrabber();
   }, []);
 
   return (

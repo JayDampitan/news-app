@@ -1,6 +1,19 @@
 import styled from "styled-components";
 import { NewsProps } from "../api/newsApi";
 import { usePagination } from "../hooks";
+import {
+  ArticleContentContainer,
+  ArticleDescriptionContainer,
+  AuthorContainer,
+  Buttons,
+  HeaderContainer,
+  ImageContainer,
+  PublishedAtContainer,
+  TitleContainer,
+} from "../commons";
+
+import PrevIcon from "../commons/prev.png";
+import NextIcon from "../commons/next.png";
 
 const StonksArticle: React.FC<NewsProps> = ({
   articleResponse,
@@ -14,16 +27,7 @@ const StonksArticle: React.FC<NewsProps> = ({
 
   return articleResponse.articles.length ? (
     <StonksStyles>
-      <button
-        onClick={() => {
-          articleResponse.articles.length - 1 === pageNumber
-            ? startBeginning()
-            : onNextButton();
-        }}
-      >
-        Next Button
-      </button>
-      <button
+      <Buttons
         onClick={() => {
           pageNumber === 0
             ? startEnd(articleResponse.articles.length - 1)
@@ -31,26 +35,44 @@ const StonksArticle: React.FC<NewsProps> = ({
         }}
         className="add-class"
       >
-        Previous Button
-      </button>
-      <button
+        <img src={PrevIcon} alt="" />
+      </Buttons>
+
+      <ArticleContentContainer
         onClick={() => {
           renderMoreInfoPage();
           setSelectedArticle(article);
         }}
       >
-        More Information
-      </button>
-      <div>
-        {article?.title}
+        <HeaderContainer>
+          <ImageContainer>
+            <img src={article?.urlToImage} />
+          </ImageContainer>
+          <TitleContainer>
+            <h3>{article?.title}</h3>
+            <br />
+            <AuthorContainer>
+              <h4>{article?.author}</h4>
+            </AuthorContainer>
+            <PublishedAtContainer>
+              <h5>{article?.publishedAt}</h5>
+            </PublishedAtContainer>
+          </TitleContainer>
+        </HeaderContainer>
 
-        {article?.author}
-
-        {article?.publishedAt}
-
-        {article?.description}
-      </div>
-      <Image src={article?.urlToImage} />
+        <ArticleDescriptionContainer>
+          <p>{article?.description}</p>
+        </ArticleDescriptionContainer>
+      </ArticleContentContainer>
+      <Buttons
+        onClick={() => {
+          articleResponse.articles.length - 1 === pageNumber
+            ? startBeginning()
+            : onNextButton();
+        }}
+      >
+        <img src={NextIcon} alt="" />
+      </Buttons>
     </StonksStyles>
   ) : (
     <p>Loading...</p>
@@ -62,10 +84,8 @@ export default StonksArticle;
 const StonksStyles = styled.div`
   background-color: pink;
   grid-area: 6/3/8/6;
-`;
-
-const Image = styled.img`
-  height: 100%;
-  width: 100%;
-  overflow: none;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
 `;
