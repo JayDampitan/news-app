@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { IArticle } from "../api/newsApi";
+import PrevIcon from "../commons/prev.png";
+import NextIcon from "../commons/next.png";
 
 interface SearchResultsProps {
   renderMoreInfoPage: Function;
@@ -47,7 +49,21 @@ const SearchResults: React.FC<SearchResultsProps> = ({
     ));
   };
 
-  return <ArticleContainerStyles>{renderResults()}</ArticleContainerStyles>;
+  return(
+    <ArticleContainerStyles>
+    {renderResults()}
+    <div className="btn-container">
+    <div className="down-btn">
+    <img src={PrevIcon} alt="previous button"/>
+    </div>
+    <span>1/2</span>
+    <div className="up-btn">
+    <img src={NextIcon} alt="next button"/>
+    </div>
+    </div>
+    </ArticleContainerStyles>
+  );
+
 };
 
 export default SearchResults;
@@ -58,6 +74,32 @@ const ArticleContainerStyles = styled.div`
   align-items: center;
   margin-top: 2rem;
   margin-bottom: 5rem;
+
+  .btn-container {
+    display: flex;
+    background-color: red;
+    margin-top: 2rem;
+    align-items: center;
+
+  .down-btn,
+  .up-btn{
+    background-color: green;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    margin: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img{
+      height: 1.6rem;
+      width: 1.6rem;
+    }
+  }
+
+  }
+  }
 
   a {
     width: 6.4rem;
