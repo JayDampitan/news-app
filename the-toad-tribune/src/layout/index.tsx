@@ -8,6 +8,7 @@ import Politics from "./Politics";
 import Sports from "./Sports";
 import Stonks from "./Stonks";
 import Weather from "./Weather";
+import SearchResults from "./SearchResults";
 
 export {
   Ads,
@@ -17,6 +18,7 @@ export {
   Movies,
   Navigation,
   Politics,
+  SearchResults,
   Sports,
   Stonks,
   Weather,
