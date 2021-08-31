@@ -58,6 +58,8 @@ const SubApp = () => {
   const [isSearchPage, setIsSearchPage] = useState<Boolean>(false);
 
   const [selectedArticle, setSelectedArticle] = useState<IArticle>(defaultArticleResponse);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchResults, setSerachReults] = useState<IArticle[]>([]);
 
   const newsDataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
@@ -167,7 +169,7 @@ const SubApp = () => {
             setSelectedArticle = {setSelectedArticle}
           />
         }
-        Navigation={<Navigation />}
+        Navigation={<Navigation renderSearchPage={renderSearchPage} searchValue={searchValue} setSearchValue={setSearchValue} setSerachReults={setSerachReults} />}
         Politics={
           <Politics
             articleResponse={politicsArticle}
@@ -175,7 +177,7 @@ const SubApp = () => {
             setSelectedArticle = {setSelectedArticle}
           />
         }
-        SearchResults={<SearchResults />}
+        SearchResults={<SearchResults results={searchResults} />}
         Sports={
           <Sports
             articleResponse={sportsArticle}
