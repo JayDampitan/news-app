@@ -6,10 +6,6 @@ import {
   ArticleDescriptionContainer,
   AuthorContainer,
   Buttons,
-  HeaderContainer,
-  ImageContainer,
-  PublishedAtContainer,
-  TitleContainer,
 } from "../commons";
 
 import PrevIcon from "../commons/prev.png";
@@ -44,25 +40,15 @@ const Sports: React.FC<NewsProps> = ({
             setSelectedArticle(article);
           }}
         >
-          <HeaderContainer>
-            <ImageContainer>
-              <img src={article?.urlToImage} />
-            </ImageContainer>
-            <TitleContainer>
-              <h3>{article?.title}</h3>
-              <br />
-              <AuthorContainer>
-                <h4>{article?.author}</h4>
-              </AuthorContainer>
-              <PublishedAtContainer>
-                <h5>{article?.publishedAt}</h5>
-              </PublishedAtContainer>
-            </TitleContainer>
-          </HeaderContainer>
-  
-          <ArticleDescriptionContainer>
+
+            <img src={article?.urlToImage} />
+            <h3>{article?.title}</h3>
+            <h4>{article?.author}</h4> 
+            <h5>{article?.publishedAt}</h5>
+
+
             <p>{article?.description}</p>
-          </ArticleDescriptionContainer>
+         
         </ArticleContentContainer>
         <Buttons
           onClick={() => {
