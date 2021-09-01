@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import type { NewsProps } from "../api";
+import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
 import {
   ArticleContentContainer,
@@ -15,7 +15,7 @@ import {
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
-const StonksArticle: React.FC<NewsProps> = ({
+const StonksArticle: React.FC<INewsProps> = ({
   articleResponse,
   renderMoreInfoPage,
   setSelectedArticle,

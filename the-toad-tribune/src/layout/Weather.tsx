@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import type { WeatherProp } from "../api";
+import type { IWeatherProp } from "../api";
 
-const Weather: React.FC<WeatherProp> = ({ weatherResponse }) => {
+const Weather: React.FC<IWeatherProp> = ({ weatherResponse }) => {
   return (
     <WeatherStyles>
       <img src={weatherResponse.current.weather_icons[0]} />

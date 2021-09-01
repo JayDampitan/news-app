@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
-import type { NewsProps } from "../api";
 
-const Politics: React.FC<NewsProps> = ({
+const Politics: React.FC<INewsProps> = ({
   articleResponse,
   renderMoreInfoPage,
   setSelectedArticle,

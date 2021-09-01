@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { getNewsEverything, NewsEverythingRequest } from "../api";
 import type { INewsResponse } from "../api";
-// import { getNewsEverything } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 

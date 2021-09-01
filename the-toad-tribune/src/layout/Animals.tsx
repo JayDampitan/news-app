@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { usePagination } from "../hooks";
-import type { NewsProps } from "../api";
+import type { INewsProps } from "../api";
 import { 
   ArticleContentContainer,
   ArticleDescriptionContainer,
@@ -15,7 +15,7 @@ import {
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
-const Animals: React.FC<NewsProps> = ({
+const Animals: React.FC<INewsProps> = ({
   articleResponse,
   renderMoreInfoPage,
   setSelectedArticle,

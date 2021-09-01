@@ -1,21 +1,8 @@
 import { useState, useEffect } from "react";
-// import {
-  // IArticle,
-  // IMoreInfoPageProps,
-  // INewsResponse,
-  // NewsResponse,
-// } from "./api/newsApi";
-// import { IAdsResponse } from "./api/adsApi";
-// import { AdsResponse } from "./api/adsApi";
-// import {
-//   Coords,
-//   GeolocationPositionError,
-//   GeolocationPositionSuccess,
-//   IWeatherResponse,
-// } from "./api/weatherApi";
 import {
   AdsResponse,
   ArticleResponse,
+  getAds,
   getNewsEverything,
   getNewsTopHeadlines,
   getWeather,
@@ -26,12 +13,12 @@ import {
   WeatherResponse,
 } from "./api";
 import type {
+  IAdsResponse,
   IArticle,
+  IGeolocationPositionError,
+  IGeolocationPositionSuccess,
   IMoreInfoPageProps,
   INewsResponse,
-  GeolocationPositionError,
-  GeolocationPositionSuccess,
-  IAdsResponse,
   IWeatherResponse,
 } from './api';
 
@@ -48,7 +35,6 @@ import {
   Stonks,
   Weather,
 } from "./layout";
-import { getAds } from "./api/adsApi";
 import MoreInfo from "./layout/MoreInfo";
 
 const SubApp = () => {
@@ -120,7 +106,7 @@ const SubApp = () => {
   };
 
   const weatherDataGrabber = () => {
-    const successGeo = async (position: GeolocationPositionSuccess) => {
+    const successGeo = async (position: IGeolocationPositionSuccess) => {
       const { latitude, longitude } = position.coords;
       const weatherRequest = new WeatherRequest({
         query: `${latitude},${longitude}`,

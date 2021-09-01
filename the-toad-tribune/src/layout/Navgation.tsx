@@ -1,6 +1,5 @@
 import React, { KeyboardEvent, useState } from "react";
 import styled from "styled-components";
-// import { getNewsEverything } from "../api/newsApi";
 import { getNewsEverything, NewsEverythingRequest } from "../api";
 
 interface INavProps {
