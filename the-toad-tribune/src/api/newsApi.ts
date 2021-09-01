@@ -1,6 +1,6 @@
 import fetchApi from "./fetchApi"
 
-export interface NewsProps {
+export interface INewsProps {
   articleResponse: INewsResponse;
   renderMoreInfoPage: Function;
   setSelectedArticle: Function;
@@ -10,13 +10,13 @@ export interface IMoreInfoPageProps {
   selectedArticle: IArticle;
 }
 
-interface Source {
+interface INewsSource {
   id: string | null;
   name: string | null;
 }
 
 export interface IArticle {
-  source: Source;
+  source: INewsSource;
   author: string;
   title: string;
   description: string;

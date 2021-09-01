@@ -1,17 +1,17 @@
 import fetchApi from "./fetchApi"
 
-export interface WeatherProp {
+export interface IWeatherProp {
   weatherResponse: IWeatherResponse;
 }
 
-export interface Request {
+export interface IWRequest {
     type: string;
     query: string;
     language: string;
     unit: string;
 }
 
-export interface Location {
+export interface IWLocation {
     name: string;
     country: string;
     region: string;
@@ -23,7 +23,7 @@ export interface Location {
     utc_offset: string;
 }
 
-export interface Current {
+export interface IWCurrent {
   observation_time: string;
   temperature: number;
   weather_code: number;
@@ -42,9 +42,9 @@ export interface Current {
 }
 
 export interface IWeatherResponse {
-  request: Request;
-  location: Location;
-  current: Current;
+  request: IWRequest;
+  location: IWLocation;
+  current: IWCurrent;
 }
 
 export class WeatherResponse implements IWeatherResponse {
@@ -113,7 +113,7 @@ export const getWeather = async (
 }
 
 // GEOLOCATION API
-export interface Coords {
+export interface IGeoCoords {
   latitude: number;
   longitude: number;
   altitude: number | null;
@@ -122,11 +122,11 @@ export interface Coords {
   heading: number | null;
 }
 
-export interface GeolocationPositionSuccess {
-  coords: Coords;
+export interface IGeolocationPositionSuccess {
+  coords: IGeoCoords;
 }
 
-export interface GeolocationPositionError {
+export interface IGeolocationPositionError {
   code: number;
   message: string;
 }

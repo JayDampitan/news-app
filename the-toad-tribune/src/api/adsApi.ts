@@ -1,6 +1,6 @@
 import fetchApi from "./fetchApi"
 
-export interface AdsProp {
+export interface IAdsProp {
   adsResponse: IAdsResponse;
   adsDataGrabber: Function;
 }
