@@ -16,8 +16,8 @@ const Navigation: React.FC<INavProps> = ({
   setSearchResults,
   setSearchValue,
 }) => {
-  const [validateSearchValue, setValidateSearchValue] = useState("");
-  const [searchError, setSearchError] = useState("");
+  const [validateSearchValue, setValidateSearchValue] = useState<string>("");
+  const [searchError, setSearchError] = useState<string>("");
 
   const enterSubmit = (event: KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === "Enter") {
