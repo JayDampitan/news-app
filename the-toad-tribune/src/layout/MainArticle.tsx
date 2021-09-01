@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NewsProps } from "../api/newsApi";
+import type { NewsProps } from "../api";
 import { usePagination } from "../hooks";
 
 const MainArticle: React.FC<NewsProps> = ({

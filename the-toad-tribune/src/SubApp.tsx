@@ -1,28 +1,39 @@
 import { useState, useEffect } from "react";
+// import {
+  // IArticle,
+  // IMoreInfoPageProps,
+  // INewsResponse,
+  // NewsResponse,
+// } from "./api/newsApi";
+// import { IAdsResponse } from "./api/adsApi";
+// import { AdsResponse } from "./api/adsApi";
+// import {
+//   Coords,
+//   GeolocationPositionError,
+//   GeolocationPositionSuccess,
+//   IWeatherResponse,
+// } from "./api/weatherApi";
 import {
-  IArticle,
-  IMoreInfoPageProps,
-  INewsResponse,
-  NewsResponse,
-} from "./api/newsApi";
-import { IAdsResponse } from "./api/adsApi";
-import AdsResponse from "./api/adsApi";
-import {
-  Coords,
-  GeolocationPositionError,
-  GeolocationPositionSuccess,
-  IWeatherResponse,
-} from "./api/weatherApi";
-import {
+  AdsResponse,
   ArticleResponse,
   getNewsEverything,
   getNewsTopHeadlines,
   getWeather,
   NewsEverythingRequest,
+  NewsResponse,
   NewsTopHeadlinesRequest,
   WeatherRequest,
   WeatherResponse,
 } from "./api";
+import type {
+  IArticle,
+  IMoreInfoPageProps,
+  INewsResponse,
+  GeolocationPositionError,
+  GeolocationPositionSuccess,
+  IAdsResponse,
+  IWeatherResponse,
+} from './api';
 
 import {
   Ads,

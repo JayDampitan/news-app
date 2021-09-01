@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AdsProp } from "../api/adsApi";
+import type { AdsProp } from "../api";
 
 const Ads: React.FC<AdsProp> = ({ adsResponse, adsDataGrabber }) => {
   return (

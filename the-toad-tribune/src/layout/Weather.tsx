@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { WeatherProp } from "../api/weatherApi";
+import type { WeatherProp } from "../api";
 
 const Weather: React.FC<WeatherProp> = ({ weatherResponse }) => {
   return (

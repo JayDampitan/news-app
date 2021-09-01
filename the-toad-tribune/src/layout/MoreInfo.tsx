@@ -1,4 +1,4 @@
-import { IMoreInfoPageProps } from "../api/newsApi";
+import type { IMoreInfoPageProps } from "../api";
 import styled from "styled-components";
 
 const MoreInfo: React.FC<IMoreInfoPageProps> = ({ selectedArticle }) => {
