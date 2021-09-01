@@ -12,6 +12,7 @@ export const Buttons = styled.button`
     background-color: #fff;
     border-radius: 50%;
     margin: .2rem;
+    cursor: pointer;
  
         img {
             height: 1.2rem;

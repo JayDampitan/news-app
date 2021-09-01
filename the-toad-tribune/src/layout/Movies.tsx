@@ -63,6 +63,7 @@ const MoviesStyles = styled.div`
   background-color: purple;
   grid-area: 6/6/10/9;
   margin-bottom: 0.5em;
+  cursor: pointer;
 `;
 
 const Image = styled.img`
