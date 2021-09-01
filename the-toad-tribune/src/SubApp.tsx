@@ -72,7 +72,8 @@ const SubApp = () => {
     defaultArticleResponse
   );
   const [searchValue, setSearchValue] = useState<string>("");
-  const [searchResults, setSerachReults] = useState<IArticle[]>([]);
+  const [searchResults, setSearchResults] =
+    useState<INewsResponse>(defaultNewsResponse);
 
   const newsDataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
@@ -146,9 +147,9 @@ const SubApp = () => {
   };
 
   useEffect(() => {
-    newsDataGrabber();
-    adsDataGrabber();
-    weatherDataGrabber();
+    // newsDataGrabber();
+    // adsDataGrabber();
+    // weatherDataGrabber();
   }, []);
 
   return (
@@ -186,7 +187,7 @@ const SubApp = () => {
             renderSearchPage={renderSearchPage}
             searchValue={searchValue}
             setSearchValue={setSearchValue}
-            setSerachReults={setSerachReults}
+            setSearchResults={setSearchResults}
           />
         }
         Politics={
@@ -199,7 +200,9 @@ const SubApp = () => {
         SearchResults={
           <SearchResults
             renderMoreInfoPage={renderMoreInfoPage}
-            results={searchResults}
+            searchResults={searchResults}
+            searchValue={searchValue}
+            setSearchResults={setSearchResults}
             setSelectedArticle={setSelectedArticle}
           />
         }

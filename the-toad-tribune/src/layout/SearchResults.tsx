@@ -1,31 +1,72 @@
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { IArticle } from "../api/newsApi";
+import { INewsResponse } from "../api/newsApi";
+import { getNewsEverything } from "../api/newsApi";
+import { NewsEverythingRequest } from "../api";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
 interface SearchResultsProps {
   renderMoreInfoPage: Function;
-  results: IArticle[];
+  searchResults: INewsResponse;
+  searchValue: string;
+  setSearchResults: Function;
   setSelectedArticle: Function;
 }
 
 const SearchResults: React.FC<SearchResultsProps> = ({
   renderMoreInfoPage,
-  results,
+  searchResults,
+  searchValue,
+  setSearchResults,
   setSelectedArticle,
 }) => {
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
+
+  const getTotalPages = () => {
+    if (searchResults.totalResults % 20 === 0) {
+      setTotalPages(searchResults.totalResults / 20);
+    } else {
+      setTotalPages(Math.floor(searchResults.totalResults / 20) + 1);
+    }
+  };
+
+  useEffect(() => {
+    getTotalPages();
+  }, [searchResults]);
+
+  const getNextPage = () => {
+    setPageNumber((prevPageNumber) => prevPageNumber + 1);
+    const searchStuff = new NewsEverythingRequest({
+      q: searchValue,
+      page: pageNumber + 1,
+    });
+    getNewsEverything(searchStuff).then((results) => setSearchResults(results));
+  };
+
+  const getPrevPage = () => {
+    setPageNumber((prevPageNumber) => prevPageNumber - 1);
+    const searchStuff = new NewsEverythingRequest({
+      q: searchValue,
+      page: pageNumber - 1,
+    });
+    getNewsEverything(searchStuff).then((results) => setSearchResults(results));
+  };
+
   const renderResults = () => {
-    return results.map((article) => (
-      <>
-        <ArticleStyles key={article.url}>
-          <img
-            src={article.urlToImage}
-            alt={article.description}
-            onClick={() => {
-              setSelectedArticle(article);
-              renderMoreInfoPage();
-            }}
-          />
+    return searchResults?.articles.map((article, i) => (
+        <ArticleStyles key={i}>
+          <ImageContainer>
+            <img
+              src={article.urlToImage}
+              alt={article.description}
+              onClick={() => {
+                setSelectedArticle(article);
+                renderMoreInfoPage();
+              }}
+            />
+          </ImageContainer>
           <ArticleInfoContainerStyles>
             <span
               onClick={() => {
@@ -44,26 +85,34 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             <p>{article.description}</p>
           </ArticleInfoContainerStyles>
         </ArticleStyles>
-        <HorizontalLine></HorizontalLine>
-      </>
     ));
   };
 
-  return(
+  return (
     <ArticleContainerStyles>
-    {renderResults()}
-    <div className="btn-container">
-    <div className="down-btn">
-    <img src={PrevIcon} alt="previous button"/>
-    </div>
-    <span>1/2</span>
-    <div className="up-btn">
-    <img src={NextIcon} alt="next button"/>
-    </div>
-    </div>
+      {renderResults()}
+      <div className="btn-container">
+        <div className="down-btn">
+          <img
+            onClick={() => {
+              pageNumber > 1 && getPrevPage();
+            }}
+            src={PrevIcon}
+            alt="previous button"
+          />
+        </div>
+        <span>{`${pageNumber}/${totalPages}`}</span>
+        <div
+          onClick={() => {
+            pageNumber < totalPages && getNextPage();
+          }}
+          className="up-btn"
+        >
+          <img src={NextIcon} alt="next button" />
+        </div>
+      </div>
     </ArticleContainerStyles>
   );
-
 };
 
 export default SearchResults;
@@ -112,7 +161,17 @@ const ArticleStyles = styled.div`
   margin: 0.5rem;
   width: 90%;
   height: 8rem;
+  border-bottom: 2px solid black;
+  justify-content: space-between;
+`;
 
+const ImageContainer = styled.div`
+  min-width:25%;
+  max-width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
   img {
     height: 100%;
     border-radius: 10px;
@@ -123,10 +182,8 @@ const ArticleInfoContainerStyles = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
+  max-width: 75%;
+  min-width: 75%;
 `;
 
-const HorizontalLine = styled.div`
-  height: 2px;
-  width: 90%;
-  background-color: black;
-`;
+
