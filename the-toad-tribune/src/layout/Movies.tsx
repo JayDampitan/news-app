@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { NewsProps } from "../api/newsApi";
 import { usePagination } from "../hooks";
+import { Buttons } from "../commons";
+
+import PrevIcon from "../commons/prev.png";
+import NextIcon from "../commons/next.png";
 
 const Movies: React.FC<NewsProps> = ({
   articleResponse,
@@ -14,43 +18,48 @@ const Movies: React.FC<NewsProps> = ({
 
   return articleResponse.articles.length ? (
     <MoviesStyles>
-      <button
-        onClick={() => {
-          articleResponse.articles.length - 1 === pageNumber
-            ? startBeginning()
-            : onNextButton();
-        }}
-      >
-        Next Button
-      </button>
-
-      <button
+      <Buttons
         onClick={() => {
           pageNumber === 0
             ? startEnd(articleResponse.articles.length - 1)
             : onPrevButton();
         }}
       >
-        Previous Button
-      </button>
-      <button
+        <img src={PrevIcon} alt="" />
+      </Buttons>
+
+      <MovieContentConatiner
         onClick={() => {
           renderMoreInfoPage();
           setSelectedArticle(article);
         }}
       >
-        More Information
-      </button>
-      <div>
-        {article?.title}
+        <MovieContentHeader>
+          <MovieImageContainer>
+            <img src={article?.urlToImage} />
+          </MovieImageContainer>
 
-        {article?.author}
+          <MovieTitleAuthorContainer>
+            <h3> {article?.title} </h3>
+            <h4>{article?.author}</h4>
+            <h5>{article?.publishedAt}</h5>
+          </MovieTitleAuthorContainer>
+        </MovieContentHeader>
 
-        {article?.publishedAt}
+        <MovieDescriptionContainer>
+          <p>{article?.description}</p>
+        </MovieDescriptionContainer>
+      </MovieContentConatiner>
 
-        {article?.description}
-      </div>
-      <Image src={article?.urlToImage} />
+      <Buttons
+        onClick={() => {
+          articleResponse.articles.length - 1 === pageNumber
+            ? startBeginning()
+            : onNextButton();
+        }}
+      >
+        <img src={NextIcon} alt="" />
+      </Buttons>
     </MoviesStyles>
   ) : (
     <p>Loading....</p>
@@ -60,13 +69,56 @@ const Movies: React.FC<NewsProps> = ({
 export default Movies;
 
 const MoviesStyles = styled.div`
-  background-color: purple;
+  background-color: #333;
   grid-area: 6/6/10/9;
   margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
 `;
 
-const Image = styled.img`
-  height: 100%;
-  width: 100%;
-  overflow: none;
+const MovieContentConatiner = styled.div`
+  max-width: 90%;
+  max-height: 90%;
+  overflow: hidden;
+  min-width: 90%;
+  min-height: 90%;
+  margin-top: 2rem;
+`;
+
+const MovieContentHeader = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+const MovieImageContainer = styled.div`
+  img {
+    height: 13rem;
+    width: 19rem;
+    overflow: none;
+    border-radius: 5px;
+  }
+`;
+
+const MovieTitleAuthorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    margin: 0 0.3rem 0 0.7rem;
+  }
+  h4 {
+    margin: 2rem 0.3rem 0 1.2rem;
+  }
+
+  h5 {
+    margin: 0 0.3rem 0 1.2rem;
+  }
+`;
+
+const MovieDescriptionContainer = styled.div`
+  p {
+    font-family: sans-serif;
+  }
 `;
