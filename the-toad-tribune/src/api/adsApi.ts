@@ -36,7 +36,7 @@ export const getAds = async (): Promise<IAdsResponse> => {
     }
   })}
 
-  class AdsResponse implements IAdsResponse {
+export class AdsResponse implements IAdsResponse {
     success= false;
     body= {
       _id: "",
@@ -53,6 +53,4 @@ export const getAds = async (): Promise<IAdsResponse> => {
       image: "",
     };
   }
-
-  export default AdsResponse;
  
