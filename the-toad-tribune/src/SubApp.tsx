@@ -150,7 +150,7 @@ const SubApp = () => {
     // Commented out for a reason
 //     newsDataGrabber();
 //     adsDataGrabber();
-//     weatherDataGrabber();
+    weatherDataGrabber();
   }, []);
 
   return (
