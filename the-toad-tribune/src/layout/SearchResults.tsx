@@ -161,7 +161,6 @@ const ArticleContainerStyles = styled.div`
   }
 
   }
-  }
 
   a {
     width: 6.4rem;
