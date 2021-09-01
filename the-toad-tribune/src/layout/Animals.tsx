@@ -89,4 +89,5 @@ const AnimalsStyles = styled.div`
   align-items: center;
   border-radius: 10px;
   margin-bottom: 0.5em;
+  cursor: pointer;
 `;

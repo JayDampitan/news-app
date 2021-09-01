@@ -135,6 +135,10 @@ const ArticleContainerStyles = styled.div`
   margin-top: 2rem;
   margin-bottom: 5rem;
 
+  span:nth-of-type(1) {
+    cursor: pointer;
+  }
+
   .btn-container {
     display: flex;
     margin-top: 2rem;
@@ -188,6 +192,7 @@ const ImageContainer = styled.div`
     height: 100%;
     border-radius: 10px;
     border: 1px solid black;
+    cursor: pointer;
   }
 `;
 

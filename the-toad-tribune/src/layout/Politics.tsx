@@ -79,6 +79,7 @@ const PoliticsStyles = styled.div`
   margin-left: 0.5em;
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 const Image = styled.img`

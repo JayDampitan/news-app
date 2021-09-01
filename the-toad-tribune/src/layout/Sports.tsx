@@ -91,6 +91,7 @@ margin-bottom: 0.5em;
 align-items: center;
 overflow: hidden;
 border-radius: 10px;
+cursor: pointer;
 `;
 
 

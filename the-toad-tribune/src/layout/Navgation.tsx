@@ -87,12 +87,14 @@ const NavLogo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const NavTitle = styled.h2`
   display: flex;
   align-items: center;
   color: white;
+  cursor: pointer;
 `;
 
 const NavSearchContainer = styled.div`
