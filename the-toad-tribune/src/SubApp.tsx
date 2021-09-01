@@ -186,7 +186,6 @@ const SubApp = () => {
           <Navigation
             renderMainLayoutPage={renderMainLayoutPage}
             renderSearchPage={renderSearchPage}
-            searchValue={searchValue}
             setSearchValue={setSearchValue}
             setSearchResults={setSearchResults}
           />
