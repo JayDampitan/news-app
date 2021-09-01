@@ -137,13 +137,12 @@ const ArticleContainerStyles = styled.div`
 
   .btn-container {
     display: flex;
-    background-color: red;
     margin-top: 2rem;
     align-items: center;
 
   .down-btn,
   .up-btn{
-    background-color: green;
+    background-color: grey;
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 50%;
@@ -151,10 +150,13 @@ const ArticleContainerStyles = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 1px 2px 2px 1px lightgrey;
+    border: 1px solid black;
 
     img{
       height: 1.6rem;
       width: 1.6rem;
+      
     }
   }
 
@@ -186,6 +188,7 @@ const ImageContainer = styled.div`
   img {
     height: 100%;
     border-radius: 10px;
+    border: 1px solid black;
   }
 `;
 
