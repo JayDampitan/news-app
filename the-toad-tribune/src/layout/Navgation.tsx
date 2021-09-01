@@ -1,47 +1,53 @@
 import React, { KeyboardEvent, useState } from "react";
 import styled from "styled-components";
-import { getNewsEverything, INewsResponse } from "../api/newsApi";
+import { getNewsEverything } from "../api/newsApi";
 import { NewsEverythingRequest } from "../api";
-
 
 interface INavProps {
   renderMainLayoutPage: Function;
   renderSearchPage: Function;
-  searchValue: string;
   setSearchValue: Function;
   setSearchResults: Function;
 }
 
-const Navigation: React.FC<INavProps> = ({ renderMainLayoutPage, renderSearchPage, searchValue, setSearchResults, setSearchValue }) => {
+const Navigation: React.FC<INavProps> = ({
+  renderMainLayoutPage,
+  renderSearchPage,
+  setSearchResults,
+  setSearchValue,
+}) => {
   const [validateSearchValue, setValidateSearchValue] = useState("");
   const [searchError, setSearchError] = useState("");
 
   const enterSubmit = (event: KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === "Enter") {
       if (!validateSearchValue) {
-        setSearchError('Please enter a search value.')
+        setSearchError("Please enter a search value.");
       } else {
-        setSearchError('');
+        setSearchError("");
 
-        const searchStuff = new NewsEverythingRequest({ q: validateSearchValue });
+        const searchStuff = new NewsEverythingRequest({
+          q: validateSearchValue,
+        });
         getNewsEverything(searchStuff).then((results) => {
           if (results.totalResults > 0) {
             setSearchValue(validateSearchValue);
             setSearchResults(results);
             renderSearchPage();
           } else {
-            setSearchError("Please enter a valid search value.")
+            setSearchError("Please enter a valid search value.");
           }
         });
       }
     }
   };
 
-
   return (
     <NavigationStyles>
-      <NavLogo onClick={()=>renderMainLayoutPage()}>Logo</NavLogo>
-      <NavTitle onClick={()=>renderMainLayoutPage()}>The Toad Tribune</NavTitle>
+      <NavLogo onClick={() => renderMainLayoutPage()}>Logo</NavLogo>
+      <NavTitle onClick={() => renderMainLayoutPage()}>
+        The Toad Tribune
+      </NavTitle>
 
       <NavSearchContainer>
         <NavSearch
@@ -52,7 +58,9 @@ const Navigation: React.FC<INavProps> = ({ renderMainLayoutPage, renderSearchPag
           onKeyPress={enterSubmit}
         />
 
-        <NavSearchError className={searchError.length > 0 ? "error" : ""}>{searchError}</NavSearchError>
+        <NavSearchError className={searchError.length > 0 ? "error" : ""}>
+          {searchError}
+        </NavSearchError>
       </NavSearchContainer>
     </NavigationStyles>
   );
