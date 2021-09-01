@@ -64,6 +64,7 @@ const MainArticleStyles = styled.div`
   grid-area: 2/3/6/9;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 `;
 
 const Image = styled.img`
