@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { NewsProps } from "../api/newsApi";
 import { usePagination } from "../hooks";
 import {
-  ArticleContentContainer,
-  ArticleDescriptionContainer,
-  AuthorContainer,
+  ArticleContentContainer2,
+  ArticleDescriptionContainer2,
   Buttons,
+  HeaderContainer2,
+  ImageContainer2,
 } from "../commons";
 
 import PrevIcon from "../commons/prev.png";
@@ -34,22 +35,25 @@ const Sports: React.FC<NewsProps> = ({
           <img src={PrevIcon} alt="" />
         </Buttons>
   
-        <ArticleContentContainer
+        <ArticleContentContainer2
           onClick={() => {
             renderMoreInfoPage();
             setSelectedArticle(article);
           }}
         >
-
-            <img src={article?.urlToImage} />
-            <h3>{article?.title}</h3>
-            <h4>{article?.author}</h4> 
-            <h5>{article?.publishedAt}</h5>
-
-
+            <ImageContainer2>
+              <img src={article?.urlToImage} />
+            </ImageContainer2>
+          <HeaderContainer2>
+              <h3>{article?.title}</h3>
+              <h4>{article?.author}</h4> 
+              <h5>{article?.publishedAt}</h5>
+          </HeaderContainer2>
+          <ArticleDescriptionContainer2>
             <p>{article?.description}</p>
-         
-        </ArticleContentContainer>
+          </ArticleDescriptionContainer2>
+            
+        </ArticleContentContainer2>
         <Buttons
           onClick={() => {
             articleResponse.articles.length - 1 === pageNumber
@@ -77,6 +81,7 @@ margin-bottom: 0.5em;
 align-items: center;
 overflow: hidden;
 border-radius: 10px;
+cursor: pointer;
 `;
 
 

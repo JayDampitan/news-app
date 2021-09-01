@@ -36,6 +36,7 @@ export const ArticleDescriptionContainer = styled.div`
   margin-top: 1rem;
   p {
     margin: 0;
+    font-family: 'Times New Roman', Times, serif;
   }
 `;
 
@@ -46,5 +47,6 @@ export const ImageContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
+    border-radius: 6px;
   }
 `;

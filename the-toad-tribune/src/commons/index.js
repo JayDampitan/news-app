@@ -8,6 +8,14 @@ import {
     TitleContainer, 
 } from './articleDesign';
 
+import {
+    ArticleContentContainer2,
+    HeaderContainer2,
+    ImageContainer2,
+    ArticleDescriptionContainer2
+
+} from './articleDesign2'
+
 import { Buttons } from './buttons';
 
 
@@ -19,5 +27,9 @@ export {
     HeaderContainer,
     ImageContainer,
     PublishedAtContainer,
-    TitleContainer, 
+    TitleContainer,
+    ArticleContentContainer2,
+    HeaderContainer2,
+    ImageContainer2,
+    ArticleDescriptionContainer2 
 };

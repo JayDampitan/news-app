@@ -88,4 +88,5 @@ const StonksStyles = styled.div`
   align-items: center;
   overflow: hidden;
   border-radius: 10px;
+  cursor: pointer;
 `;

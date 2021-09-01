@@ -72,6 +72,7 @@ const MoviesStyles = styled.div`
   background-color: #333;
   grid-area: 6/6/10/9;
   margin-bottom: 0.5em;
+  cursor: pointer;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -119,6 +120,6 @@ const MovieTitleAuthorContainer = styled.div`
 
 const MovieDescriptionContainer = styled.div`
   p {
-    font-family: sans-serif;
+    font-family: 'Times New Roman', Times, serif;
   }
 `;
