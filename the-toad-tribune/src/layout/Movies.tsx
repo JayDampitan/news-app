@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { NewsProps } from "../api/newsApi";
+import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
 import { Buttons } from "../commons";
 
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
-const Movies: React.FC<NewsProps> = ({
+const Movies: React.FC<INewsProps> = ({
   articleResponse,
   renderMoreInfoPage,
   setSelectedArticle,
