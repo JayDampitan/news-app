@@ -1,6 +1,6 @@
-import React, { KeyboardEvent} from "react";
+import React, { KeyboardEvent, useState } from "react";
 import styled from "styled-components";
-import { getNewsEverything } from "../api/newsApi";
+import { getNewsEverything, INewsResponse } from "../api/newsApi";
 import { NewsEverythingRequest } from "../api";
 
 
@@ -13,12 +13,27 @@ interface INavProps {
 }
 
 const Navigation: React.FC<INavProps> = ({ renderMainLayoutPage, renderSearchPage, searchValue, setSearchResults, setSearchValue }) => {
+  const [validateSearchValue, setValidateSearchValue] = useState("");
+  const [searchError, setSearchError] = useState("");
 
   const enterSubmit = (event: KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === "Enter") {
-      const searchStuff = new NewsEverythingRequest({ q: searchValue });
-      getNewsEverything(searchStuff).then((results) => setSearchResults(results));
-      renderSearchPage();
+      if (!validateSearchValue) {
+        setSearchError('Please enter a search value.')
+      } else {
+        setSearchError('');
+
+        const searchStuff = new NewsEverythingRequest({ q: validateSearchValue });
+        getNewsEverything(searchStuff).then((results) => {
+          if (results.totalResults > 0) {
+            setSearchValue(validateSearchValue);
+            setSearchResults(results);
+            renderSearchPage();
+          } else {
+            setSearchError("Please enter a valid search value.")
+          }
+        });
+      }
     }
   };
 
@@ -27,13 +42,18 @@ const Navigation: React.FC<INavProps> = ({ renderMainLayoutPage, renderSearchPag
     <NavigationStyles>
       <NavLogo onClick={()=>renderMainLayoutPage()}>Logo</NavLogo>
       <NavTitle onClick={()=>renderMainLayoutPage()}>The Toad Tribune</NavTitle>
-      <NavSearch
-        placeholder="Search"
-        id="input"
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
-        onKeyPress={enterSubmit}
-      />
+
+      <NavSearchContainer>
+        <NavSearch
+          placeholder="Search"
+          id="input"
+          value={validateSearchValue}
+          onChange={(e) => setValidateSearchValue(e.target.value)}
+          onKeyPress={enterSubmit}
+        />
+
+        <NavSearchError className={searchError.length > 0 ? "error" : ""}>{searchError}</NavSearchError>
+      </NavSearchContainer>
     </NavigationStyles>
   );
 };
@@ -67,6 +87,11 @@ const NavTitle = styled.h2`
   color: white;
 `;
 
+const NavSearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const NavSearch = styled.input`
   width: 250px;
   height: 30px;
@@ -81,5 +106,20 @@ const NavSearch = styled.input`
     color: black;
     text-align: center;
     font-size: 20px;
+  }
+`;
+
+const NavSearchError = styled.span`
+  color: red;
+  font-size: 13px;
+  padding-left: 10px;
+  padding-right: 10px;
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: all 0.3s;
+
+  &.error {
+    opacity: 1;
+    transform: translateY(3px);
   }
 `;
