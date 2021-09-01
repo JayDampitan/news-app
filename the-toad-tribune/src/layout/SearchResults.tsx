@@ -32,6 +32,13 @@ const SearchResults: React.FC<SearchResultsProps> = ({
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     getTotalPages();
   }, [searchResults]);
@@ -43,6 +50,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
       page: pageNumber + 1,
     });
     getNewsEverything(searchStuff).then((results) => setSearchResults(results));
+    scrollToTop();
   };
 
   const getPrevPage = () => {
@@ -52,65 +60,68 @@ const SearchResults: React.FC<SearchResultsProps> = ({
       page: pageNumber - 1,
     });
     getNewsEverything(searchStuff).then((results) => setSearchResults(results));
+    scrollToTop();
   };
 
   const renderResults = () => {
     return searchResults?.articles.map((article, i) => (
-        <ArticleStyles key={i}>
-          <ImageContainer>
-            <img
-              src={article.urlToImage}
-              alt={article.description}
-              onClick={() => {
-                setSelectedArticle(article);
-                renderMoreInfoPage();
-              }}
-            />
-          </ImageContainer>
-          <ArticleInfoContainerStyles>
-            <span
-              onClick={() => {
-                setSelectedArticle(article);
-                renderMoreInfoPage();
-              }}
-            >
-              {article.title}
-            </span>
-            <span>
-              {article.author} - {article.publishedAt} - {article.source.name}
-            </span>
-            <a href={article.url} target="_blank">
-              Link to Article
-            </a>
-            <p>{article.description}</p>
-          </ArticleInfoContainerStyles>
-        </ArticleStyles>
+      <ArticleStyles key={i}>
+        <ImageContainer>
+          <img
+            src={article.urlToImage}
+            alt={article.description}
+            onClick={() => {
+              setSelectedArticle(article);
+              renderMoreInfoPage();
+            }}
+          />
+        </ImageContainer>
+        <ArticleInfoContainerStyles>
+          <span
+            onClick={() => {
+              setSelectedArticle(article);
+              renderMoreInfoPage();
+            }}
+          >
+            {article.title}
+          </span>
+          <span>
+            {article.author} - {article.publishedAt} - {article.source.name}
+          </span>
+          <a href={article.url} target="_blank">
+            Link to Article
+          </a>
+          <p>{article.description}</p>
+        </ArticleInfoContainerStyles>
+      </ArticleStyles>
     ));
   };
 
   return (
     <ArticleContainerStyles>
       {renderResults()}
-      <div className="btn-container">
-        <div className="down-btn">
-          <img
+      {searchResults.articles.length > 0 && (
+        <div className="btn-container">
+          <div className="down-btn">
+            <img
+              onClick={() => {
+                pageNumber > 1 && getPrevPage();
+              }}
+              src={PrevIcon}
+              alt="previous button"
+            />
+          </div>
+          <span>{`${pageNumber}/${totalPages}`}</span>
+          <div
             onClick={() => {
-              pageNumber > 1 && getPrevPage();
+              pageNumber < totalPages && getNextPage();
             }}
-            src={PrevIcon}
-            alt="previous button"
-          />
+            className="up-btn"
+          >
+            <img src={NextIcon} alt="next button" />
+          </div>
         </div>
-        <span>{`${pageNumber}/${totalPages}`}</span>
-        <div
-          onClick={() => {
-            pageNumber < totalPages && getNextPage();
-          }}
-          className="up-btn"
-        >
-          <img src={NextIcon} alt="next button" />
-        </div>
-      </div>
+      )}
     </ArticleContainerStyles>
   );
 };
@@ -166,12 +177,12 @@ const ArticleStyles = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  min-width:25%;
+  min-width: 25%;
   max-width: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   img {
     height: 100%;
     border-radius: 10px;
@@ -185,5 +196,3 @@ const ArticleInfoContainerStyles = styled.div`
   max-width: 75%;
   min-width: 75%;
 `;
-
-
