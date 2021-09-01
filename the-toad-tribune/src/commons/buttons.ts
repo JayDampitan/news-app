@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const Buttons = styled.button`
     height: 1.7rem;
@@ -20,9 +19,14 @@ export const Buttons = styled.button`
             color: #fff;
         }
 
-    :hover {
-        opacity: 1;
-        transition: .7s;
-    }
-`;
+  img {
+    height: 1.2rem;
+    width: 1.2rem;
+    color: #fff;
+  }
 
+  :hover {
+    opacity: 1;
+    transition: 0.7s;
+  }
+`;
