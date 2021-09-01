@@ -9,15 +9,15 @@ interface INavProps {
   renderSearchPage: Function;
   searchValue: string;
   setSearchValue: Function;
-  setSerachReults: Function;
+  setSearchResults: Function;
 }
 
-const Navigation: React.FC<INavProps> = ({ renderMainLayoutPage, renderSearchPage, searchValue, setSerachReults, setSearchValue }) => {
+const Navigation: React.FC<INavProps> = ({ renderMainLayoutPage, renderSearchPage, searchValue, setSearchResults, setSearchValue }) => {
 
   const enterSubmit = (event: KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === "Enter") {
       const searchStuff = new NewsEverythingRequest({ q: searchValue });
-      getNewsEverything(searchStuff).then((results) => setSerachReults(results.articles));
+      getNewsEverything(searchStuff).then((results) => setSearchResults(results));
       renderSearchPage();
     }
   };
