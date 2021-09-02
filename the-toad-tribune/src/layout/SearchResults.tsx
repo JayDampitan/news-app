@@ -88,7 +88,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
           <span>
             {article.author} - {article.publishedAt} - {article.source.name}
           </span>
-          <a href={article.url} target="_blank">
+          <a href={article.url} target="_blank" rel="noreferrer">
             Link to Article
           </a>
           <p>{article.description}</p>

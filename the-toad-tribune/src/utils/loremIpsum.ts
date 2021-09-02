@@ -1,0 +1,3 @@
+export const makeLoremIpsum = () => {
+  return "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu facilisis sed odio morbi quis commodo. At erat pellentesque adipiscing commodo elit at imperdiet. Massa placerat duis ultricies lacus sed turpis tincidunt id. Mus mauris vitae ultricies leo integer malesuada nunc vel. Eu ultrices vitae auctor eu augue ut. Metus dictum at tempor commodo ullamcorper a lacus. Venenatis cras sed felis eget velit aliquet sagittis id consectetur. Tempor orci eu lobortis elementum nibh. Elementum curabitur vitae nunc sed velit dignissim sodales ut. Mauris commodo quis imperdiet massa. Dolor sit amet consectetur adipiscing.";
+};
