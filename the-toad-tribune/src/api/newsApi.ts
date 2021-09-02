@@ -7,6 +7,10 @@ export interface INewsProps {
   setSelectedArticle: Function;
 }
 
+export interface DarkModeProps {
+  darkMode: Boolean;
+}
+
 export interface IMoreInfoPageProps {
   selectedArticle: IArticle;
 }

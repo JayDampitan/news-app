@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { DarkModeProps } from "../api/newsApi";
 
 interface LayoutProps {
   Ads: JSX.Element;
   Animals: JSX.Element;
+  darkMode: Boolean;
   isMainLayout: Boolean;
   isMoreInfo: Boolean;
   isSearchPage: Boolean;
@@ -21,6 +23,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({
   Ads,
   Animals,
+  darkMode,
   isMainLayout,
   isMoreInfo,
   isSearchPage,
@@ -38,7 +41,7 @@ const Layout: React.FC<LayoutProps> = ({
     switch (determiner) {
       case "MainLayout":
         return (
-          <MainLayoutStyles>
+          <MainLayoutStyles darkMode={darkMode}>
             {/* {Ads} */}
             {Animals}
             {MainArticle}
@@ -83,10 +86,10 @@ const Layout: React.FC<LayoutProps> = ({
 
 export default Layout;
 
-const MainLayoutStyles = styled.div`
+const MainLayoutStyles = styled.div<DarkModeProps>`
   height: 100vh;
   width: 100vw;
-  background-color: hsl(0, 0%, 18%);
+  background-color: ${props => props.darkMode ? "hsl(0, 0%, 10%)" : "#e3dac9"};
   display: grid;
   grid-template-columns: 8% 12% 12% 12% 12% 12% 12% 12% 8%;
   grid-template-rows: repeat(9, 1fr);

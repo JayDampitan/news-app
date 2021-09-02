@@ -2,9 +2,11 @@ import React, { KeyboardEvent, useState } from "react";
 import styled from "styled-components";
 import toad from "../assets/toad.png"
 import { getNewsEverything, NewsEverythingRequest } from "../api";
+import { DarkModeProps } from "../api/newsApi";
 
 
 interface INavProps {
+  darkMode: Boolean;
   renderMainLayoutPage: Function;
   renderSearchPage: Function;
   setSearchValue: Function;
@@ -12,6 +14,7 @@ interface INavProps {
 }
 
 const Navigation: React.FC<INavProps> = ({
+  darkMode,
   renderMainLayoutPage,
   renderSearchPage,
   setSearchResults,
@@ -44,7 +47,7 @@ const Navigation: React.FC<INavProps> = ({
   };
 
   return (
-    <NavigationStyles>
+    <NavigationStyles darkMode={darkMode}>
       <NavLogo onClick={() => renderMainLayoutPage()}> <img src={toad} alt="" /> </NavLogo>
       <NavTitle onClick={() => renderMainLayoutPage()}>
         <span>The</span> <span>Toad</span> <span>Tribune</span>
@@ -52,6 +55,7 @@ const Navigation: React.FC<INavProps> = ({
 
       <NavSearchContainer>
         <NavSearch
+          darkMode={darkMode}
           placeholder="Search"
           id="input"
           className={searchError.length > 0 ? "error" : ""}
@@ -70,7 +74,7 @@ const Navigation: React.FC<INavProps> = ({
 
 export default Navigation;
 
-const NavigationStyles = styled.div`
+const NavigationStyles = styled.div<DarkModeProps>`
   grid-area: 1/1/2/10;
   display: flex;
   justify-content: space-between;
@@ -78,6 +82,7 @@ const NavigationStyles = styled.div`
   border-top: none;
   border-right: none;
   border-left: none;
+  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
 `;
 
 const NavLogo = styled.div`
@@ -103,7 +108,6 @@ const NavTitle = styled.h1`
   font-size: 65px;
   display: flex;
   align-items: center;
-  color: black;
   cursor: pointer;
   margin: 0;
   padding: 0;
@@ -123,19 +127,25 @@ const NavSearchContainer = styled.div`
   flex-direction: column;
 `;
 
-const NavSearch = styled.input`
+const NavSearch = styled.input<DarkModeProps>`
   width: 250px;
   height: 30px;
   margin-top: 30px;
   margin-right: 80px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: hsl(0, 0%, 18%);
+  background-color: ${props => props.darkMode ? "hsl(0, 0%, 10%)" : "#e3dac9"};
+  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
+  
   border: double;
   outline: none;
   border-left: none;
   border-right: none;
   border-top: none;
+
+  ::placeholder {
+    color: ${props => props.darkMode ? "#e3dac9 !important" : "hsl(0, 0%, 10%)"};
+  }
 
   &.error {
     border-bottom-color: red;

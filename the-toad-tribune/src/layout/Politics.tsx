@@ -8,7 +8,7 @@ import {
   HeaderContainer2,
   ImageContainer2,
 } from "../commons";
-
+import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
@@ -24,7 +24,7 @@ const Politics: React.FC<INewsProps> = ({
   const article = articleResponse.articles?.[pageNumber];
 
   return articleResponse.articles.length ? (
-    <PoliticsStyles>
+    <PoliticsStyles darkMode={darkMode}>
      
         <Buttons
           onClick={() => {
@@ -77,7 +77,7 @@ const Politics: React.FC<INewsProps> = ({
 
 export default Politics;
 
-const PoliticsStyles = styled.div`
+const PoliticsStyles = styled.div<DarkModeProps>`
   grid-area: 2/2/6/3;
   border: double;
   border-left: none;
@@ -89,5 +89,6 @@ const PoliticsStyles = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 1vh;
+  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
 `;
 

@@ -76,7 +76,7 @@ const SubApp = () => {
   
   const [serverErrorMessage, setServerErrorMessage] = useState<string>("");
 
-  const [darkMode, setdarkMode] = useState<Boolean>(false);
+  const [darkMode, setdarkMode] = useState<Boolean>(true);
 
   const newsDataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
@@ -206,6 +206,7 @@ const SubApp = () => {
             setSelectedArticle={setSelectedArticle}
           />
         }
+        darkMode={darkMode}
         isMainLayout={isMainLayout}
         isMoreInfo={isMoreInfo}
         isSearchPage={isSearchPage}
@@ -228,6 +229,7 @@ const SubApp = () => {
         }
         Navigation={
           <Navigation
+            darkMode={darkMode}
             renderMainLayoutPage={renderMainLayoutPage}
             renderSearchPage={renderSearchPage}
             setSearchValue={setSearchValue}
@@ -268,7 +270,7 @@ const SubApp = () => {
             setSelectedArticle={setSelectedArticle}
           />
         }
-        Weather={<Weather weatherResponse={weather} />}
+        Weather={<Weather darkMode={darkMode} weatherResponse={weather} />}
       />
 
       {serverErrorMessage.length > 0 && <Snackbar bgColor="red" setMessage={setServerErrorMessage}>{serverErrorMessage}</Snackbar>}

@@ -9,7 +9,7 @@ import {
   HeaderContainer2,
   ImageContainer2,
 } from "../commons";
-
+import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
@@ -76,18 +76,15 @@ const Animals: React.FC<INewsProps> = ({
 
 export default Animals;
 
-interface DarkModeProps {
-  darkMode: Boolean;
-}
+
 
 const AnimalsStyles = styled.div<DarkModeProps>`
-  background-color: ${props => props.darkMode ? "black" : "white"};
-  grid-area: 8/3/10/6;
+  grid-area: 6/6/10/8;
   overflow: hidden;
   display: flex;
   align-items: center;
   margin-bottom: 0.5em;
   cursor: pointer;
-  color: ${props => props.darkMode ? "white" : "black"}
+  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
 `;
 

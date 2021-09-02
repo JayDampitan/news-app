@@ -8,7 +8,7 @@ import {
   HeaderContainer2,
   ImageContainer2,
 } from "../commons";
-
+import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
@@ -24,7 +24,7 @@ const StonksArticle: React.FC<INewsProps> = ({
   const article = articleResponse.articles?.[pageNumber];
 
   return articleResponse.articles.length ? (
-    <StonksStyles>
+    <StonksStyles darkMode={darkMode}>
       <Buttons
         onClick={() => {
           pageNumber === 0
@@ -75,7 +75,7 @@ const StonksArticle: React.FC<INewsProps> = ({
 
 export default StonksArticle;
 
-const StonksStyles = styled.div`
+const StonksStyles = styled.div<DarkModeProps>`
   background-color: transparent;
   border: double;
   border-bottom: none;
@@ -86,4 +86,5 @@ const StonksStyles = styled.div`
   overflow: hidden;
   cursor: pointer;
   margin-bottom: 0.5em;
+  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
 `;

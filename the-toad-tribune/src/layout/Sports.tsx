@@ -8,7 +8,7 @@ import {
   HeaderContainer2,
   ImageContainer2,
 } from "../commons";
-
+import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
@@ -24,7 +24,7 @@ const Sports: React.FC<INewsProps> = ({
   const article = articleResponse.articles?.[pageNumber];
 
   return articleResponse.articles.length ? (
-    <SportsStyles>
+    <SportsStyles darkMode={darkMode}>
      
         <Buttons
           onClick={() => {
@@ -76,7 +76,7 @@ const Sports: React.FC<INewsProps> = ({
 
 export default Sports;
 
-const SportsStyles = styled.div`
+const SportsStyles = styled.div<DarkModeProps>`
   grid-area: 6/2/10/4;
   margin-left: 0.5em;
   margin-bottom: 0.5em;
@@ -84,4 +84,5 @@ const SportsStyles = styled.div`
   justify-content: center;
   align-items: center;
   border: none;
+  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
 `;

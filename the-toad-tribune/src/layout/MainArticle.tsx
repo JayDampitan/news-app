@@ -4,6 +4,7 @@ import { usePagination } from "../hooks";
 import { Buttons } from "../commons";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
+import { DarkModeProps } from "../api/newsApi";
 
 const MainArticle: React.FC<INewsProps> = ({
   articleResponse,
@@ -17,7 +18,7 @@ const MainArticle: React.FC<INewsProps> = ({
   const article = articleResponse.articles?.[pageNumber];
 
   return articleResponse.articles?.length ? (
-    <MainArticleStyles>
+    <MainArticleStyles darkMode={darkMode}>
       <Buttons
         onClick={() => {
           pageNumber === 0
@@ -68,7 +69,7 @@ const MainArticle: React.FC<INewsProps> = ({
 
 export default MainArticle;
 
-const MainArticleStyles = styled.div`
+const MainArticleStyles = styled.div<DarkModeProps>`
   border: double;
   border-top: none;
   border-right: none;
@@ -79,7 +80,8 @@ const MainArticleStyles = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
-
+  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
+  
   .img-container{
     min-width: 80%;
     max-width: 80%;
