@@ -52,6 +52,24 @@ const SnackbarStyles = styled.div<ISnackbarStylesProps>`
     visibility: visible;
     animation: ${fadeIn} 0.5s, ${fadeOut} 0.5s 4.7s;
   }
+
+  @media only screen and (max-width: 899px) {
+    font-size: 24px;
+  }
+
+  @media only screen and (max-width: 599px) {
+    font-size: 22.4px;
+  }
+
+  @media only screen and (max-width: 479px) {
+    font-size: 20.8px;
+  }
+
+  @media only screen and (max-width: 379px) {
+    min-width: 90%;
+    padding: 16px;
+    font-size: 16px;
+  }
 `;
 
 const Snackbar: React.FC<ISnackbarProps> = ({ children, bgColor, setMessage }) => {
