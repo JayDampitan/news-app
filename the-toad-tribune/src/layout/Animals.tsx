@@ -1,15 +1,13 @@
 import styled from "styled-components";
+import React from "react";
 import { usePagination } from "../hooks";
 import type { INewsProps } from "../api";
-import { 
-  ArticleContentContainer,
-  ArticleDescriptionContainer,
-  AuthorContainer,
+import {
+  ArticleContentContainer2,
+  DescriptionContainer2,
   Buttons,
-  HeaderContainer,
-  ImageContainer,
-  PublishedAtContainer,
-  TitleContainer, 
+  HeaderContainer2,
+  ImageContainer2,
 } from "../commons";
 
 import PrevIcon from "../commons/prev.png";
@@ -26,7 +24,7 @@ const Animals: React.FC<INewsProps> = ({
   const article = articleResponse.articles?.[pageNumber];
 
   return articleResponse.articles.length ? (
-    <AnimalsStyles>
+    <AnimalsStyles >
       <Buttons
         onClick={() => {
           pageNumber === 0
@@ -38,32 +36,28 @@ const Animals: React.FC<INewsProps> = ({
         <img src={PrevIcon} alt="" />
       </Buttons>
 
-      <ArticleContentContainer
+      <ArticleContentContainer2
         onClick={() => {
           renderMoreInfoPage();
           setSelectedArticle(article);
         }}
       >
-        <HeaderContainer>
-          <ImageContainer>
-            <img src={article?.urlToImage} />
-          </ImageContainer>
-          <TitleContainer>
-            <h3>{article?.title}</h3>
-            <br />
-            <AuthorContainer>
-              <h4>{article?.author}</h4>
-            </AuthorContainer>
-            <PublishedAtContainer>
-              <h5>{article?.publishedAt}</h5>
-            </PublishedAtContainer>
-          </TitleContainer>
-        </HeaderContainer>
+        <ImageContainer2>
+          <img src={article?.urlToImage} />
+        </ImageContainer2>
 
-        <ArticleDescriptionContainer>
+        <HeaderContainer2>
+          <h3>{article?.title}</h3>
+          <h4>{article?.author}</h4>
+          <h5>{article?.publishedAt}</h5>
+        </HeaderContainer2>
+
+        <DescriptionContainer2>
           <p>{article?.description}</p>
-        </ArticleDescriptionContainer>
-      </ArticleContentContainer>
+        </DescriptionContainer2>
+
+      </ArticleContentContainer2>
+      
       <Buttons
         onClick={() => {
           articleResponse.articles.length - 1 === pageNumber
@@ -82,12 +76,11 @@ const Animals: React.FC<INewsProps> = ({
 export default Animals;
 
 const AnimalsStyles = styled.div`
-  background-color: white;
-  grid-area: 8/3/10/6;
+  grid-area: 6/6/10/8;
   overflow: hidden;
   display: flex;
   align-items: center;
-  border-radius: 10px;
   margin-bottom: 0.5em;
   cursor: pointer;
 `;
+

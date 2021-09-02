@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const ArticleContentContainer = styled.div`
-  max-height: 90%;
-  max-width: 90%;
-  margin: 1rem 0.5rem;
+  /* max-height: 90%;
+  max-width: 90%; */
+  /* margin: 1rem 0.5rem; */
   overflow: hidden;
 `;
 
@@ -33,10 +33,12 @@ export const PublishedAtContainer = styled.div`
 `;
 
 export const ArticleDescriptionContainer = styled.div`
-  margin-top: 1rem;
-  p {
-    margin: 0;
-  }
+ font-family: "Times New Roman", Times, serif;
+
+p::first-letter {
+  font-size: 30px;
+  margin: 0.9rem 0 ;
+}
 `;
 
 export const ImageContainer = styled.div`
@@ -46,5 +48,6 @@ export const ImageContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
+    border-radius: 6px;
   }
 `;
