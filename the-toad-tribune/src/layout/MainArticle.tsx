@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
+import { Buttons } from "../commons";
+import PrevIcon from "../commons/prev.png";
+import NextIcon from "../commons/next.png";
 
 const MainArticle: React.FC<INewsProps> = ({
   articleResponse,
@@ -15,16 +18,7 @@ const MainArticle: React.FC<INewsProps> = ({
 
   return articleResponse.articles?.length ? (
     <MainArticleStyles>
-      <button
-        onClick={() => {
-          articleResponse.articles.length - 1 === pageNumber
-            ? startBeginning()
-            : onNextButton();
-        }}
-      >
-        Next Button
-      </button>
-      <button
+      <Buttons
         onClick={() => {
           pageNumber === 0
             ? startEnd(articleResponse.articles.length - 1)
@@ -32,27 +26,41 @@ const MainArticle: React.FC<INewsProps> = ({
         }}
         className="add-class"
       >
-        Previous Button
-      </button>
-      <button
-        onClick={() => {
+        <img src={PrevIcon} alt="" />
+      </Buttons>
+    
+      <MainArticleContentContainer onClick={() => {
           renderMoreInfoPage();
           setSelectedArticle(article);
+        }}>
+
+        <div className="img-container">
+          <Image src={article?.urlToImage} />
+        </div>
+
+        <div className="main-content">
+          <h3> {article?.title} </h3>
+
+          <h4> {article?.author} </h4>
+
+          <h5>{article?.publishedAt}</h5>
+
+          {article?.description}
+        </div>
+
+      </MainArticleContentContainer>
+
+      <Buttons
+        onClick={() => {
+          articleResponse.articles.length - 1 === pageNumber
+            ? startBeginning()
+            : onNextButton();
         }}
       >
-        More Information
-      </button>
-      <div>
-        {article?.title}
-
-        {article?.author}
-
-        {article?.publishedAt}
-
-        {article?.description}
-      </div>
-      <Image src={article?.urlToImage} />
+        <img src={NextIcon} alt="" />
+      </Buttons>
     </MainArticleStyles>
+    
   ) : (
     <p>Loading...</p>
   );
@@ -61,15 +69,38 @@ const MainArticle: React.FC<INewsProps> = ({
 export default MainArticle;
 
 const MainArticleStyles = styled.div`
-  background-color: blue;
-  grid-area: 2/3/6/9;
-  background-repeat: no-repeat;
-  background-position: center;
+  border: double;
+  border-top: none;
+  border-right: none;
+  grid-area: 2/3/6/8;
   cursor: pointer;
+  overflow: hidden;
+  margin-top: 1vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .img-container{
+    min-width: 80%;
+    max-width: 80%;
+  }
+
+  .main-content {
+
+    h3 {
+      margin: 0;
+    }
+  }
 `;
 
 const Image = styled.img`
   height: 100%;
   width: 100%;
-  overflow: none;
+  
+`;
+
+const MainArticleContentContainer = styled.div`
+  max-height: 90%;
+  max-width: 90%;
+  border: 1px solid red;
 `;

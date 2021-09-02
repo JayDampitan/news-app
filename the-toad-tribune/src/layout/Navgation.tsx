@@ -1,6 +1,8 @@
 import React, { KeyboardEvent, useState } from "react";
 import styled from "styled-components";
+import toad from "../assets/toad.png"
 import { getNewsEverything, NewsEverythingRequest } from "../api";
+
 
 interface INavProps {
   renderMainLayoutPage: Function;
@@ -43,15 +45,16 @@ const Navigation: React.FC<INavProps> = ({
 
   return (
     <NavigationStyles>
-      <NavLogo onClick={() => renderMainLayoutPage()}>Logo</NavLogo>
+      <NavLogo onClick={() => renderMainLayoutPage()}> <img src={toad} alt="" /> </NavLogo>
       <NavTitle onClick={() => renderMainLayoutPage()}>
-        The Toad Tribune
+        <span>The</span> <span>Toad</span> <span>Tribune</span>
       </NavTitle>
 
       <NavSearchContainer>
         <NavSearch
           placeholder="Search"
           id="input"
+          className={searchError.length > 0 ? "error" : ""}
           value={validateSearchValue}
           onChange={(e) => setValidateSearchValue(e.target.value)}
           onKeyPress={enterSubmit}
@@ -68,32 +71,51 @@ const Navigation: React.FC<INavProps> = ({
 export default Navigation;
 
 const NavigationStyles = styled.div`
-  background-color: #161925;
   grid-area: 1/1/2/10;
   display: flex;
   justify-content: space-between;
+  border: double;
+  border-top: none;
+  border-right: none;
+  border-left: none;
 `;
 
 const NavLogo = styled.div`
-  width: 95px;
-  height: 95px;
-  background-color: #000;
-  margin-top: 3px;
-  margin-left: 80px;
+  max-width: 90px;
+  max-height: 90px;
+  margin: 1rem;
   border-radius: 50%;
   text-align: center;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border: double;
+
+  img{
+    height: 90px;
+    width: 90px;
+  }
 `;
 
-const NavTitle = styled.h2`
+const NavTitle = styled.h1`
+  font-family: "Times New Roman", Times, serif;
+  font-size: 65px;
   display: flex;
   align-items: center;
-  color: white;
+  color: black;
   cursor: pointer;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 3.5px;
+
+  & span:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  & span::first-letter {
+    font-size: 70px;
+  }
 `;
 
 const NavSearchContainer = styled.div`
@@ -106,9 +128,24 @@ const NavSearch = styled.input`
   height: 30px;
   margin-top: 30px;
   margin-right: 80px;
-  border-radius: 20px;
-  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: hsl(0, 0%, 18%);
+  border: double;
   outline: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+
+  &.error {
+    border-bottom-color: red;
+
+    ::placeholder,
+    ::-webkit-input-placeholder {
+      color: red;
+    }
+  }
+
 
   ::placeholder,
   ::-webkit-input-placeholder {

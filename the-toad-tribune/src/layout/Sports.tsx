@@ -2,14 +2,11 @@ import styled from "styled-components";
 import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
 import {
-  ArticleContentContainer,
-  ArticleDescriptionContainer,
-  AuthorContainer,
+  ArticleContentContainer2,
+  DescriptionContainer2,
   Buttons,
-  HeaderContainer,
-  ImageContainer,
-  PublishedAtContainer,
-  TitleContainer,
+  HeaderContainer2,
+  ImageContainer2,
 } from "../commons";
 
 import PrevIcon from "../commons/prev.png";
@@ -24,10 +21,11 @@ const Sports: React.FC<INewsProps> = ({
   const [onNextButton, onPrevButton, pageNumber, startBeginning, startEnd] =
     usePagination();
 
-    const article = articleResponse.articles?.[pageNumber];
+  const article = articleResponse.articles?.[pageNumber];
 
-    return articleResponse.articles.length ? (
-      <SportsStyles>
+  return articleResponse.articles.length ? (
+    <SportsStyles>
+     
         <Buttons
           onClick={() => {
             pageNumber === 0
@@ -38,61 +36,52 @@ const Sports: React.FC<INewsProps> = ({
         >
           <img src={PrevIcon} alt="" />
         </Buttons>
-  
-        <ArticleContentContainer
+
+        <ArticleContentContainer2
           onClick={() => {
             renderMoreInfoPage();
             setSelectedArticle(article);
           }}
         >
-          <HeaderContainer>
-            <ImageContainer>
-              <img src={article?.urlToImage} />
-            </ImageContainer>
-            <TitleContainer>
-              <h3>{article?.title}</h3>
-              <br />
-              <AuthorContainer>
-                <h4>{article?.author}</h4>
-              </AuthorContainer>
-              <PublishedAtContainer>
-                <h5>{article?.publishedAt}</h5>
-              </PublishedAtContainer>
-            </TitleContainer>
-          </HeaderContainer>
-  
-          <ArticleDescriptionContainer>
+          <ImageContainer2>
+            <img src={article?.urlToImage} />
+          </ImageContainer2>
+
+          <HeaderContainer2>
+            <h3>{article?.title}</h3>
+            <h4>{article?.author}</h4>
+            <h5>{article?.publishedAt}</h5>
+          </HeaderContainer2>
+
+          <DescriptionContainer2>
             <p>{article?.description}</p>
-          </ArticleDescriptionContainer>
-        </ArticleContentContainer>
-        <Buttons
-          onClick={() => {
-            articleResponse.articles.length - 1 === pageNumber
-              ? startBeginning()
-              : onNextButton();
-          }}
-        >
-          <img src={NextIcon} alt="" />
-        </Buttons>
-      </SportsStyles>
-    ) : (
-      <p>Loading...</p>
-    );
-  };
+          </DescriptionContainer2>
+
+        </ArticleContentContainer2>
+     
+      <Buttons
+        onClick={() => {
+          articleResponse.articles.length - 1 === pageNumber
+            ? startBeginning()
+            : onNextButton();
+        }}
+      >
+        <img src={NextIcon} alt="" />
+      </Buttons>
+    </SportsStyles>
+  ) : (
+    <p>Loading...</p>
+  );
+};
 
 export default Sports;
 
 const SportsStyles = styled.div`
-background-color: yellow;
-grid-area: 7/1/10/3;
-display: flex;
-justify-content: center;
-margin-left: 0.5em;
-margin-bottom: 0.5em;
-align-items: center;
-overflow: hidden;
-border-radius: 10px;
-cursor: pointer;
+  grid-area: 6/2/10/4;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
 `;
-
-

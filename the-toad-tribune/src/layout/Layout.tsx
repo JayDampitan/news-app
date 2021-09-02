@@ -39,7 +39,7 @@ const Layout: React.FC<LayoutProps> = ({
       case "MainLayout":
         return (
           <MainLayoutStyles>
-            {Ads}
+            {/* {Ads} */}
             {Animals}
             {MainArticle}
             {Movies}
@@ -86,12 +86,12 @@ export default Layout;
 const MainLayoutStyles = styled.div`
   height: 100vh;
   width: 100vw;
-  background-color: green;
+  background-color: hsl(0, 0%, 18%);
   display: grid;
-  grid-row-gap: 0.5em;
-  grid-column-gap: 0.5em;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: 8% 12% 12% 12% 12% 12% 12% 12% 8%;
   grid-template-rows: repeat(9, 1fr);
   position: fixed;
 `;
+
+
 

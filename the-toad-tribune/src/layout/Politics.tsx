@@ -1,6 +1,16 @@
 import styled from "styled-components";
 import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
+import {
+  ArticleContentContainer2,
+  Buttons,
+  DescriptionContainer2,
+  HeaderContainer2,
+  ImageContainer2,
+} from "../commons";
+
+import PrevIcon from "../commons/prev.png";
+import NextIcon from "../commons/next.png";
 
 const Politics: React.FC<INewsProps> = ({
   articleResponse,
@@ -15,57 +25,50 @@ const Politics: React.FC<INewsProps> = ({
 
   return articleResponse.articles.length ? (
     <PoliticsStyles>
-      <button
-        onClick={() => {
-          articleResponse.articles.length - 1 === pageNumber
-            ? startBeginning()
-            : onNextButton();
-        }}
-      >
-        Next Button
-      </button>
-      <button
-        onClick={() => {
-          pageNumber === 0
-            ? startEnd(articleResponse.articles.length - 1)
-            : onPrevButton();
-        }}
-        className="add-class"
-      >
-        Previous Button
-      </button>
-      <button
-        onClick={() => {
-          renderMoreInfoPage();
-          setSelectedArticle(article);
-        }}
-      >
-        More Information
-      </button>
      
-      <ImageContainer>
-        <Image src={article?.urlToImage} />
-      </ImageContainer>
+        <Buttons
+          onClick={() => {
+            pageNumber === 0
+              ? startEnd(articleResponse.articles.length - 1)
+              : onPrevButton();
+          }}
+          className="add-class"
+        >
+          <img src={PrevIcon} alt="" />
+        </Buttons>
+
+        <ArticleContentContainer2
+          onClick={() => {
+            renderMoreInfoPage();
+            setSelectedArticle(article);
+          }}
+        >
+          <ImageContainer2>
+            <img src={article?.urlToImage} />
+          </ImageContainer2>
+
+          <HeaderContainer2>
+            <h3>{article?.title}</h3>
+            <h4>{article?.author}</h4>
+            <h5>{article?.publishedAt}</h5>
+          </HeaderContainer2>
+
+          <DescriptionContainer2>
+            <p>{article?.description}</p>
+          </DescriptionContainer2>
+
+        </ArticleContentContainer2>
+
+        <Buttons
+          onClick={() => {
+            articleResponse.articles.length - 1 === pageNumber
+              ? startBeginning()
+              : onNextButton();
+          }}
+        >
+          <img src={NextIcon} alt="" />
+        </Buttons>
      
-      <PoliticsContentContainer>
-        <PoliticsTitle>
-          {article?.title}
-        </PoliticsTitle>
-
-          <PoliticsAuthors>
-            {article?.author}
-          </PoliticsAuthors>
-
-          <PoliticsPublishedDate>
-            {article?.publishedAt}
-          </PoliticsPublishedDate>
-        
-          <PoliticsDescription>
-          {article?.description}
-          </PoliticsDescription>
-      </PoliticsContentContainer>
-
-
     </PoliticsStyles>
   ) : (
     <p>Loading...</p>
@@ -75,47 +78,16 @@ const Politics: React.FC<INewsProps> = ({
 export default Politics;
 
 const PoliticsStyles = styled.div`
-  background-color: grey;
-  grid-area: 2/1/7/3;
+  grid-area: 2/2/6/3;
+  border: double;
+  border-left: none;
+  border-top: none;
+  border-right: none;
   margin-left: 0.5em;
-  border-radius: 10px;
-  overflow: hidden;
   cursor: pointer;
-`;
-
-const Image = styled.img`
-  height: 100%;
-  width: 100%;
-  overflow: none;
-`;
-
-const ImageContainer = styled.div`
-  max-height: 50%;
-  max-width: 100%;
-`;
-
-const PoliticsContentContainer = styled.div`
-  min-height: 50%;
-  min-width: 300px;
   display: flex;
-  flex-direction: column;
-  margin: .4rem .6rem .6rem .6rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vh;
 `;
-
-const PoliticsTitle = styled.h3`
-  margin: .3rem;
-`;
-
-const PoliticsAuthors = styled.h4`
-  margin: .4rem;
-  
-`;
-
-const PoliticsPublishedDate = styled.h5`
-margin: 0 .4rem .2rem .4rem;
-`;
-
-const PoliticsDescription = styled.p`
-`;
-
 
