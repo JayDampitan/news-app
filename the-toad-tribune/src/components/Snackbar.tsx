@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 
+interface ISnackbarStylesProps {
+  bgColor: string;
+}
+
 interface ISnackbarProps {
   bgColor: string;
+  setMessage: Function;
 }
 
 const fadeIn = keyframes`
@@ -27,7 +32,7 @@ const fadeOut = keyframes`
   }
 `;
 
-const SnackbarStyles = styled.div<ISnackbarProps>`
+const SnackbarStyles = styled.div<ISnackbarStylesProps>`
   position: fixed;
   bottom: 48px;
   left: 50%;
@@ -49,12 +54,13 @@ const SnackbarStyles = styled.div<ISnackbarProps>`
   }
 `;
 
-const Snackbar: React.FC<ISnackbarProps> = ({ children, bgColor }) => {
+const Snackbar: React.FC<ISnackbarProps> = ({ children, bgColor, setMessage }) => {
   const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsActive(false);
+      setMessage('');
     }, 5000);
 
     return () => clearTimeout(timer);
