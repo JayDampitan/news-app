@@ -4,6 +4,7 @@ import { usePagination } from "../hooks";
 
 const MainArticle: React.FC<INewsProps> = ({
   articleResponse,
+  darkMode,
   renderMoreInfoPage,
   setSelectedArticle,
 }) => {

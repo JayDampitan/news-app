@@ -2,6 +2,7 @@ import fetchApi from "./fetchApi"
 
 export interface INewsProps {
   articleResponse: INewsResponse;
+  darkMode: Boolean;
   renderMoreInfoPage: Function;
   setSelectedArticle: Function;
 }

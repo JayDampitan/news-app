@@ -4,6 +4,7 @@ import { usePagination } from "../hooks";
 
 const Politics: React.FC<INewsProps> = ({
   articleResponse,
+  darkMode,
   renderMoreInfoPage,
   setSelectedArticle,
 }) => {

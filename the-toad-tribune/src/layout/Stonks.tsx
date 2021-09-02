@@ -17,6 +17,7 @@ import NextIcon from "../commons/next.png";
 
 const StonksArticle: React.FC<INewsProps> = ({
   articleResponse,
+  darkMode,
   renderMoreInfoPage,
   setSelectedArticle,
 }) => {

@@ -143,26 +143,24 @@ const ArticleContainerStyles = styled.div`
     margin-top: 2rem;
     align-items: center;
 
-  .down-btn,
-  .up-btn{
-    background-color: grey;
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 50%;
-    margin: 0 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 1px 2px 2px 1px lightgrey;
-    border: 1px solid black;
+    .down-btn,
+    .up-btn {
+      background-color: grey;
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: 50%;
+      margin: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 1px 2px 2px 1px lightgrey;
+      border: 1px solid black;
 
-    img{
-      height: 1.6rem;
-      width: 1.6rem;
-      
+      img {
+        height: 1.6rem;
+        width: 1.6rem;
+      }
     }
-  }
-
   }
 
   a {

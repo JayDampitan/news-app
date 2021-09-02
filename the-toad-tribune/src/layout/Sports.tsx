@@ -17,6 +17,7 @@ import NextIcon from "../commons/next.png";
 
 const Sports: React.FC<INewsProps> = ({
   articleResponse,
+  darkMode,
   renderMoreInfoPage,
   setSelectedArticle,
 }) => {

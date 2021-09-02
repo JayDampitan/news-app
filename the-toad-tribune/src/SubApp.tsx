@@ -76,6 +76,8 @@ const SubApp = () => {
   
   const [serverErrorMessage, setServerErrorMessage] = useState<string>("");
 
+  const [darkMode, setdarkMode] = useState<Boolean>(false);
+
   const newsDataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => {
@@ -199,6 +201,7 @@ const SubApp = () => {
         Animals={
           <Animals
             articleResponse={animalArticle}
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
@@ -209,6 +212,7 @@ const SubApp = () => {
         MainArticle={
           <MainArticle
             articleResponse={mainArticle}
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
@@ -217,6 +221,7 @@ const SubApp = () => {
         Movies={
           <Movies
             articleResponse={moviesArticle}
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
@@ -232,6 +237,7 @@ const SubApp = () => {
         Politics={
           <Politics
             articleResponse={politicsArticle}
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
@@ -248,6 +254,7 @@ const SubApp = () => {
         Sports={
           <Sports
             articleResponse={sportsArticle}
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
@@ -255,6 +262,8 @@ const SubApp = () => {
         Stonks={
           <Stonks
             articleResponse={stonksArticle}
+
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
