@@ -10,12 +10,14 @@ export const ArticleContentContainer2 = styled.div`
 `;
 
 export const ImageContainer2 = styled.div`
-  width: 14rem;
+  min-width: 80%;
+  max-width: 80%;
 
   img {
     width: 100%;
     height: 100%;
     border-radius: 6px;
+    border: 1px solid black;
   }
 `;
 

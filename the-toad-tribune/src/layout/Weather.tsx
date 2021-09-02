@@ -7,7 +7,7 @@ const Weather: React.FC<IWeatherProp> = ({ weatherResponse }) => {
     <WeatherStyles>
       {weatherResponse.current.pressure > 0 ? (
         <>
-          <div>
+          <div className="temp-location">
             {weatherResponse.location.name}, {weatherResponse.location.region}
           </div>
           <div className="icon-temp-container">
@@ -29,7 +29,10 @@ const Weather: React.FC<IWeatherProp> = ({ weatherResponse }) => {
 export default Weather;
 
 const WeatherStyles = styled.div`
-  background-color: yellow;
+  border: double;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
   grid-area: 2/8/4/9;
   margin-right: 0.5em;
   display: flex;
@@ -37,6 +40,11 @@ const WeatherStyles = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 2%;
+  margin-top: 1vh;
+
+  & .temp-location {
+    font-weight: 600;
+  }
 
   .icon-temp-container {
     display: flex;

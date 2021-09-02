@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
-import { Buttons } from "../commons";
+import {
+  ArticleContentContainer2,
+  Buttons,
+  DescriptionContainer2,
+  HeaderContainer2,
+  ImageContainer2,
+} from "../commons";
 
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
@@ -28,28 +34,27 @@ const Movies: React.FC<INewsProps> = ({
         <img src={PrevIcon} alt="" />
       </Buttons>
 
-      <MovieContentConatiner
+      <ArticleContentContainer2
         onClick={() => {
           renderMoreInfoPage();
           setSelectedArticle(article);
         }}
       >
-        <MovieContentHeader>
-          <MovieImageContainer>
-            <img src={article?.urlToImage} />
-          </MovieImageContainer>
+        <ImageContainer2>
+          <img src={article?.urlToImage} />
+        </ImageContainer2>
 
-          <MovieTitleAuthorContainer>
-            <h3> {article?.title} </h3>
-            <h4>{article?.author}</h4>
-            <h5>{article?.publishedAt}</h5>
-          </MovieTitleAuthorContainer>
-        </MovieContentHeader>
+        <HeaderContainer2>
+          <h3>{article?.title}</h3>
+          <h4>{article?.author}</h4>
+          <h5>{article?.publishedAt}</h5>
+        </HeaderContainer2>
 
-        <MovieDescriptionContainer>
+        <DescriptionContainer2>
           <p>{article?.description}</p>
-        </MovieDescriptionContainer>
-      </MovieContentConatiner>
+        </DescriptionContainer2>
+
+      </ArticleContentContainer2>
 
       <Buttons
         onClick={() => {
@@ -69,60 +74,15 @@ const Movies: React.FC<INewsProps> = ({
 export default Movies;
 
 const MoviesStyles = styled.div`
-  background-color: #333;
-  grid-area: 6/6/10/8;
+  border: double;
+  border-right: none;
+  border-bottom: none;
+  grid-area: 4/8/10/9;
   margin-bottom: 0.5em;
+  margin-right: .5rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 10px;
 `;
 
-const MovieContentConatiner = styled.div`
-  max-width: 90%;
-  max-height: 90%;
-  overflow: hidden;
-  min-width: 90%;
-  min-height: 90%;
-  margin-top: 2rem;
-`;
 
-const MovieContentHeader = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-`;
 
-const MovieImageContainer = styled.div`
-  img {
-    height: 13rem;
-    width: 19rem;
-    overflow: none;
-    border-radius: 5px;
-  }
-`;
 
-const MovieTitleAuthorContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  h3 {
-    margin: 0 0.3rem 0 0.7rem;
-  }
-  h4 {
-    margin: 2rem 0.3rem 0 1.2rem;
-  }
-
-  h5 {
-    margin: 0 0.3rem 0 1.2rem;
-  }
-`;
-
-const MovieDescriptionContainer = styled.div`
-   font-family: "Times New Roman", Times, serif;
-
-p::first-letter {
-  font-size: 30px;
-  margin: 0.9rem 0 ;
-}
-`;

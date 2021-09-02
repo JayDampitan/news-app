@@ -24,49 +24,50 @@ const Politics: React.FC<INewsProps> = ({
 
   return articleResponse.articles.length ? (
     <PoliticsStyles>
+     
+        <Buttons
+          onClick={() => {
+            pageNumber === 0
+              ? startEnd(articleResponse.articles.length - 1)
+              : onPrevButton();
+          }}
+          className="add-class"
+        >
+          <img src={PrevIcon} alt="" />
+        </Buttons>
 
-      <Buttons
-        onClick={() => {
-          pageNumber === 0
-            ? startEnd(articleResponse.articles.length - 1)
-            : onPrevButton();
-        }}
-        className="add-class"
-      >
-        <img src={PrevIcon} alt="" />
-      </Buttons>
+        <ArticleContentContainer2
+          onClick={() => {
+            renderMoreInfoPage();
+            setSelectedArticle(article);
+          }}
+        >
+          <ImageContainer2>
+            <img src={article?.urlToImage} />
+          </ImageContainer2>
 
-      <ArticleContentContainer2
-        onClick={() => {
-          renderMoreInfoPage();
-          setSelectedArticle(article);
-        }}
-      >
-        <ImageContainer2>
-          <img src={article?.urlToImage} />
-        </ImageContainer2>
+          <HeaderContainer2>
+            <h3>{article?.title}</h3>
+            <h4>{article?.author}</h4>
+            <h5>{article?.publishedAt}</h5>
+          </HeaderContainer2>
 
-        <HeaderContainer2>
-          <h3>{article?.title}</h3>
-          <h4>{article?.author}</h4>
-          <h5>{article?.publishedAt}</h5>
-        </HeaderContainer2>
+          <DescriptionContainer2>
+            <p>{article?.description}</p>
+          </DescriptionContainer2>
 
-        <DescriptionContainer2>
-          <p>{article?.description}</p>
-        </DescriptionContainer2>
+        </ArticleContentContainer2>
 
-      </ArticleContentContainer2>
-
-      <Buttons
-        onClick={() => {
-          articleResponse.articles.length - 1 === pageNumber
-            ? startBeginning()
-            : onNextButton();
-        }}
-      >
-        <img src={NextIcon} alt="" />
-      </Buttons>
+        <Buttons
+          onClick={() => {
+            articleResponse.articles.length - 1 === pageNumber
+              ? startBeginning()
+              : onNextButton();
+          }}
+        >
+          <img src={NextIcon} alt="" />
+        </Buttons>
+     
     </PoliticsStyles>
   ) : (
     <p>Loading...</p>
@@ -76,13 +77,16 @@ const Politics: React.FC<INewsProps> = ({
 export default Politics;
 
 const PoliticsStyles = styled.div`
-  background-color: grey;
-  grid-area: 2/2/6/4;
+  grid-area: 2/2/6/3;
+  border: double;
+  border-left: none;
+  border-top: none;
+  border-right: none;
   margin-left: 0.5em;
-  border-radius: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 1vh;
 `;
 

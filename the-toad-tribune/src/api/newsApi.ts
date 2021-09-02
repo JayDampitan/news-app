@@ -30,6 +30,8 @@ export interface INewsResponse {
   status: string;
   totalResults: number;
   articles: IArticle[];
+  code: string;
+  message: string;
 }
 
 export class ArticleResponse implements IArticle {
@@ -50,6 +52,8 @@ export class NewsResponse implements INewsResponse {
   status = "ok";
   totalResults = 0;
   articles = [];
+  code = "success";
+  message = "success";
 }
 
 type SortType = "relevancy" | "popularity" | "publishedAt";

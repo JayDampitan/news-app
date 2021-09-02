@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const ArticleContentContainer = styled.div`
-  max-height: 90%;
-  max-width: 90%;
-  margin: 1rem 0.5rem;
+  /* max-height: 90%;
+  max-width: 90%; */
+  /* margin: 1rem 0.5rem; */
   overflow: hidden;
 `;
 
