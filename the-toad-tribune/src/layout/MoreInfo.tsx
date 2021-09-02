@@ -1,4 +1,4 @@
-import { IMoreInfoPageProps } from "../api/newsApi";
+import type { IMoreInfoPageProps } from "../api";
 import styled from "styled-components";
 import { makeLoremIpsum } from "../utils/loremIpsum";
 

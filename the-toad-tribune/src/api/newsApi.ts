@@ -1,6 +1,6 @@
 import fetchApi from "./fetchApi"
 
-export interface NewsProps {
+export interface INewsProps {
   articleResponse: INewsResponse;
   renderMoreInfoPage: Function;
   setSelectedArticle: Function;
@@ -10,13 +10,13 @@ export interface IMoreInfoPageProps {
   selectedArticle: IArticle;
 }
 
-interface Source {
+interface INewsSource {
   id: string | null;
   name: string | null;
 }
 
 export interface IArticle {
-  source: Source;
+  source: INewsSource;
   author: string;
   title: string;
   description: string;
@@ -30,6 +30,8 @@ export interface INewsResponse {
   status: string;
   totalResults: number;
   articles: IArticle[];
+  code: string;
+  message: string;
 }
 
 export class ArticleResponse implements IArticle {
@@ -50,6 +52,8 @@ export class NewsResponse implements INewsResponse {
   status = "ok";
   totalResults = 0;
   articles = [];
+  code = "success";
+  message = "success";
 }
 
 type SortType = "relevancy" | "popularity" | "publishedAt";

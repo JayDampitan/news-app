@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { WeatherProp } from "../api/weatherApi";
+import type { IWeatherProp } from "../api";
 import babysun from "../assets/telebabysun.png"
 
-const Weather: React.FC<WeatherProp> = ({ weatherResponse }) => {
+const Weather: React.FC<IWeatherProp> = ({ weatherResponse }) => {
   return (
     <WeatherStyles>
       {weatherResponse.current.pressure > 0 ? (

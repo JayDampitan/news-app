@@ -1,28 +1,28 @@
 import { useState, useEffect } from "react";
 import {
-  IArticle,
-  IMoreInfoPageProps,
-  INewsResponse,
-  NewsResponse,
-} from "./api/newsApi";
-import { IAdsResponse } from "./api/adsApi";
-import AdsResponse from "./api/adsApi";
-import {
-  Coords,
-  GeolocationPositionError,
-  GeolocationPositionSuccess,
-  IWeatherResponse,
-} from "./api/weatherApi";
-import {
+  AdsResponse,
   ArticleResponse,
+  getAds,
   getNewsEverything,
   getNewsTopHeadlines,
   getWeather,
   NewsEverythingRequest,
+  NewsResponse,
   NewsTopHeadlinesRequest,
   WeatherRequest,
   WeatherResponse,
 } from "./api";
+import type {
+  IAdsResponse,
+  IArticle,
+  IGeolocationPositionError,
+  IGeolocationPositionSuccess,
+  IMoreInfoPageProps,
+  INewsResponse,
+  IWeatherResponse,
+} from './api';
+
+import { Snackbar } from "./components";
 
 import {
   Ads,
@@ -37,7 +37,6 @@ import {
   Stonks,
   Weather,
 } from "./layout";
-import { getAds } from "./api/adsApi";
 import MoreInfo from "./layout/MoreInfo";
 
 const SubApp = () => {
@@ -74,34 +73,74 @@ const SubApp = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [searchResults, setSearchResults] =
     useState<INewsResponse>(defaultNewsResponse);
+  
+  const [serverErrorMessage, setServerErrorMessage] = useState<string>("");
 
   const newsDataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
-    getNewsTopHeadlines(topHeadlinesRequest).then((res) => setMainArticle(res));
+    getNewsTopHeadlines(topHeadlinesRequest).then((res) => {
+      if (res.status === 'ok') {
+        setMainArticle(res)
+      }
+
+      if (res.status === 'error') {
+        setServerErrorMessage(res.message);
+      }
+    });
 
     const animalsArticleRequest = new NewsEverythingRequest({ q: "animal" });
-    getNewsEverything(animalsArticleRequest).then((res) =>
-      setAnimalArticle(res)
-    );
+    getNewsEverything(animalsArticleRequest).then((res) => {
+      if (res.status === 'ok') {
+        setAnimalArticle(res)
+      }
+
+      if (res.status === 'error') {
+        setServerErrorMessage(res.message);
+      }
+    });
 
     const sportsArticleRequest = new NewsEverythingRequest({ q: "sports" });
-    getNewsEverything(sportsArticleRequest).then((res) =>
-      setSportsArticle(res)
-    );
+    getNewsEverything(sportsArticleRequest).then((res) => {
+      if (res.status === 'ok') {
+        setSportsArticle(res)
+      }
+
+      if (res.status === 'error') {
+        setServerErrorMessage(res.message);
+      }
+    });
     const politicsArticleRequest = new NewsEverythingRequest({ q: "politics" });
-    getNewsEverything(politicsArticleRequest).then((res) =>
-      setPoliticsArticle(res)
-    );
+    getNewsEverything(politicsArticleRequest).then((res) => {
+      if (res.status === 'ok') {
+        setPoliticsArticle(res)
+      }
+
+      if (res.status === 'error') {
+        setServerErrorMessage(res.message);
+      }
+  });
 
     const moviesEverythingRequest = new NewsEverythingRequest({ q: "movies" });
-    getNewsEverything(moviesEverythingRequest).then((res) =>
-      setMoviesArticle(res)
-    );
+    getNewsEverything(moviesEverythingRequest).then((res) => {
+      if (res.status === 'ok') {
+        setMoviesArticle(res)
+      }
+
+      if (res.status === 'error') {
+        setServerErrorMessage(res.message);
+      }
+    });
 
     const stonksHeadlinesRequest = new NewsEverythingRequest({ q: "stocks" });
-    getNewsEverything(stonksHeadlinesRequest).then((res) =>
-      setStonksArticle(res)
-    );
+    getNewsEverything(stonksHeadlinesRequest).then((res) => {
+      if (res.status === 'ok') {
+        setStonksArticle(res)
+      }
+
+      if (res.status === 'error') {
+        setServerErrorMessage(res.message);
+      }
+    });
   };
 
   const adsDataGrabber = () => {
@@ -109,7 +148,7 @@ const SubApp = () => {
   };
 
   const weatherDataGrabber = () => {
-    const successGeo = async (position: GeolocationPositionSuccess) => {
+    const successGeo = async (position: IGeolocationPositionSuccess) => {
       const { latitude, longitude } = position.coords;
       const weatherRequest = new WeatherRequest({
         query: `${latitude},${longitude}`,
@@ -148,7 +187,7 @@ const SubApp = () => {
 
   useEffect(() => {
     // Commented out for a reason
-//     newsDataGrabber();
+    newsDataGrabber();
 //     adsDataGrabber();
     weatherDataGrabber();
   }, []);
@@ -222,6 +261,8 @@ const SubApp = () => {
         }
         Weather={<Weather weatherResponse={weather} />}
       />
+
+      {serverErrorMessage.length > 0 && <Snackbar bgColor="red" setMessage={setServerErrorMessage}>{serverErrorMessage}</Snackbar>}
     </div>
   );
 };
