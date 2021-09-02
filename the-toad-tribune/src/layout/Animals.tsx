@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { usePagination } from "../hooks";
-import { NewsProps } from "../api/newsApi";
+import type { INewsProps } from "../api";
 import { 
   ArticleContentContainer,
   ArticleDescriptionContainer,
@@ -15,7 +15,7 @@ import {
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
-const Animals: React.FC<NewsProps> = ({
+const Animals: React.FC<INewsProps> = ({
   articleResponse,
   renderMoreInfoPage,
   setSelectedArticle,
@@ -83,7 +83,7 @@ export default Animals;
 
 const AnimalsStyles = styled.div`
   background-color: white;
-  grid-area: 8/3/10/6;
+  grid-area: 8/4/10/6;
   overflow: hidden;
   display: flex;
   align-items: center;

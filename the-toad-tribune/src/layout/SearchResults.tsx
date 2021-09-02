@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { INewsResponse } from "../api/newsApi";
-import { getNewsEverything } from "../api/newsApi";
-import { NewsEverythingRequest } from "../api";
+import { getNewsEverything, NewsEverythingRequest } from "../api";
+import type { INewsResponse } from "../api";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
@@ -164,7 +163,6 @@ const ArticleContainerStyles = styled.div`
     }
   }
 
-  }
   }
 
   a {

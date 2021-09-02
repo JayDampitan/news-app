@@ -1,28 +1,26 @@
 import { useState, useEffect } from "react";
 import {
-  IArticle,
-  IMoreInfoPageProps,
-  INewsResponse,
-  NewsResponse,
-} from "./api/newsApi";
-import { IAdsResponse } from "./api/adsApi";
-import AdsResponse from "./api/adsApi";
-import {
-  Coords,
-  GeolocationPositionError,
-  GeolocationPositionSuccess,
-  IWeatherResponse,
-} from "./api/weatherApi";
-import {
+  AdsResponse,
   ArticleResponse,
+  getAds,
   getNewsEverything,
   getNewsTopHeadlines,
   getWeather,
   NewsEverythingRequest,
+  NewsResponse,
   NewsTopHeadlinesRequest,
   WeatherRequest,
   WeatherResponse,
 } from "./api";
+import type {
+  IAdsResponse,
+  IArticle,
+  IGeolocationPositionError,
+  IGeolocationPositionSuccess,
+  IMoreInfoPageProps,
+  INewsResponse,
+  IWeatherResponse,
+} from './api';
 
 import {
   Ads,
@@ -37,7 +35,6 @@ import {
   Stonks,
   Weather,
 } from "./layout";
-import { getAds } from "./api/adsApi";
 import MoreInfo from "./layout/MoreInfo";
 
 const SubApp = () => {
@@ -109,7 +106,7 @@ const SubApp = () => {
   };
 
   const weatherDataGrabber = () => {
-    const successGeo = async (position: GeolocationPositionSuccess) => {
+    const successGeo = async (position: IGeolocationPositionSuccess) => {
       const { latitude, longitude } = position.coords;
       const weatherRequest = new WeatherRequest({
         query: `${latitude},${longitude}`,
@@ -149,8 +146,8 @@ const SubApp = () => {
   useEffect(() => {
     // Commented out for a reason
     newsDataGrabber();
-    adsDataGrabber();
-    weatherDataGrabber();
+    // adsDataGrabber();
+    // weatherDataGrabber();
   }, []);
 
   return (
@@ -186,7 +183,6 @@ const SubApp = () => {
           <Navigation
             renderMainLayoutPage={renderMainLayoutPage}
             renderSearchPage={renderSearchPage}
-            searchValue={searchValue}
             setSearchValue={setSearchValue}
             setSearchResults={setSearchResults}
           />

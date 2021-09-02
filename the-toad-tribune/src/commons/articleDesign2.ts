@@ -1,18 +1,16 @@
 import styled from "styled-components";
 
 export const ArticleContentContainer2 = styled.div`
-  max-height: 90%;
-  max-width: 90%;
-  margin: 1rem;
-  overflow: hidden;
+  max-width: 92%;
+  max-height: 92%;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  border: 2px solid red;
+  overflow: hidden;
 `;
 
 export const ImageContainer2 = styled.div`
-  height: 8rem;
-  width: 19rem;
+  width: 14rem;
 
   img {
     width: 100%;
@@ -33,17 +31,18 @@ export const HeaderContainer2 = styled.div`
   }
 
   h4 {
-    margin: .2rem 0 0 0;
+    margin: 0.2rem 0 0 0.4rem;
   }
   h5 {
-    margin: 0;
-    border: 2px solid blue
+    margin: 0.2rem 0 0 0.4rem;
   }
 `;
 
-export const ArticleDescriptionContainer2 = styled.div`
-    p {
-        margin: .4rem;
-       font-family: 'Times New Roman', Times, serif;
-    }
+export const DescriptionContainer2 = styled.div`
+    font-family: "Times New Roman", Times, serif;
+
+  p::first-letter{
+    font-size: 30px;
+    margin: 0.9rem 0 ;     
+  }
 `;

@@ -33,11 +33,12 @@ export const PublishedAtContainer = styled.div`
 `;
 
 export const ArticleDescriptionContainer = styled.div`
-  margin-top: 1rem;
-  p {
-    margin: 0;
-    font-family: 'Times New Roman', Times, serif;
-  }
+ font-family: "Times New Roman", Times, serif;
+
+p::first-letter {
+  font-size: 30px;
+  margin: 0.9rem 0 ;
+}
 `;
 
 export const ImageContainer = styled.div`

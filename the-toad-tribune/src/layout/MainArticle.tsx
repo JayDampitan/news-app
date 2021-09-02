@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { NewsProps } from "../api/newsApi";
+import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
 
-const MainArticle: React.FC<NewsProps> = ({
+const MainArticle: React.FC<INewsProps> = ({
   articleResponse,
   renderMoreInfoPage,
   setSelectedArticle,
@@ -61,7 +61,7 @@ export default MainArticle;
 
 const MainArticleStyles = styled.div`
   background-color: blue;
-  grid-area: 2/3/6/9;
+  grid-area: 2/4/6/8;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;

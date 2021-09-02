@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { NewsProps } from "../api/newsApi";
+import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
 import { Buttons } from "../commons";
 
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
-const Movies: React.FC<NewsProps> = ({
+const Movies: React.FC<INewsProps> = ({
   articleResponse,
   renderMoreInfoPage,
   setSelectedArticle,
@@ -70,7 +70,7 @@ export default Movies;
 
 const MoviesStyles = styled.div`
   background-color: #333;
-  grid-area: 6/6/10/9;
+  grid-area: 6/6/10/8;
   margin-bottom: 0.5em;
   cursor: pointer;
   display: flex;
@@ -119,7 +119,10 @@ const MovieTitleAuthorContainer = styled.div`
 `;
 
 const MovieDescriptionContainer = styled.div`
-  p {
-    font-family: 'Times New Roman', Times, serif;
-  }
+   font-family: "Times New Roman", Times, serif;
+
+p::first-letter {
+  font-size: 30px;
+  margin: 0.9rem 0 ;
+}
 `;

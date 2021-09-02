@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NewsProps } from "../api/newsApi";
+import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
 import {
   ArticleContentContainer,
@@ -15,7 +15,7 @@ import {
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
-const StonksArticle: React.FC<NewsProps> = ({
+const StonksArticle: React.FC<INewsProps> = ({
   articleResponse,
   renderMoreInfoPage,
   setSelectedArticle,
@@ -83,7 +83,7 @@ export default StonksArticle;
 
 const StonksStyles = styled.div`
   background-color: pink;
-  grid-area: 6/3/8/6;
+  grid-area: 6/4/8/6;
   display: flex;
   align-items: center;
   overflow: hidden;
