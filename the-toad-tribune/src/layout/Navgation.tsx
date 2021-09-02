@@ -84,6 +84,7 @@ const NavLogo = styled.div`
   max-width: 90px;
   max-height: 90px;
   margin: 1rem;
+  margin-left: 5rem;
   border-radius: 50%;
   text-align: center;
   display: flex;
