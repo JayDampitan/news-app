@@ -5,11 +5,13 @@ import toadDark from "../assets/toadTribuneDark.svg";
 import { getNewsEverything, NewsEverythingRequest } from "../api";
 import { DarkModeProps } from "../api/newsApi";
 
+
 interface INavProps {
   darkMode: Boolean;
   renderMainLayoutPage: Function;
   renderSearchPage: Function;
   setdarkMode: Function;
+  setPageNumber: Function;
   setSearchValue: Function;
   setSearchResults: Function;
 }
@@ -19,6 +21,7 @@ const Navigation: React.FC<INavProps> = ({
   renderMainLayoutPage,
   renderSearchPage,
   setdarkMode,
+  setPageNumber,
   setSearchResults,
   setSearchValue,
 }) => {
@@ -39,6 +42,7 @@ const Navigation: React.FC<INavProps> = ({
           if (results.totalResults > 0) {
             setSearchValue(validateSearchValue);
             setSearchResults(results);
+            setPageNumber(1);
             renderSearchPage();
           } else {
             setSearchError("Please enter a valid search value.");
@@ -99,6 +103,7 @@ const NavigationStyles = styled.div<DarkModeProps>`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
   }
 
   .nav-text {
@@ -109,7 +114,7 @@ const NavigationStyles = styled.div<DarkModeProps>`
 const NavLogo = styled.div`
   max-width: 80px;
   max-height: 80px;
-  margin: 1rem 1rem 0 1rem;
+  margin: 1rem 1rem 0 3rem;
   border-radius: 50%;
   text-align: center;
   display: flex;
@@ -125,7 +130,7 @@ const NavLogo = styled.div`
 `;
 
 const NavTitle = styled.h1`
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Old English Text MT", Times, serif;
   font-size: 65px;
   display: flex;
   align-items: center;

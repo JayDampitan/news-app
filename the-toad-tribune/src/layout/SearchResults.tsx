@@ -2,36 +2,45 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { getNewsEverything, NewsEverythingRequest } from "../api";
 import type { INewsResponse } from "../api";
-import PrevIcon from "../commons/prev.png";
-import NextIcon from "../commons/next.png";
+import { ReactComponent as NextButtonIconComponent } from "../assets/next-button.svg";
+import { ReactComponent as PreviousButtonIconComponent } from "../assets/prev-button.svg";
 import { DarkModeProps } from "../api/newsApi";
 import { dateConverter } from "../utils/dateConverter";
 
 interface SearchResultsProps {
   darkMode: Boolean;
+  pageNumber: number;
   renderMoreInfoPage: Function;
   searchResults: INewsResponse;
   searchValue: string;
+  setPageNumber: Function;
+  setSnackbarMessage: Function;
   setSearchResults: Function;
   setSelectedArticle: Function;
 }
 
 const SearchResults: React.FC<SearchResultsProps> = ({
   darkMode,
+  pageNumber,
   renderMoreInfoPage,
   searchResults,
   searchValue,
+  setPageNumber,
+  setSnackbarMessage,
   setSearchResults,
   setSelectedArticle,
 }) => {
-  const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
 
   const getTotalPages = () => {
-    if (searchResults.totalResults % 20 === 0) {
-      setTotalPages(searchResults.totalResults / 20);
+    if (searchResults.totalResults <= 100) {
+      if (searchResults.totalResults % 20 === 0) {
+        setTotalPages(searchResults.totalResults / 20);
+      } else {
+        setTotalPages(Math.floor(searchResults.totalResults / 20) + 1);
+      }
     } else {
-      setTotalPages(Math.floor(searchResults.totalResults / 20) + 1);
+      setTotalPages(5);
     }
   };
 
@@ -47,22 +56,44 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   }, [searchResults]);
 
   const getNextPage = () => {
-    setPageNumber((prevPageNumber) => prevPageNumber + 1);
+    setPageNumber((prevPageNumber:number) => prevPageNumber + 1);
+
     const searchStuff = new NewsEverythingRequest({
       q: searchValue,
       page: pageNumber + 1,
     });
-    getNewsEverything(searchStuff).then((results) => setSearchResults(results));
+
+    getNewsEverything(searchStuff).then((results) => {
+      if (results.status === "ok") {
+        setSearchResults(results);
+      }
+
+      if (results.status === "error") {
+        setSnackbarMessage(results.message);
+      }
+    });
+
     scrollToTop();
   };
 
   const getPrevPage = () => {
-    setPageNumber((prevPageNumber) => prevPageNumber - 1);
+    setPageNumber((prevPageNumber:number) => prevPageNumber - 1);
+
     const searchStuff = new NewsEverythingRequest({
       q: searchValue,
       page: pageNumber - 1,
     });
-    getNewsEverything(searchStuff).then((results) => setSearchResults(results));
+
+    getNewsEverything(searchStuff).then((results) => {
+      if (results.status === "ok") {
+        setSearchResults(results);
+      }
+
+      if (results.status === "error") {
+        setSnackbarMessage(results.message);
+      }
+    });
+
     scrollToTop();
   };
 
@@ -105,23 +136,21 @@ const SearchResults: React.FC<SearchResultsProps> = ({
       {renderResults()}
       {searchResults.articles.length > 0 && (
         <div className="btn-container">
-          <div className="down-btn">
-            <img
-              onClick={() => {
-                pageNumber > 1 && getPrevPage();
-              }}
-              src={PrevIcon}
-              alt="previous button"
-            />
+          <div className="down-btn"
+            onClick={() => {
+              pageNumber > 1 && getPrevPage();
+            }}
+          >
+            <PreviousButtonIconComponent />
           </div>
-          <span>{`${pageNumber}/${totalPages}`}</span>
+          <span className="page-results">{`${pageNumber}/${totalPages}`}</span>
           <div
             onClick={() => {
               pageNumber < totalPages && getNextPage();
             }}
             className="up-btn"
           >
-            <img src={NextIcon} alt="next button" />
+            <NextButtonIconComponent />
           </div>
         </div>
       )}
@@ -144,18 +173,19 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
   background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 
-  span:nth-of-type(1) {
+  span:nth-of-type(1):not(.page-results) {
     cursor: pointer;
   }
 
   .btn-container {
     display: flex;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     align-items: center;
 
     .down-btn,
     .up-btn {
-      background-color: grey;
+      background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
       height: 2.5rem;
       width: 2.5rem;
       border-radius: 50%;
@@ -163,12 +193,19 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 1px 2px 2px 1px lightgrey;
-      border: 1px solid black;
+      border: double;
 
-      img {
+      svg {
         height: 1.6rem;
         width: 1.6rem;
+
+        & g {
+          fill: ${(props) => (props.darkMode) ? "#e3dac9" : "#1a1a1a"}
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
       }
     }
   }
