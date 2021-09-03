@@ -12,6 +12,7 @@ import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 import { dateConverter } from "../utils/dateConverter";
+import { keyframes } from "styled-components";
 
 const Politics: React.FC<INewsProps> = ({
   articleResponse,
@@ -70,7 +71,18 @@ const Politics: React.FC<INewsProps> = ({
       </Buttons>
     </PoliticsStyles>
   ) : (
-    <p>Loading...</p>
+    <PoliticsStylesLoader darkMode={darkMode}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </PoliticsStylesLoader>
   );
 };
 
@@ -89,4 +101,49 @@ const PoliticsStyles = styled.div<DarkModeProps>`
   justify-content: center;
   margin-top: 1vh;
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+`;
+
+const textFlash = keyframes`
+0%{
+  background-color: hsl(0, 0%, 15%)
+}
+
+100%{
+  background-color: hsl(0, 0%, 46%)
+}
+`;
+
+const PoliticsStylesLoader = styled.div<DarkModeProps>`
+  grid-area: 2/2/6/3;
+  border: double;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  margin-left: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vh;
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+
+  div:nth-child(odd) {
+    height: 1rem;
+    width: 80%;
+    margin: 1vh;
+    border-radius: 0.175rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} .8s linear infinite alternate;
+    opacity: 0.3;
+  }
+
+  div:nth-child(even) {
+    height: 1rem;
+    width: 70%;
+    margin: 1vh;
+    border-radius: 0.125rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} 1.2s linear infinite alternate;
+    opacity: 0.3;
+  }
 `;

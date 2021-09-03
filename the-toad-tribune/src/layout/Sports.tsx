@@ -12,6 +12,7 @@ import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 import { dateConverter } from "../utils/dateConverter";
+import { keyframes } from "styled-components";
 
 const Sports: React.FC<INewsProps> = ({
   articleResponse,
@@ -70,7 +71,18 @@ const Sports: React.FC<INewsProps> = ({
       </Buttons>
     </SportsStyles>
   ) : (
-    <p>Loading...</p>
+    <SportsStylesLoader darkMode={darkMode}>
+     <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </SportsStylesLoader>
   );
 };
 
@@ -85,4 +97,46 @@ const SportsStyles = styled.div<DarkModeProps>`
   align-items: center;
   border: none;
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+`;
+
+const textFlash = keyframes`
+0%{
+  background-color: hsl(0, 0%, 15%)
+}
+
+100%{
+  background-color: hsl(0, 0%, 46%)
+}
+`;
+
+const SportsStylesLoader = styled.div<DarkModeProps>`
+  grid-area: 6/2/10/4;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+
+  div:nth-child(odd) {
+    height: 1rem;
+    width: 80%;
+    margin: 1vh;
+    border-radius: 0.175rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} .8s linear infinite alternate;
+    opacity: 0.3;
+  }
+
+  div:nth-child(even) {
+    height: 1rem;
+    width: 75%;
+    margin: 1vh;
+    border-radius: 0.125rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} 1.2s linear infinite alternate;
+    opacity: 0.3;
+  }
 `;

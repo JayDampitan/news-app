@@ -6,6 +6,7 @@ import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 import { DarkModeProps } from "../api/newsApi";
 import { dateConverter } from "../utils/dateConverter";
+import { keyframes } from "styled-components";
 
 const MainArticle: React.FC<INewsProps> = ({
   articleResponse,
@@ -66,7 +67,18 @@ const MainArticle: React.FC<INewsProps> = ({
       </Buttons>
     </MainArticleStyles>
   ) : (
-    <p>Loading...</p>
+    <MainArticleStylesLoader darkMode={darkMode}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </MainArticleStylesLoader>
   );
 };
 
@@ -140,3 +152,47 @@ const MainArticleDescriptionConatiner = styled.div`
     line-height: 2.5rem;
   }
 `;
+
+const textFlash = keyframes`
+0%{
+  background-color: hsl(0, 0%, 15%)
+}
+
+100%{
+  background-color: hsl(0, 0%, 46%)
+}
+`;
+
+const MainArticleStylesLoader = styled.div<DarkModeProps>`
+  border: double;
+  border-top: none;
+  border-right: none;
+  grid-area: 2/3/6/8;
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: column;
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+  justify-content: center;
+  align-items: center;
+  
+
+  div:nth-child(odd) {
+    height: 1rem;
+    width: 80%;
+    margin: 1vh;
+    border-radius: 0.175rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} .8s linear infinite alternate;
+    opacity: 0.3;
+  }
+
+  div:nth-child(even) {
+    height: 1rem;
+    width: 75%;
+    margin: 1vh;
+    border-radius: 0.125rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} 1.2s linear infinite alternate;
+    opacity: 0.3;
+  }
+`
