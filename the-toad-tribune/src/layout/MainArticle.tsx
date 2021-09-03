@@ -121,22 +121,26 @@ const MainArticleHeaderContainer = styled.div`
 
   .main-content {
     h3 {
-      margin: 0 0 0 2rem;
+      margin: 0 0 0 2rem;   
+      font-family: 'Oswald', sans-serif;
     }
     h4 {
       margin: 2rem 0 0 3rem;
+      font-family: 'Rubik', sans-serif;
     }
     h5 {
       margin: 0 0 0 3rem;
+      font-family: 'Rubik', sans-serif;
     }
   }
 `;
 
 const MainArticleDescriptionConatiner = styled.div`
   margin: 0 0 0 2rem;
+  font-family: 'Times New Roman', Times, serif;
 
   p::first-letter {
     font-size: 30px;
-    line-height: 2.5rem;
+    line-height: 2.5rem; 
   }
 `;

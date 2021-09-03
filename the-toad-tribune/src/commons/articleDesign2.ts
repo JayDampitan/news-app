@@ -43,13 +43,16 @@ export const HeaderContainer2 = styled.div`
     margin: 0.5rem;
     text-align: center;
     line-height: 1.5rem;
+    font-family: 'Oswald', sans-serif;
   }
 
   h4 {
     margin: 0.9rem 0 0 0.4rem;
+    font-family: 'Rubik', sans-serif;
   }
   h5 {
     margin: 0.2rem 0 0 0.4rem;
+    font-family: 'Rubik', sans-serif;
   }
 `;
 
