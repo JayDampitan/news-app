@@ -12,6 +12,7 @@ import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 import { dateConverter } from "../utils/dateConverter";
+import { keyframes } from "styled-components";
 
 const StonksArticle: React.FC<INewsProps> = ({
   articleResponse,
@@ -70,7 +71,18 @@ const StonksArticle: React.FC<INewsProps> = ({
       </Buttons>
     </StonksStyles>
   ) : (
-    <p>Loading...</p>
+    <StonksStylesLoader darkMode={darkMode}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </StonksStylesLoader>
   );
 };
 
@@ -78,6 +90,7 @@ export default StonksArticle;
 
 const StonksStyles = styled.div<DarkModeProps>`
   background-color: transparent;
+  justify-content: center;
   border: double;
   border-bottom: none;
   border-top: none;
@@ -88,4 +101,48 @@ const StonksStyles = styled.div<DarkModeProps>`
   cursor: pointer;
   margin-bottom: 0.5em;
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+`;
+
+const textFlash = keyframes`
+0%{
+  background-color: hsl(0, 0%, 15%)
+}
+
+100%{
+  background-color: hsl(0, 0%, 46%)
+}
+`;
+
+const StonksStylesLoader = styled.div<DarkModeProps>`
+  background-color: transparent;
+  justify-content: center;
+  border: double;
+  border-bottom: none;
+  border-top: none;
+  grid-area: 6/4/10/6;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+
+  div:nth-child(odd) {
+    height: 1rem;
+    width: 80%;
+    margin: 1vh;
+    border-radius: 0.175rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} .8s linear infinite alternate;
+    opacity: 0.3;
+  }
+
+  div:nth-child(even) {
+    height: 1rem;
+    width: 75%;
+    margin: 1vh;
+    border-radius: 0.125rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} 1.2s linear infinite alternate;
+    opacity: 0.3;
+  }
 `;
