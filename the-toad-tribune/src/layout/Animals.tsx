@@ -13,6 +13,8 @@ import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 import { dateConverter } from "../utils/dateConverter";
+import { keyframes } from "styled-components";
+
 
 const Animals: React.FC<INewsProps> = ({
   articleResponse,
@@ -71,7 +73,18 @@ const Animals: React.FC<INewsProps> = ({
       </Buttons>
     </AnimalsStyles>
   ) : (
-    <p>Loading...</p>
+    <AnimalStylesLoader darkMode={darkMode}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </AnimalStylesLoader>
   );
 };
 
@@ -82,7 +95,49 @@ const AnimalsStyles = styled.div<DarkModeProps>`
   overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 0.5em;
   cursor: pointer;
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+`;
+
+const textFlash = keyframes`
+0%{
+  background-color: hsl(0, 0%, 15%)
+}
+
+100%{
+  background-color: hsl(0, 0%, 46%)
+}
+`;
+
+
+const AnimalStylesLoader = styled.div<DarkModeProps>`
+  grid-area: 6/6/10/8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2vh;
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+
+  div:nth-child(odd) {
+    height: 1rem;
+    width: 80%;
+    margin: 1vh;
+    border-radius: 0.175rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} .8s linear infinite alternate;
+    opacity: 0.3;
+  }
+
+  div:nth-child(even) {
+    height: 1rem;
+    width: 75%;
+    margin: 1vh;
+    border-radius: 0.125rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} 1.2s linear infinite alternate;
+    opacity: 0.3;
+  }
 `;

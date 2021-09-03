@@ -12,6 +12,7 @@ import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 import { dateConverter } from "../utils/dateConverter";
+import { keyframes } from "styled-components";
 
 const Movies: React.FC<INewsProps> = ({
   articleResponse,
@@ -69,7 +70,23 @@ const Movies: React.FC<INewsProps> = ({
       </Buttons>
     </MoviesStyles>
   ) : (
-    <p>Loading....</p>
+    <MoviesStylesLoader darkMode={darkMode}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </MoviesStylesLoader>
   );
 };
 
@@ -86,4 +103,49 @@ const MoviesStyles = styled.div<DarkModeProps>`
   justify-content: center;
   align-items: center;
   padding-top: 1rem;
+`;
+
+const textFlash = keyframes`
+0%{
+  background-color: hsl(0, 0%, 15%)
+}
+
+100%{
+  background-color: hsl(0, 0%, 46%)
+}
+`;
+
+const MoviesStylesLoader = styled.div<DarkModeProps>`
+  border: double;
+  border-right: none;
+  border-bottom: none;
+  grid-area: 4/8/10/9;
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 4vh;
+  padding-left: 1vh;
+  align-items: center;
+  flex-direction: column;
+  
+
+  div:nth-child(odd) {
+    height: 1rem;
+    width: 80%;
+    margin: 1vh;
+    border-radius: 0.175rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} .8s linear infinite alternate;
+    opacity: 0.3;
+  }
+
+  div:nth-child(even) {
+    height: 1rem;
+    width: 75%;
+    margin: 1vh;
+    border-radius: 0.125rem;
+    background-color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+    animation: ${textFlash} 1.2s linear infinite alternate;
+    opacity: 0.3;
+  }
 `;
