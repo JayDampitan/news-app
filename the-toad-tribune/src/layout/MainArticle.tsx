@@ -28,7 +28,7 @@ const MainArticle: React.FC<INewsProps> = ({
         }}
         className="add-class"
       >
-        <img src={PrevIcon} alt="" />
+        <img src={PrevIcon} alt="arrow pointing left" />
       </Buttons>
 
       <h3 className="main-article-title">Top Headlines</h3>
@@ -62,7 +62,7 @@ const MainArticle: React.FC<INewsProps> = ({
             : onNextButton();
         }}
       >
-        <img src={NextIcon} alt="" />
+        <img src={NextIcon} alt="arrow pointing right" />
       </Buttons>
     </MainArticleStyles>
   ) : (
@@ -86,6 +86,11 @@ const MainArticleStyles = styled.div<DarkModeProps>`
   justify-content: center;
   align-items: center;
   position: relative;
+
+  &:hover${Buttons} {
+    opacity: 1;
+    display: block;
+  }
 
   .main-article-title {
     position: absolute;

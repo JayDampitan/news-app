@@ -33,7 +33,7 @@ const Movies: React.FC<INewsProps> = ({
             : onPrevButton();
         }}
       >
-        <img src={PrevIcon} alt="" />
+        <img src={PrevIcon} alt="arrow pointing left" />
       </Buttons>
 
       <ArticleContentContainer2
@@ -65,7 +65,7 @@ const Movies: React.FC<INewsProps> = ({
             : onNextButton();
         }}
       >
-        <img src={NextIcon} alt="" />
+        <img src={NextIcon} alt="arrow pointing right" />
       </Buttons>
     </MoviesStyles>
   ) : (
