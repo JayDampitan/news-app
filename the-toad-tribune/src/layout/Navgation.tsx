@@ -9,6 +9,7 @@ interface INavProps {
   darkMode: Boolean;
   renderMainLayoutPage: Function;
   renderSearchPage: Function;
+  setdarkMode: Function;
   setSearchValue: Function;
   setSearchResults: Function;
 }
@@ -17,6 +18,7 @@ const Navigation: React.FC<INavProps> = ({
   darkMode,
   renderMainLayoutPage,
   renderSearchPage,
+  setdarkMode,
   setSearchResults,
   setSearchValue,
 }) => {
@@ -48,7 +50,11 @@ const Navigation: React.FC<INavProps> = ({
 
   return (
     <NavigationStyles darkMode={darkMode}>
+      <div className="logo-container">
       <NavLogo onClick={() => renderMainLayoutPage()}> <img src={toad} alt="" /> </NavLogo>
+      <div className="nav-text">Light</div>
+      </div>
+      
       <NavTitle onClick={() => renderMainLayoutPage()}>
         <span>The</span> <span>Toad</span> <span>Tribune</span>
       </NavTitle>
@@ -83,12 +89,23 @@ const NavigationStyles = styled.div<DarkModeProps>`
   border-right: none;
   border-left: none;
   color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
+
+  .logo-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-text{
+    margin: 1vh;
+  }
 `;
 
 const NavLogo = styled.div`
-  max-width: 90px;
-  max-height: 90px;
-  margin: 1rem;
+  max-width: 80px;
+  max-height: 80px;
+  margin: 1rem 1rem 0 1rem;
   border-radius: 50%;
   text-align: center;
   display: flex;
@@ -98,8 +115,8 @@ const NavLogo = styled.div`
   border: double;
 
   img{
-    height: 90px;
-    width: 90px;
+    height: 80px;
+    width: 80px;
   }
 `;
 
@@ -130,7 +147,7 @@ const NavSearchContainer = styled.div`
 const NavSearch = styled.input<DarkModeProps>`
   width: 250px;
   height: 30px;
-  margin-top: 30px;
+  margin-top: 60px;
   margin-right: 80px;
   padding-left: 10px;
   padding-right: 10px;

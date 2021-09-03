@@ -232,6 +232,7 @@ const SubApp = () => {
             darkMode={darkMode}
             renderMainLayoutPage={renderMainLayoutPage}
             renderSearchPage={renderSearchPage}
+            setdarkMode={setdarkMode}
             setSearchValue={setSearchValue}
             setSearchResults={setSearchResults}
           />
