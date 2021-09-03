@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import type { IWeatherProp } from "../api";
 import babysun from "../assets/telebabysun.png";
 import { DarkModeProps } from "../api/newsApi";
@@ -27,6 +27,18 @@ const Weather: React.FC<IWeatherProp> = ({ darkMode, weatherResponse }) => {
 };
 
 export default Weather;
+
+const babySunAnimation = keyframes`
+   0% {
+       transform: translate(0px, 0px);
+       animation-timing-function:ease-in-out
+   }
+
+   100% {
+       transform: translate(0px, -180px);
+       animation-timing-function:ease-in-out
+   }
+`
 
 const WeatherStyles = styled.div<DarkModeProps>`
   border: double;
@@ -62,18 +74,24 @@ const WeatherStyles = styled.div<DarkModeProps>`
     width: 60px;
     border-radius: 50%;
   }
+  
 
   .baby-sun-container {
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    overflow: hidden;
+    position: relative;
 
     img {
+      position: absolute;
       height: 150px;
       width: 150px;
-      vertical-align: middle;
+      margin-top: 180px;
+      animation: ${babySunAnimation} 3s linear infinite alternate;
     }
   }
 `;
+
+
