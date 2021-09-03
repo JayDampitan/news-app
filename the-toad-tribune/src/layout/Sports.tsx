@@ -25,40 +25,39 @@ const Sports: React.FC<INewsProps> = ({
 
   return articleResponse.articles.length ? (
     <SportsStyles darkMode={darkMode}>
-     
-        <Buttons
-          onClick={() => {
-            pageNumber === 0
-              ? startEnd(articleResponse.articles.length - 1)
-              : onPrevButton();
-          }}
-          className="add-class"
-        >
-          <img src={PrevIcon} alt="" />
-        </Buttons>
+      <Buttons
+        onClick={() => {
+          pageNumber === 0
+            ? startEnd(articleResponse.articles.length - 1)
+            : onPrevButton();
+        }}
+        className="add-class"
+      >
+        <img src={PrevIcon} alt="" />
+      </Buttons>
 
-        <ArticleContentContainer2
-          onClick={() => {
-            renderMoreInfoPage();
-            setSelectedArticle(article);
-          }}
-        >
-          <ImageContainer2>
-            <img src={article?.urlToImage} />
-          </ImageContainer2>
+      <ArticleContentContainer2
+        onClick={() => {
+          renderMoreInfoPage();
+          setSelectedArticle(article);
+        }}
+      >
+        <h3>Sports</h3>
+        <ImageContainer2>
+          <img src={article?.urlToImage} />
+        </ImageContainer2>
 
-          <HeaderContainer2>
-            <h3>{article?.title}</h3>
-            <h4>{article?.author}</h4>
-            <h5>{article?.publishedAt}</h5>
-          </HeaderContainer2>
+        <HeaderContainer2>
+          <h3>{article?.title}</h3>
+          <h4>{article?.author}</h4>
+          <h5>{article?.publishedAt}</h5>
+        </HeaderContainer2>
 
-          <DescriptionContainer2>
-            <p>{article?.description}</p>
-          </DescriptionContainer2>
+        <DescriptionContainer2>
+          <p>{article?.description}</p>
+        </DescriptionContainer2>
+      </ArticleContentContainer2>
 
-        </ArticleContentContainer2>
-     
       <Buttons
         onClick={() => {
           articleResponse.articles.length - 1 === pageNumber
@@ -84,5 +83,5 @@ const SportsStyles = styled.div<DarkModeProps>`
   justify-content: center;
   align-items: center;
   border: none;
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 `;

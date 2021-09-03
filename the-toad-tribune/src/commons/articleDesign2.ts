@@ -1,17 +1,29 @@
 import styled from "styled-components";
 
 export const ArticleContentContainer2 = styled.div`
-  max-width: 92%;
-  max-height: 92%;
+  max-width: 98%;
+  max-height: 98%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow: hidden;
+  overflow: scroll;
+
+  h3 {
+    margin: 0 0 1rem 0;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
 `;
 
 export const ImageContainer2 = styled.div`
-  min-width: 80%;
-  max-width: 80%;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   img {
     width: 100%;
@@ -28,12 +40,13 @@ export const HeaderContainer2 = styled.div`
   margin-top: 0.2rem;
 
   h3 {
-    margin: 0;
+    margin: 0.5rem;
     text-align: center;
+    line-height: 1.5rem;
   }
 
   h4 {
-    margin: 0.2rem 0 0 0.4rem;
+    margin: 0.9rem 0 0 0.4rem;
   }
   h5 {
     margin: 0.2rem 0 0 0.4rem;
@@ -41,10 +54,10 @@ export const HeaderContainer2 = styled.div`
 `;
 
 export const DescriptionContainer2 = styled.div`
-    font-family: "Times New Roman", Times, serif;
+  font-family: "Times New Roman", Times, serif;
 
-  p::first-letter{
+  p::first-letter {
     font-size: 30px;
-    margin: 0.9rem 0 ;     
+    margin: 0.9rem 0;
   }
 `;

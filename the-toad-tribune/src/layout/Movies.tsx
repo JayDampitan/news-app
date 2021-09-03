@@ -41,6 +41,7 @@ const Movies: React.FC<INewsProps> = ({
           setSelectedArticle(article);
         }}
       >
+        <h3>Movies</h3>
         <ImageContainer2>
           <img src={article?.urlToImage} />
         </ImageContainer2>
@@ -54,7 +55,6 @@ const Movies: React.FC<INewsProps> = ({
         <DescriptionContainer2>
           <p>{article?.description}</p>
         </DescriptionContainer2>
-
       </ArticleContentContainer2>
 
       <Buttons
@@ -79,11 +79,10 @@ const MoviesStyles = styled.div<DarkModeProps>`
   border-right: none;
   border-bottom: none;
   grid-area: 4/8/10/9;
-  margin-bottom: 0.5em;
-  margin-right: .5rem;
   cursor: pointer;
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
-`
-
-
-
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+`;

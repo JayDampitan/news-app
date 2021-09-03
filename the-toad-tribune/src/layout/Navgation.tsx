@@ -87,7 +87,7 @@ const NavigationStyles = styled.div<DarkModeProps>`
   grid-area: 1/1/2/10;
   display: flex;
   justify-content: space-between;
-  border: double;
+  border: 5px double;
   border-top: none;
   border-right: none;
   border-left: none;

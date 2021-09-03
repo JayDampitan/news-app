@@ -42,6 +42,7 @@ const StonksArticle: React.FC<INewsProps> = ({
           setSelectedArticle(article);
         }}
       >
+        <h3>Stocks</h3>
         <ImageContainer2>
           <img src={article?.urlToImage} />
         </ImageContainer2>
@@ -55,7 +56,6 @@ const StonksArticle: React.FC<INewsProps> = ({
         <DescriptionContainer2>
           <p>{article?.description}</p>
         </DescriptionContainer2>
-
       </ArticleContentContainer2>
 
       <Buttons
@@ -86,5 +86,5 @@ const StonksStyles = styled.div<DarkModeProps>`
   overflow: hidden;
   cursor: pointer;
   margin-bottom: 0.5em;
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 `;
