@@ -1,7 +1,7 @@
 import React, { KeyboardEvent, useState } from "react";
 import styled from "styled-components";
-import toadLight from "../assets/toadTribuneLight.svg";
-import toadDark from "../assets/toadTribuneDark.svg";
+import logoDark from "../assets/dark-logo.png";
+import logoLight from "../assets/light-logo.png";
 import { getNewsEverything, NewsEverythingRequest } from "../api";
 import { DarkModeProps } from "../api/newsApi";
 
@@ -57,7 +57,7 @@ const Navigation: React.FC<INavProps> = ({
       <div className="logo-container">
         <NavLogo onClick={() => setdarkMode(!darkMode)}>
           {" "}
-          <img src={darkMode ? toadDark : toadLight} alt="" />{" "}
+          <img src={darkMode ? logoLight : logoDark} alt="Toad Tribune" />{" "}
         </NavLogo>
         <div className="nav-text">{darkMode ? "Dark" : "Light"}</div>
       </div>
@@ -124,8 +124,11 @@ const NavLogo = styled.div`
   border: double;
 
   img {
-    height: 80px;
-    width: 80px;
+    height: 90%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 7px;
   }
 `;
 
