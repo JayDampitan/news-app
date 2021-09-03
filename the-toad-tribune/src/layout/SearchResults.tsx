@@ -142,7 +142,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
               alt="previous button"
             />
           </div>
-          <span>{`${pageNumber}/${totalPages}`}</span>
+          <span className="page-results">{`${pageNumber}/${totalPages}`}</span>
           <div
             onClick={() => {
               pageNumber < totalPages && getNextPage();
@@ -172,7 +172,7 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
   background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 
-  span:nth-of-type(1) {
+  span:nth-of-type(1):not(.page-results) {
     cursor: pointer;
   }
 
@@ -197,6 +197,10 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
       img {
         height: 1.6rem;
         width: 1.6rem;
+      }
+
+      &:hover {
+        cursor: pointer;
       }
     }
   }
