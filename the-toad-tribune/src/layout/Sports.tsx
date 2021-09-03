@@ -11,6 +11,7 @@ import {
 import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
+import { dateConverter } from "../utils/dateConverter";
 
 const Sports: React.FC<INewsProps> = ({
   articleResponse,
@@ -47,11 +48,11 @@ const Sports: React.FC<INewsProps> = ({
           <img src={article?.urlToImage} />
         </ImageContainer2>
 
-        <HeaderContainer2>
-          <h3>{article?.title}</h3>
-          <h4>{article?.author}</h4>
-          <h5>{article?.publishedAt}</h5>
-        </HeaderContainer2>
+          <HeaderContainer2>
+            <h3>{article?.title}</h3>
+            <h4>{article?.author}</h4>
+            <h5>{dateConverter(article?.publishedAt)}</h5>
+          </HeaderContainer2>
 
         <DescriptionContainer2>
           <p>{article?.description}</p>
