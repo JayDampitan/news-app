@@ -11,6 +11,7 @@ interface SearchResultsProps {
   renderMoreInfoPage: Function;
   searchResults: INewsResponse;
   searchValue: string;
+  setSnackbarMessage: Function;
   setSearchResults: Function;
   setSelectedArticle: Function;
 }
@@ -20,6 +21,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   renderMoreInfoPage,
   searchResults,
   searchValue,
+  setSnackbarMessage,
   setSearchResults,
   setSelectedArticle,
 }) => {
@@ -47,21 +49,43 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 
   const getNextPage = () => {
     setPageNumber((prevPageNumber) => prevPageNumber + 1);
+
     const searchStuff = new NewsEverythingRequest({
       q: searchValue,
       page: pageNumber + 1,
     });
-    getNewsEverything(searchStuff).then((results) => setSearchResults(results));
+
+    getNewsEverything(searchStuff).then((results) => {
+      if (results.status === "ok") {
+        setSearchResults(results)
+      }
+
+      if (results.status === "error") {
+        setSnackbarMessage(results.message);
+      }
+    });
+
     scrollToTop();
   };
 
   const getPrevPage = () => {
     setPageNumber((prevPageNumber) => prevPageNumber - 1);
+
     const searchStuff = new NewsEverythingRequest({
       q: searchValue,
       page: pageNumber - 1,
     });
-    getNewsEverything(searchStuff).then((results) => setSearchResults(results));
+
+    getNewsEverything(searchStuff).then((results) => {
+      if (results.status === "ok") {
+        setSearchResults(results);
+      }
+
+      if (results.status === "error") {
+        setSnackbarMessage(results.message);
+      }
+    });
+    
     scrollToTop();
   };
 

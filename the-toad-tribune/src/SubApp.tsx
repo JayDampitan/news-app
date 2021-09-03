@@ -251,6 +251,7 @@ const SubApp = () => {
             renderMoreInfoPage={renderMoreInfoPage}
             searchResults={searchResults}
             searchValue={searchValue}
+            setSnackbarMessage={setServerErrorMessage}
             setSearchResults={setSearchResults}
             setSelectedArticle={setSelectedArticle}
           />
