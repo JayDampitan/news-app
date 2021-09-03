@@ -15,6 +15,7 @@ import NextIcon from "../commons/next.png";
 import { dateConverter } from "../utils/dateConverter";
 import { keyframes } from "styled-components";
 
+
 const Animals: React.FC<INewsProps> = ({
   articleResponse,
   darkMode,
