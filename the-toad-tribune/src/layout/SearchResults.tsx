@@ -132,11 +132,12 @@ const SearchResults: React.FC<SearchResultsProps> = ({
       {renderResults()}
       {searchResults.articles.length > 0 && (
         <div className="btn-container">
-          <div className="down-btn">
+          <div className="down-btn"
+            onClick={() => {
+              pageNumber > 1 && getPrevPage();
+            }}
+          >
             <img
-              onClick={() => {
-                pageNumber > 1 && getPrevPage();
-              }}
               src={PrevIcon}
               alt="previous button"
             />
