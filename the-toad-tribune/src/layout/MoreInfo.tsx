@@ -1,8 +1,9 @@
 import type { IMoreInfoPageProps } from "../api";
 import styled from "styled-components";
 import { makeLoremIpsum } from "../utils/loremIpsum";
+import { DarkModeProps } from "../api/newsApi";
 
-const MoreInfo: React.FC<IMoreInfoPageProps> = ({ selectedArticle }) => {
+const MoreInfo: React.FC<IMoreInfoPageProps> = ({ darkMode, selectedArticle }) => {
   const getContent = () => {
     return (
       <div className="content-container">
@@ -28,7 +29,7 @@ const MoreInfo: React.FC<IMoreInfoPageProps> = ({ selectedArticle }) => {
 
 
   return (
-    <MoreInfoStyles>
+    <MoreInfoStyles darkMode={darkMode}>
       <h1> {selectedArticle.title}</h1>
 
       <span>Author: {selectedArticle.author}</span>
@@ -45,14 +46,25 @@ const MoreInfo: React.FC<IMoreInfoPageProps> = ({ selectedArticle }) => {
 
 export default MoreInfo;
 
-const MoreInfoStyles = styled.div`
+const MoreInfoStyles = styled.div<DarkModeProps>`
   display: flex;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   overflow: auto;
-  width: 80vw;
-  margin: 3vh auto;
+  background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+  
+  a{
+    text-decoration: none !important;
+    color: ${(props) => (props.darkMode ? "#ffffff7f" : "#0200005a")};
+  }
 
   .content-container {
     margin-left: auto;

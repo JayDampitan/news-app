@@ -218,7 +218,7 @@ const SubApp = () => {
             setSelectedArticle={setSelectedArticle}
           />
         }
-        MoreInfo={<MoreInfo selectedArticle={selectedArticle} />}
+        MoreInfo={<MoreInfo darkMode={darkMode} selectedArticle={selectedArticle} />}
         Movies={
           <Movies
             articleResponse={moviesArticle}

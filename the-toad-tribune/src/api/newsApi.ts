@@ -12,6 +12,7 @@ export interface DarkModeProps {
 }
 
 export interface IMoreInfoPageProps {
+  darkMode: Boolean;
   selectedArticle: IArticle;
 }
 
