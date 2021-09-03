@@ -35,19 +35,23 @@ const MainArticle: React.FC<INewsProps> = ({
           setSelectedArticle(article);
         }}>
 
-        <div className="img-container">
-          <Image src={article?.urlToImage} />
-        </div>
+          <div className="img-container">
+            <Image src={article?.urlToImage} />
+          </div>    
+          <MainArticleHeaderContainer>
+            <div className="main-content">
+                <h3> {article?.title} </h3>
 
-        <div className="main-content">
-          <h3> {article?.title} </h3>
+                <h4> {article?.author} </h4>
 
-          <h4> {article?.author} </h4>
+                <h5>{article?.publishedAt}</h5>
+            </div>
+          <MainArticleDescriptionConatiner>
+            <p>{article?.description}</p>
+          </MainArticleDescriptionConatiner>
 
-          <h5>{article?.publishedAt}</h5>
-
-          {article?.description}
-        </div>
+          </MainArticleHeaderContainer>
+          
 
       </MainArticleContentContainer>
 
@@ -79,30 +83,50 @@ const MainArticleStyles = styled.div<DarkModeProps>`
   margin-top: 1vh;
   padding: 1rem;
   display: flex;
-  flex-direction: column;
   color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
-  
+  justify-content: center;
+  align-items: center;
+
   .img-container{
-    min-width: 80%;
-    max-width: 80%;
+    width: 70%;
   }
-
-  .main-content {
-
-    h3 {
-      margin: 0;
-    }
-  }
-`;
-
-const Image = styled.img`
-  height: 100%;
-  width: 100%;
-  
 `;
 
 const MainArticleContentContainer = styled.div`
   max-height: 90%;
   max-width: 90%;
-  border: 1px solid red;
+  display: flex;
 `;
+
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+`;
+
+
+
+const MainArticleHeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+   .main-content {
+
+      h3 {
+        margin: 0 0 0 2rem;
+      }
+      h4 {
+        margin: 2rem 0 0 3rem;
+      }
+      h5 {
+        margin: 0 0 0 3rem;
+      }
+      }
+  `;
+
+  const MainArticleDescriptionConatiner = styled.div`
+      margin: 0 0 0 2rem;
+      p::first-letter{
+          font-size: 30px;   
+        }
+  `;
