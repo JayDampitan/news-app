@@ -6,28 +6,21 @@ export const Buttons = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  border: none;
-  background-color: #fff;
+  border: double;
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  margin: 0.2rem;
+  margin: 0.7rem;
   cursor: pointer;
-  box-shadow: 1px 1px 5px grey;
 
   img {
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 1rem;
+    width: 1rem;
     color: #fff;
   }
 
   img {
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 1rem;
+    width: 1rem;
     color: #fff;
-  }
-
-  :hover {
-    opacity: 1;
-    transition: 0.7s;
   }
 `;
