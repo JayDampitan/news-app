@@ -5,7 +5,6 @@ import toadDark from "../assets/toadTribuneDark.svg";
 import { getNewsEverything, NewsEverythingRequest } from "../api";
 import { DarkModeProps } from "../api/newsApi";
 
-
 interface INavProps {
   darkMode: Boolean;
   renderMainLayoutPage: Function;
@@ -52,12 +51,13 @@ const Navigation: React.FC<INavProps> = ({
   return (
     <NavigationStyles darkMode={darkMode}>
       <div className="logo-container">
-      <NavLogo onClick={() => {
-        setdarkMode(!darkMode);
-        renderMainLayoutPage()}}> <img src={darkMode ? toadDark : toadLight} alt="" /> </NavLogo>
-      <div className="nav-text">{darkMode ? "Dark" : "Light"}</div>
+        <NavLogo onClick={() => setdarkMode(!darkMode)}>
+          {" "}
+          <img src={darkMode ? toadDark : toadLight} alt="" />{" "}
+        </NavLogo>
+        <div className="nav-text">{darkMode ? "Dark" : "Light"}</div>
       </div>
-      
+
       <NavTitle onClick={() => renderMainLayoutPage()}>
         <span>The</span> <span>Toad</span> <span>Tribune</span>
       </NavTitle>
@@ -91,16 +91,17 @@ const NavigationStyles = styled.div<DarkModeProps>`
   border-top: none;
   border-right: none;
   border-left: none;
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
+  background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 
-  .logo-container{
+  .logo-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .nav-text{
+  .nav-text {
     margin: 1vh;
   }
 `;
@@ -117,7 +118,7 @@ const NavLogo = styled.div`
   cursor: pointer;
   border: double;
 
-  img{
+  img {
     height: 80px;
     width: 80px;
   }
@@ -154,9 +155,9 @@ const NavSearch = styled.input<DarkModeProps>`
   margin-right: 80px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: ${props => props.darkMode ? "#1a1a1a" : "#e3dac9"};
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
-  
+  background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+
   border: double;
   outline: none;
   border-left: none;
@@ -164,7 +165,7 @@ const NavSearch = styled.input<DarkModeProps>`
   border-top: none;
 
   ::placeholder {
-    color: ${props => props.darkMode ? "#e3dac9 !important" : "#1a1a1a"};
+    color: ${(props) => (props.darkMode ? "#e3dac9 !important" : "#1a1a1a")};
   }
 
   &.error {
@@ -175,7 +176,6 @@ const NavSearch = styled.input<DarkModeProps>`
       color: red;
     }
   }
-
 
   ::placeholder,
   ::-webkit-input-placeholder {

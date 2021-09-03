@@ -4,8 +4,10 @@ import { getNewsEverything, NewsEverythingRequest } from "../api";
 import type { INewsResponse } from "../api";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
+import { DarkModeProps } from "../api/newsApi";
 
 interface SearchResultsProps {
+  darkMode: Boolean;
   renderMoreInfoPage: Function;
   searchResults: INewsResponse;
   searchValue: string;
@@ -14,6 +16,7 @@ interface SearchResultsProps {
 }
 
 const SearchResults: React.FC<SearchResultsProps> = ({
+  darkMode,
   renderMoreInfoPage,
   searchResults,
   searchValue,
@@ -75,7 +78,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             }}
           />
         </ImageContainer>
-        <ArticleInfoContainerStyles>
+        <ArticleInfoContainerStyles darkMode={darkMode}>
           <span
             onClick={() => {
               setSelectedArticle(article);
@@ -97,7 +100,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   };
 
   return (
-    <ArticleContainerStyles>
+    <ArticleContainerStyles darkMode={darkMode}>
       {renderResults()}
       {searchResults.articles.length > 0 && (
         <div className="btn-container">
@@ -127,12 +130,18 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 
 export default SearchResults;
 
-const ArticleContainerStyles = styled.div`
+const ArticleContainerStyles = styled.div<DarkModeProps>`
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 5rem;
+  background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 
   span:nth-of-type(1) {
     cursor: pointer;
@@ -174,7 +183,10 @@ const ArticleStyles = styled.div`
   margin: 0.5rem;
   width: 90%;
   height: 8rem;
-  border-bottom: 2px solid black;
+  border: double;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   justify-content: space-between;
 `;
 
@@ -193,10 +205,16 @@ const ImageContainer = styled.div`
   }
 `;
 
-const ArticleInfoContainerStyles = styled.div`
+const ArticleInfoContainerStyles = styled.div<DarkModeProps>`
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
   max-width: 75%;
   min-width: 75%;
+
+  a{
+    text-decoration: none !important;
+    color: ${(props) => (props.darkMode ? "#ffffff7f" : "#0200005a")};
+  }
+
 `;

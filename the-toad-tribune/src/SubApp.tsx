@@ -247,6 +247,7 @@ const SubApp = () => {
         }
         SearchResults={
           <SearchResults
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             searchResults={searchResults}
             searchValue={searchValue}
