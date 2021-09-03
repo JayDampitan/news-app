@@ -1,6 +1,7 @@
 import fetchApi from "./fetchApi"
 
 export interface IWeatherProp {
+  darkMode: Boolean;
   weatherResponse: IWeatherResponse;
 }
 

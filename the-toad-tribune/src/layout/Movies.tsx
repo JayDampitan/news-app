@@ -8,12 +8,13 @@ import {
   HeaderContainer2,
   ImageContainer2,
 } from "../commons";
-
+import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
 const Movies: React.FC<INewsProps> = ({
   articleResponse,
+  darkMode,
   renderMoreInfoPage,
   setSelectedArticle,
 }) => {
@@ -23,7 +24,7 @@ const Movies: React.FC<INewsProps> = ({
   const article = articleResponse.articles?.[pageNumber];
 
   return articleResponse.articles.length ? (
-    <MoviesStyles>
+    <MoviesStyles darkMode={darkMode}>
       <Buttons
         onClick={() => {
           pageNumber === 0
@@ -73,7 +74,7 @@ const Movies: React.FC<INewsProps> = ({
 
 export default Movies;
 
-const MoviesStyles = styled.div`
+const MoviesStyles = styled.div<DarkModeProps>`
   border: double;
   border-right: none;
   border-bottom: none;
@@ -81,8 +82,8 @@ const MoviesStyles = styled.div`
   margin-bottom: 0.5em;
   margin-right: .5rem;
   cursor: pointer;
-`;
-
+  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
+`
 
 
 

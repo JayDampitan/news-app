@@ -76,6 +76,8 @@ const SubApp = () => {
   
   const [serverErrorMessage, setServerErrorMessage] = useState<string>("");
 
+  const [darkMode, setdarkMode] = useState<Boolean>(true);
+
   const newsDataGrabber = () => {
     const topHeadlinesRequest = new NewsTopHeadlinesRequest();
     getNewsTopHeadlines(topHeadlinesRequest).then((res) => {
@@ -199,32 +201,38 @@ const SubApp = () => {
         Animals={
           <Animals
             articleResponse={animalArticle}
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
         }
+        darkMode={darkMode}
         isMainLayout={isMainLayout}
         isMoreInfo={isMoreInfo}
         isSearchPage={isSearchPage}
         MainArticle={
           <MainArticle
             articleResponse={mainArticle}
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
         }
-        MoreInfo={<MoreInfo selectedArticle={selectedArticle} />}
+        MoreInfo={<MoreInfo darkMode={darkMode} selectedArticle={selectedArticle} />}
         Movies={
           <Movies
             articleResponse={moviesArticle}
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
         }
         Navigation={
           <Navigation
+            darkMode={darkMode}
             renderMainLayoutPage={renderMainLayoutPage}
             renderSearchPage={renderSearchPage}
+            setdarkMode={setdarkMode}
             setSearchValue={setSearchValue}
             setSearchResults={setSearchResults}
           />
@@ -232,12 +240,14 @@ const SubApp = () => {
         Politics={
           <Politics
             articleResponse={politicsArticle}
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
         }
         SearchResults={
           <SearchResults
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             searchResults={searchResults}
             searchValue={searchValue}
@@ -248,6 +258,7 @@ const SubApp = () => {
         Sports={
           <Sports
             articleResponse={sportsArticle}
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
@@ -255,11 +266,13 @@ const SubApp = () => {
         Stonks={
           <Stonks
             articleResponse={stonksArticle}
+
+            darkMode={darkMode}
             renderMoreInfoPage={renderMoreInfoPage}
             setSelectedArticle={setSelectedArticle}
           />
         }
-        Weather={<Weather weatherResponse={weather} />}
+        Weather={<Weather darkMode={darkMode} weatherResponse={weather} />}
       />
 
       {serverErrorMessage.length > 0 && <Snackbar bgColor="red" setMessage={setServerErrorMessage}>{serverErrorMessage}</Snackbar>}

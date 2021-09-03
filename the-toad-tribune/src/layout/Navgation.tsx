@@ -1,19 +1,24 @@
 import React, { KeyboardEvent, useState } from "react";
 import styled from "styled-components";
-import toad from "../assets/toad.png"
+import toadLight from "../assets/toadTribuneLight.svg";
+import toadDark from "../assets/toadTribuneDark.svg";
 import { getNewsEverything, NewsEverythingRequest } from "../api";
-
+import { DarkModeProps } from "../api/newsApi";
 
 interface INavProps {
+  darkMode: Boolean;
   renderMainLayoutPage: Function;
   renderSearchPage: Function;
+  setdarkMode: Function;
   setSearchValue: Function;
   setSearchResults: Function;
 }
 
 const Navigation: React.FC<INavProps> = ({
+  darkMode,
   renderMainLayoutPage,
   renderSearchPage,
+  setdarkMode,
   setSearchResults,
   setSearchValue,
 }) => {
@@ -44,14 +49,22 @@ const Navigation: React.FC<INavProps> = ({
   };
 
   return (
-    <NavigationStyles>
-      <NavLogo onClick={() => renderMainLayoutPage()}> <img src={toad} alt="" /> </NavLogo>
+    <NavigationStyles darkMode={darkMode}>
+      <div className="logo-container">
+        <NavLogo onClick={() => setdarkMode(!darkMode)}>
+          {" "}
+          <img src={darkMode ? toadDark : toadLight} alt="" />{" "}
+        </NavLogo>
+        <div className="nav-text">{darkMode ? "Dark" : "Light"}</div>
+      </div>
+
       <NavTitle onClick={() => renderMainLayoutPage()}>
         <span>The</span> <span>Toad</span> <span>Tribune</span>
       </NavTitle>
 
       <NavSearchContainer>
         <NavSearch
+          darkMode={darkMode}
           placeholder="Search"
           id="input"
           className={searchError.length > 0 ? "error" : ""}
@@ -70,7 +83,7 @@ const Navigation: React.FC<INavProps> = ({
 
 export default Navigation;
 
-const NavigationStyles = styled.div`
+const NavigationStyles = styled.div<DarkModeProps>`
   grid-area: 1/1/2/10;
   display: flex;
   justify-content: space-between;
@@ -78,13 +91,25 @@ const NavigationStyles = styled.div`
   border-top: none;
   border-right: none;
   border-left: none;
+  background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-text {
+    margin: 1vh;
+  }
 `;
 
 const NavLogo = styled.div`
-  max-width: 90px;
-  max-height: 90px;
-  margin: 1rem;
-  margin-left: 5rem;
+  max-width: 80px;
+  max-height: 80px;
+  margin: 1rem 1rem 0 1rem;
   border-radius: 50%;
   text-align: center;
   display: flex;
@@ -93,9 +118,9 @@ const NavLogo = styled.div`
   cursor: pointer;
   border: double;
 
-  img{
-    height: 90px;
-    width: 90px;
+  img {
+    height: 80px;
+    width: 80px;
   }
 `;
 
@@ -104,7 +129,6 @@ const NavTitle = styled.h1`
   font-size: 65px;
   display: flex;
   align-items: center;
-  color: black;
   cursor: pointer;
   margin: 0;
   padding: 0;
@@ -124,19 +148,25 @@ const NavSearchContainer = styled.div`
   flex-direction: column;
 `;
 
-const NavSearch = styled.input`
+const NavSearch = styled.input<DarkModeProps>`
   width: 250px;
   height: 30px;
-  margin-top: 30px;
+  margin-top: 60px;
   margin-right: 80px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: hsl(0, 0%, 18%);
+  background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+
   border: double;
   outline: none;
   border-left: none;
   border-right: none;
   border-top: none;
+
+  ::placeholder {
+    color: ${(props) => (props.darkMode ? "#e3dac9 !important" : "#1a1a1a")};
+  }
 
   &.error {
     border-bottom-color: red;
@@ -146,7 +176,6 @@ const NavSearch = styled.input`
       color: red;
     }
   }
-
 
   ::placeholder,
   ::-webkit-input-placeholder {

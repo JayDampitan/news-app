@@ -9,12 +9,13 @@ import {
   HeaderContainer2,
   ImageContainer2,
 } from "../commons";
-
+import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 
 const Animals: React.FC<INewsProps> = ({
   articleResponse,
+  darkMode,
   renderMoreInfoPage,
   setSelectedArticle,
 }) => {
@@ -24,7 +25,7 @@ const Animals: React.FC<INewsProps> = ({
   const article = articleResponse.articles?.[pageNumber];
 
   return articleResponse.articles.length ? (
-    <AnimalsStyles >
+    <AnimalsStyles darkMode={darkMode}>
       <Buttons
         onClick={() => {
           pageNumber === 0
@@ -75,12 +76,15 @@ const Animals: React.FC<INewsProps> = ({
 
 export default Animals;
 
-const AnimalsStyles = styled.div`
+
+
+const AnimalsStyles = styled.div<DarkModeProps>`
   grid-area: 6/6/10/8;
   overflow: hidden;
   display: flex;
   align-items: center;
   margin-bottom: 0.5em;
   cursor: pointer;
+  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
 `;
 

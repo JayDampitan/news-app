@@ -2,11 +2,17 @@ import fetchApi from "./fetchApi"
 
 export interface INewsProps {
   articleResponse: INewsResponse;
+  darkMode: Boolean;
   renderMoreInfoPage: Function;
   setSelectedArticle: Function;
 }
 
+export interface DarkModeProps {
+  darkMode: Boolean;
+}
+
 export interface IMoreInfoPageProps {
+  darkMode: Boolean;
   selectedArticle: IArticle;
 }
 

@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import type { IWeatherProp } from "../api";
 import babysun from "../assets/telebabysun.png"
+import { DarkModeProps } from "../api/newsApi";
 
-const Weather: React.FC<IWeatherProp> = ({ weatherResponse }) => {
+const Weather: React.FC<IWeatherProp> = ({ darkMode, weatherResponse }) => {
   return (
-    <WeatherStyles>
+    <WeatherStyles darkMode={darkMode}>
       {weatherResponse.current.pressure > 0 ? (
         <>
           <div className="temp-location">
@@ -28,7 +29,7 @@ const Weather: React.FC<IWeatherProp> = ({ weatherResponse }) => {
 
 export default Weather;
 
-const WeatherStyles = styled.div`
+const WeatherStyles = styled.div<DarkModeProps>`
   border: double;
   border-top: none;
   border-right: none;
@@ -41,6 +42,7 @@ const WeatherStyles = styled.div`
   align-items: center;
   padding: 2%;
   margin-top: 1vh;
+  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
 
   & .temp-location {
     font-weight: 600;
