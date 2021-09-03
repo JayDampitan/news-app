@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { getNewsEverything, NewsEverythingRequest } from "../api";
 import type { INewsResponse } from "../api";
+import { ReactComponent as NextButtonIconComponent } from "../assets/next-button.svg";
+import { ReactComponent as PreviousButtonIconComponent } from "../assets/prev-button.svg";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 import { DarkModeProps } from "../api/newsApi";
@@ -137,10 +139,11 @@ const SearchResults: React.FC<SearchResultsProps> = ({
               pageNumber > 1 && getPrevPage();
             }}
           >
-            <img
-              src={PrevIcon}
+            {/* <img
+              src={PreviousButtonIcon}
               alt="previous button"
-            />
+            /> */}
+            <PreviousButtonIconComponent />
           </div>
           <span className="page-results">{`${pageNumber}/${totalPages}`}</span>
           <div
@@ -149,7 +152,8 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             }}
             className="up-btn"
           >
-            <img src={NextIcon} alt="next button" />
+            {/* <img src={NextButtonIcon} alt="next button" /> */}
+            <NextButtonIconComponent />
           </div>
         </div>
       )}
@@ -184,7 +188,7 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
 
     .down-btn,
     .up-btn {
-      background-color: grey;
+      background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
       height: 2.5rem;
       width: 2.5rem;
       border-radius: 50%;
@@ -192,12 +196,16 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 1px 2px 2px 1px lightgrey;
-      border: 1px solid black;
+      /* box-shadow: 1px 2px 2px 1px lightgrey; */
+      border: double;
 
-      img {
+      svg {
         height: 1.6rem;
         width: 1.6rem;
+
+        & g {
+          fill: ${(props) => (props.darkMode) ? "#e3dac9" : "#1a1a1a"}
+        }
       }
 
       &:hover {
