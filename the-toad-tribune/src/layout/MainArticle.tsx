@@ -99,11 +99,6 @@ const MainArticleStyles = styled.div<DarkModeProps>`
   align-items: center;
   position: relative;
 
-  &:hover${Buttons} {
-    opacity: 1;
-    display: block;
-  }
-
   .main-article-title {
     position: absolute;
     margin-bottom: 2rem;

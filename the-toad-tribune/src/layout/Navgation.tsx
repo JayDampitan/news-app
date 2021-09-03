@@ -107,7 +107,7 @@ const NavigationStyles = styled.div<DarkModeProps>`
   }
 
   .nav-text {
-    margin: 1vh;
+    margin: 1vh 0 1vh 3vh;
   }
 `;
 

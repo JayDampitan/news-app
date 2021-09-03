@@ -192,9 +192,9 @@ const SubApp = () => {
 
   useEffect(() => {
     // Commented out for a reason
-    // newsDataGrabber();
+    newsDataGrabber();
     // adsDataGrabber();
-    // weatherDataGrabber();
+    weatherDataGrabber();
   }, []);
 
   return (
