@@ -42,7 +42,7 @@ const WeatherStyles = styled.div<DarkModeProps>`
   align-items: center;
   padding: 2%;
   margin-top: 1vh;
-  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
+  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
 
   & .temp-location {
     font-weight: 600;

@@ -82,7 +82,7 @@ const MoviesStyles = styled.div<DarkModeProps>`
   margin-bottom: 0.5em;
   margin-right: .5rem;
   cursor: pointer;
-  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
+  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
 `
 
 

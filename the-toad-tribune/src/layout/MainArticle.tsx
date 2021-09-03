@@ -83,7 +83,7 @@ const MainArticleStyles = styled.div<DarkModeProps>`
   margin-top: 1vh;
   padding: 1rem;
   display: flex;
-  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
+  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
   justify-content: center;
   align-items: center;
 

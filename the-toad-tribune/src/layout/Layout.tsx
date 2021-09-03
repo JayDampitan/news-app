@@ -89,7 +89,7 @@ export default Layout;
 const MainLayoutStyles = styled.div<DarkModeProps>`
   height: 100vh;
   width: 100vw;
-  background-color: ${props => props.darkMode ? "hsl(0, 0%, 10%)" : "#e3dac9"};
+  background-color: ${props => props.darkMode ? "#1a1a1a" : "#e3dac9"};
   display: grid;
   grid-template-columns: 8% 12% 12% 12% 12% 12% 12% 12% 8%;
   grid-template-rows: repeat(9, 1fr);

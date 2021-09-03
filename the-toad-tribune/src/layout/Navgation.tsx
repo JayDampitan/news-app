@@ -1,6 +1,7 @@
 import React, { KeyboardEvent, useState } from "react";
 import styled from "styled-components";
-import toad from "../assets/toad.png"
+import toadLight from "../assets/toadTribuneLight.svg";
+import toadDark from "../assets/toadTribuneDark.svg";
 import { getNewsEverything, NewsEverythingRequest } from "../api";
 import { DarkModeProps } from "../api/newsApi";
 
@@ -51,8 +52,10 @@ const Navigation: React.FC<INavProps> = ({
   return (
     <NavigationStyles darkMode={darkMode}>
       <div className="logo-container">
-      <NavLogo onClick={() => renderMainLayoutPage()}> <img src={toad} alt="" /> </NavLogo>
-      <div className="nav-text">Light</div>
+      <NavLogo onClick={() => {
+        setdarkMode(!darkMode);
+        renderMainLayoutPage()}}> <img src={darkMode ? toadDark : toadLight} alt="" /> </NavLogo>
+      <div className="nav-text">{darkMode ? "Dark" : "Light"}</div>
       </div>
       
       <NavTitle onClick={() => renderMainLayoutPage()}>
@@ -88,7 +91,7 @@ const NavigationStyles = styled.div<DarkModeProps>`
   border-top: none;
   border-right: none;
   border-left: none;
-  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
+  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
 
   .logo-container{
     display: flex;
@@ -151,8 +154,8 @@ const NavSearch = styled.input<DarkModeProps>`
   margin-right: 80px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: ${props => props.darkMode ? "hsl(0, 0%, 10%)" : "#e3dac9"};
-  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
+  background-color: ${props => props.darkMode ? "#1a1a1a" : "#e3dac9"};
+  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
   
   border: double;
   outline: none;
@@ -161,7 +164,7 @@ const NavSearch = styled.input<DarkModeProps>`
   border-top: none;
 
   ::placeholder {
-    color: ${props => props.darkMode ? "#e3dac9 !important" : "hsl(0, 0%, 10%)"};
+    color: ${props => props.darkMode ? "#e3dac9 !important" : "#1a1a1a"};
   }
 
   &.error {

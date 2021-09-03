@@ -85,6 +85,6 @@ const AnimalsStyles = styled.div<DarkModeProps>`
   align-items: center;
   margin-bottom: 0.5em;
   cursor: pointer;
-  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
+  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
 `;
 

@@ -84,5 +84,5 @@ const SportsStyles = styled.div<DarkModeProps>`
   justify-content: center;
   align-items: center;
   border: none;
-  color: ${props => props.darkMode ? "#e3dac9" : "hsl(0, 0%, 10%)"};
+  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
 `;
