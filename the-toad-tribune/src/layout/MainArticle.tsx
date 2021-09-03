@@ -5,6 +5,7 @@ import { Buttons } from "../commons";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 import { DarkModeProps } from "../api/newsApi";
+import { dateConverter } from "../utils/dateConverter";
 
 const MainArticle: React.FC<INewsProps> = ({
   articleResponse,
@@ -44,7 +45,7 @@ const MainArticle: React.FC<INewsProps> = ({
 
                 <h4> {article?.author} </h4>
 
-                <h5>{article?.publishedAt}</h5>
+                <h5>{dateConverter(article?.publishedAt)}</h5>
             </div>
           <MainArticleDescriptionConatiner>
             <p>{article?.description}</p>
