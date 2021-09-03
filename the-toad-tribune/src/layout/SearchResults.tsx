@@ -179,6 +179,7 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
   .btn-container {
     display: flex;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     align-items: center;
 
     .down-btn,
