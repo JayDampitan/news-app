@@ -2,6 +2,7 @@ import type { IMoreInfoPageProps } from "../api";
 import styled from "styled-components";
 import { makeLoremIpsum } from "../utils/loremIpsum";
 import { DarkModeProps } from "../api/newsApi";
+import { dateConverter } from "../utils/dateConverter";
 
 const MoreInfo: React.FC<IMoreInfoPageProps> = ({ darkMode, selectedArticle }) => {
   const getContent = () => {
@@ -20,12 +21,6 @@ const MoreInfo: React.FC<IMoreInfoPageProps> = ({ darkMode, selectedArticle }) =
     );
   };
 
-  const dateConverter = (date: string) => {
-    const newDate = date.split("T")[0];
-    let newTime = date.split("T")[1].split("Z")[0];
-
-    return `${newDate} at ${newTime}`;
-  };
 
 
   return (

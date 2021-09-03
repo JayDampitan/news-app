@@ -11,6 +11,7 @@ import {
 import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
+import { dateConverter } from "../utils/dateConverter";
 
 const StonksArticle: React.FC<INewsProps> = ({
   articleResponse,
@@ -42,6 +43,7 @@ const StonksArticle: React.FC<INewsProps> = ({
           setSelectedArticle(article);
         }}
       >
+        <h3>Stocks</h3>
         <ImageContainer2>
           <img src={article?.urlToImage} />
         </ImageContainer2>
@@ -49,13 +51,12 @@ const StonksArticle: React.FC<INewsProps> = ({
         <HeaderContainer2>
           <h3>{article?.title}</h3>
           <h4>{article?.author}</h4>
-          <h5>{article?.publishedAt}</h5>
+          <h5>{dateConverter(article?.publishedAt)}</h5>
         </HeaderContainer2>
 
         <DescriptionContainer2>
           <p>{article?.description}</p>
         </DescriptionContainer2>
-
       </ArticleContentContainer2>
 
       <Buttons
@@ -86,5 +87,5 @@ const StonksStyles = styled.div<DarkModeProps>`
   overflow: hidden;
   cursor: pointer;
   margin-bottom: 0.5em;
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 `;

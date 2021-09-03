@@ -5,6 +5,7 @@ import type { INewsResponse } from "../api";
 import { ReactComponent as NextButtonIconComponent } from "../assets/next-button.svg";
 import { ReactComponent as PreviousButtonIconComponent } from "../assets/prev-button.svg";
 import { DarkModeProps } from "../api/newsApi";
+import { dateConverter } from "../utils/dateConverter";
 
 interface SearchResultsProps {
   darkMode: Boolean;
@@ -119,7 +120,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             {article.title}
           </span>
           <span>
-            {article.author} - {article.publishedAt} - {article.source.name}
+            {article.author} - {dateConverter(article?.publishedAt)} - {article.source.name}
           </span>
           <a href={article.url} target="_blank" rel="noreferrer">
             Link to Article

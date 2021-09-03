@@ -5,6 +5,7 @@ import { Buttons } from "../commons";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
 import { DarkModeProps } from "../api/newsApi";
+import { dateConverter } from "../utils/dateConverter";
 
 const MainArticle: React.FC<INewsProps> = ({
   articleResponse,
@@ -29,30 +30,29 @@ const MainArticle: React.FC<INewsProps> = ({
       >
         <img src={PrevIcon} alt="" />
       </Buttons>
-    
-      <MainArticleContentContainer onClick={() => {
+
+      <h3 className="main-article-title">Top Headlines</h3>
+      <MainArticleContentContainer
+        onClick={() => {
           renderMoreInfoPage();
           setSelectedArticle(article);
-        }}>
+        }}
+      >
+        <div className="img-container">
+          <Image src={article?.urlToImage} />
+        </div>
+        <MainArticleHeaderContainer>
+          <div className="main-content">
+            <h3> {article?.title} </h3>
 
-          <div className="img-container">
-            <Image src={article?.urlToImage} />
-          </div>    
-          <MainArticleHeaderContainer>
-            <div className="main-content">
-                <h3> {article?.title} </h3>
+            <h4> {article?.author} </h4>
 
-                <h4> {article?.author} </h4>
-
-                <h5>{article?.publishedAt}</h5>
+                <h5>{dateConverter(article?.publishedAt)}</h5>
             </div>
           <MainArticleDescriptionConatiner>
             <p>{article?.description}</p>
           </MainArticleDescriptionConatiner>
-
-          </MainArticleHeaderContainer>
-          
-
+        </MainArticleHeaderContainer>
       </MainArticleContentContainer>
 
       <Buttons
@@ -65,7 +65,6 @@ const MainArticle: React.FC<INewsProps> = ({
         <img src={NextIcon} alt="" />
       </Buttons>
     </MainArticleStyles>
-    
   ) : (
     <p>Loading...</p>
   );
@@ -83,11 +82,22 @@ const MainArticleStyles = styled.div<DarkModeProps>`
   margin-top: 1vh;
   padding: 1rem;
   display: flex;
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
   justify-content: center;
   align-items: center;
+  position: relative;
 
-  .img-container{
+  .main-article-title {
+    position: absolute;
+    margin-bottom: 2rem;
+    top: 0;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  .img-container {
     width: 70%;
   }
 `;
@@ -102,31 +112,31 @@ const Image = styled.img`
   height: 100%;
   width: 100%;
   border-radius: 6px;
+  border: 1px solid black;
 `;
-
-
 
 const MainArticleHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-   .main-content {
-
-      h3 {
-        margin: 0 0 0 2rem;
-      }
-      h4 {
-        margin: 2rem 0 0 3rem;
-      }
-      h5 {
-        margin: 0 0 0 3rem;
-      }
-      }
-  `;
-
-  const MainArticleDescriptionConatiner = styled.div`
+  .main-content {
+    h3 {
       margin: 0 0 0 2rem;
-      p::first-letter{
-          font-size: 30px;   
-        }
-  `;
+    }
+    h4 {
+      margin: 2rem 0 0 3rem;
+    }
+    h5 {
+      margin: 0 0 0 3rem;
+    }
+  }
+`;
+
+const MainArticleDescriptionConatiner = styled.div`
+  margin: 0 0 0 2rem;
+
+  p::first-letter {
+    font-size: 30px;
+    line-height: 2.5rem;
+  }
+`;

@@ -11,6 +11,7 @@ import {
 import { DarkModeProps } from "../api/newsApi";
 import PrevIcon from "../commons/prev.png";
 import NextIcon from "../commons/next.png";
+import { dateConverter } from "../utils/dateConverter";
 
 const Movies: React.FC<INewsProps> = ({
   articleResponse,
@@ -41,6 +42,7 @@ const Movies: React.FC<INewsProps> = ({
           setSelectedArticle(article);
         }}
       >
+        <h3>Movies</h3>
         <ImageContainer2>
           <img src={article?.urlToImage} />
         </ImageContainer2>
@@ -48,13 +50,12 @@ const Movies: React.FC<INewsProps> = ({
         <HeaderContainer2>
           <h3>{article?.title}</h3>
           <h4>{article?.author}</h4>
-          <h5>{article?.publishedAt}</h5>
+          <h5>{dateConverter(article?.publishedAt)}</h5>
         </HeaderContainer2>
 
         <DescriptionContainer2>
           <p>{article?.description}</p>
         </DescriptionContainer2>
-
       </ArticleContentContainer2>
 
       <Buttons
@@ -79,11 +80,10 @@ const MoviesStyles = styled.div<DarkModeProps>`
   border-right: none;
   border-bottom: none;
   grid-area: 4/8/10/9;
-  margin-bottom: 0.5em;
-  margin-right: .5rem;
   cursor: pointer;
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
-`
-
-
-
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+`;
