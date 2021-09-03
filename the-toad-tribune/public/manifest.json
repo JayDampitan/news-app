@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "The Toad Tribune",
+  "name": "The Toad Tribune | Get Your Daily Ribbits Here",
+  "description": "Get your daily ribbits here on politics, movies, sports, stonks, and more.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +19,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#e3dac9",
+  "background_color": "#1a1a1a"
 }
