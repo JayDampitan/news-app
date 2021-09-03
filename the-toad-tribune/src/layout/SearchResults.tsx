@@ -29,10 +29,14 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   const [totalPages, setTotalPages] = useState<number>(1);
 
   const getTotalPages = () => {
-    if (searchResults.totalResults % 20 === 0) {
-      setTotalPages(searchResults.totalResults / 20);
+    if (searchResults.totalResults <= 100) {
+      if (searchResults.totalResults % 20 === 0) {
+        setTotalPages(searchResults.totalResults / 20);
+      } else {
+        setTotalPages(Math.floor(searchResults.totalResults / 20) + 1);
+      }
     } else {
-      setTotalPages(Math.floor(searchResults.totalResults / 20) + 1);
+      setTotalPages(5);
     }
   };
 
@@ -57,7 +61,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
 
     getNewsEverything(searchStuff).then((results) => {
       if (results.status === "ok") {
-        setSearchResults(results)
+        setSearchResults(results);
       }
 
       if (results.status === "error") {
@@ -85,7 +89,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
         setSnackbarMessage(results.message);
       }
     });
-    
+
     scrollToTop();
   };
 
