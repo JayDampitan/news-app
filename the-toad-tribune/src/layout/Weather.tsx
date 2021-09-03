@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import type { IWeatherProp } from "../api";
-import babysun from "../assets/telebabysun.png"
+import babysun from "../assets/telebabysun.png";
 import { DarkModeProps } from "../api/newsApi";
 
 const Weather: React.FC<IWeatherProp> = ({ darkMode, weatherResponse }) => {
@@ -17,12 +17,11 @@ const Weather: React.FC<IWeatherProp> = ({ darkMode, weatherResponse }) => {
           </div>
           <div>{weatherResponse.location.localtime.split(" ")[0]}</div>
         </>
-      ): 
-      <div className="baby-sun-container">
-        <img src={babysun} alt="teletubbies baby sun" />
-      </div>
-        
-      }
+      ) : (
+        <div className="baby-sun-container">
+          <img src={babysun} alt="teletubbies baby sun" />
+        </div>
+      )}
     </WeatherStyles>
   );
 };
@@ -42,10 +41,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
   align-items: center;
   padding: 2%;
   margin-top: 1vh;
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 
   & .temp-location {
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .icon-temp-container {
@@ -64,21 +63,17 @@ const WeatherStyles = styled.div<DarkModeProps>`
     border-radius: 50%;
   }
 
-  .baby-sun-container{
+  .baby-sun-container {
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    img{
+    img {
       height: 150px;
       width: 150px;
       vertical-align: middle;
     }
   }
 `;
-
-
-
-

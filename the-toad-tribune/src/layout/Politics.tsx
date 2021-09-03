@@ -26,27 +26,27 @@ const Politics: React.FC<INewsProps> = ({
 
   return articleResponse.articles.length ? (
     <PoliticsStyles darkMode={darkMode}>
-     
-        <Buttons
-          onClick={() => {
-            pageNumber === 0
-              ? startEnd(articleResponse.articles.length - 1)
-              : onPrevButton();
-          }}
-          className="add-class"
-        >
-          <img src={PrevIcon} alt="" />
-        </Buttons>
+      <Buttons
+        onClick={() => {
+          pageNumber === 0
+            ? startEnd(articleResponse.articles.length - 1)
+            : onPrevButton();
+        }}
+        className="add-class"
+      >
+        <img src={PrevIcon} alt="" />
+      </Buttons>
 
-        <ArticleContentContainer2
-          onClick={() => {
-            renderMoreInfoPage();
-            setSelectedArticle(article);
-          }}
-        >
-          <ImageContainer2>
-            <img src={article?.urlToImage} />
-          </ImageContainer2>
+      <ArticleContentContainer2
+        onClick={() => {
+          renderMoreInfoPage();
+          setSelectedArticle(article);
+        }}
+      >
+        <h3>Politics</h3>
+        <ImageContainer2>
+          <img src={article?.urlToImage} />
+        </ImageContainer2>
 
           <HeaderContainer2>
             <h3>{article?.title}</h3>
@@ -54,22 +54,20 @@ const Politics: React.FC<INewsProps> = ({
             <h5>{dateConverter(article?.publishedAt)}</h5>
           </HeaderContainer2>
 
-          <DescriptionContainer2>
-            <p>{article?.description}</p>
-          </DescriptionContainer2>
+        <DescriptionContainer2>
+          <p>{article?.description}</p>
+        </DescriptionContainer2>
+      </ArticleContentContainer2>
 
-        </ArticleContentContainer2>
-
-        <Buttons
-          onClick={() => {
-            articleResponse.articles.length - 1 === pageNumber
-              ? startBeginning()
-              : onNextButton();
-          }}
-        >
-          <img src={NextIcon} alt="" />
-        </Buttons>
-     
+      <Buttons
+        onClick={() => {
+          articleResponse.articles.length - 1 === pageNumber
+            ? startBeginning()
+            : onNextButton();
+        }}
+      >
+        <img src={NextIcon} alt="" />
+      </Buttons>
     </PoliticsStyles>
   ) : (
     <p>Loading...</p>
@@ -90,6 +88,5 @@ const PoliticsStyles = styled.div<DarkModeProps>`
   align-items: center;
   justify-content: center;
   margin-top: 1vh;
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 `;
-

@@ -44,6 +44,7 @@ const Animals: React.FC<INewsProps> = ({
           setSelectedArticle(article);
         }}
       >
+        <h3>Animals</h3>
         <ImageContainer2>
           <img src={article?.urlToImage} />
         </ImageContainer2>
@@ -57,9 +58,8 @@ const Animals: React.FC<INewsProps> = ({
         <DescriptionContainer2>
           <p>{article?.description}</p>
         </DescriptionContainer2>
-
       </ArticleContentContainer2>
-      
+
       <Buttons
         onClick={() => {
           articleResponse.articles.length - 1 === pageNumber
@@ -77,8 +77,6 @@ const Animals: React.FC<INewsProps> = ({
 
 export default Animals;
 
-
-
 const AnimalsStyles = styled.div<DarkModeProps>`
   grid-area: 6/6/10/8;
   overflow: hidden;
@@ -86,6 +84,5 @@ const AnimalsStyles = styled.div<DarkModeProps>`
   align-items: center;
   margin-bottom: 0.5em;
   cursor: pointer;
-  color: ${props => props.darkMode ? "#e3dac9" : "#1a1a1a"};
+  color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 `;
-
