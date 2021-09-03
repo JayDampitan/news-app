@@ -4,15 +4,15 @@ import { getNewsEverything, NewsEverythingRequest } from "../api";
 import type { INewsResponse } from "../api";
 import { ReactComponent as NextButtonIconComponent } from "../assets/next-button.svg";
 import { ReactComponent as PreviousButtonIconComponent } from "../assets/prev-button.svg";
-import PrevIcon from "../commons/prev.png";
-import NextIcon from "../commons/next.png";
 import { DarkModeProps } from "../api/newsApi";
 
 interface SearchResultsProps {
   darkMode: Boolean;
+  pageNumber: number;
   renderMoreInfoPage: Function;
   searchResults: INewsResponse;
   searchValue: string;
+  setPageNumber: Function;
   setSnackbarMessage: Function;
   setSearchResults: Function;
   setSelectedArticle: Function;
@@ -20,14 +20,15 @@ interface SearchResultsProps {
 
 const SearchResults: React.FC<SearchResultsProps> = ({
   darkMode,
+  pageNumber,
   renderMoreInfoPage,
   searchResults,
   searchValue,
+  setPageNumber,
   setSnackbarMessage,
   setSearchResults,
   setSelectedArticle,
 }) => {
-  const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
 
   const getTotalPages = () => {
@@ -54,7 +55,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   }, [searchResults]);
 
   const getNextPage = () => {
-    setPageNumber((prevPageNumber) => prevPageNumber + 1);
+    setPageNumber((prevPageNumber:number) => prevPageNumber + 1);
 
     const searchStuff = new NewsEverythingRequest({
       q: searchValue,
@@ -75,7 +76,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   };
 
   const getPrevPage = () => {
-    setPageNumber((prevPageNumber) => prevPageNumber - 1);
+    setPageNumber((prevPageNumber:number) => prevPageNumber - 1);
 
     const searchStuff = new NewsEverythingRequest({
       q: searchValue,
@@ -139,10 +140,6 @@ const SearchResults: React.FC<SearchResultsProps> = ({
               pageNumber > 1 && getPrevPage();
             }}
           >
-            {/* <img
-              src={PreviousButtonIcon}
-              alt="previous button"
-            /> */}
             <PreviousButtonIconComponent />
           </div>
           <span className="page-results">{`${pageNumber}/${totalPages}`}</span>
@@ -152,7 +149,6 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             }}
             className="up-btn"
           >
-            {/* <img src={NextButtonIcon} alt="next button" /> */}
             <NextButtonIconComponent />
           </div>
         </div>
@@ -196,7 +192,6 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
       display: flex;
       align-items: center;
       justify-content: center;
-      /* box-shadow: 1px 2px 2px 1px lightgrey; */
       border: double;
 
       svg {

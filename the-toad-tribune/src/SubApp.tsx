@@ -76,6 +76,9 @@ const SubApp = () => {
   
   const [serverErrorMessage, setServerErrorMessage] = useState<string>("");
 
+
+  const [pageNumber, setPageNumber] = useState<number>(1);
+
   const [darkMode, setdarkMode] = useState<Boolean>(true);
 
   const newsDataGrabber = () => {
@@ -233,6 +236,7 @@ const SubApp = () => {
             renderMainLayoutPage={renderMainLayoutPage}
             renderSearchPage={renderSearchPage}
             setdarkMode={setdarkMode}
+            setPageNumber={setPageNumber}
             setSearchValue={setSearchValue}
             setSearchResults={setSearchResults}
           />
@@ -248,9 +252,11 @@ const SubApp = () => {
         SearchResults={
           <SearchResults
             darkMode={darkMode}
+            pageNumber={pageNumber}
             renderMoreInfoPage={renderMoreInfoPage}
             searchResults={searchResults}
             searchValue={searchValue}
+            setPageNumber={setPageNumber}
             setSnackbarMessage={setServerErrorMessage}
             setSearchResults={setSearchResults}
             setSelectedArticle={setSelectedArticle}

@@ -10,6 +10,7 @@ interface INavProps {
   renderMainLayoutPage: Function;
   renderSearchPage: Function;
   setdarkMode: Function;
+  setPageNumber: Function;
   setSearchValue: Function;
   setSearchResults: Function;
 }
@@ -19,6 +20,7 @@ const Navigation: React.FC<INavProps> = ({
   renderMainLayoutPage,
   renderSearchPage,
   setdarkMode,
+  setPageNumber,
   setSearchResults,
   setSearchValue,
 }) => {
@@ -39,6 +41,7 @@ const Navigation: React.FC<INavProps> = ({
           if (results.totalResults > 0) {
             setSearchValue(validateSearchValue);
             setSearchResults(results);
+            setPageNumber(1);
             renderSearchPage();
           } else {
             setSearchError("Please enter a valid search value.");
