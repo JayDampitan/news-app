@@ -12,9 +12,7 @@ import {
 } from "./api";
 import type {
   IArticle,
-  IGeolocationPositionError,
   IGeolocationPositionSuccess,
-  IMoreInfoPageProps,
   INewsResponse,
   IWeatherResponse,
 } from './api';
