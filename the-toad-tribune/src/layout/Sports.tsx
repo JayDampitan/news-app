@@ -9,8 +9,8 @@ import {
   ImageContainer2,
 } from "../commons";
 import { DarkModeProps } from "../api/newsApi";
-import PrevIcon from "../commons/prev.png";
-import NextIcon from "../commons/next.png";
+import { ReactComponent as NextButtonIconComponent } from "../assets/next-button.svg";
+import { ReactComponent as PreviousButtonIconComponent } from "../assets/prev-button.svg";
 import { dateConverter } from "../utils/dateConverter";
 import { keyframes } from "styled-components";
 
@@ -33,9 +33,10 @@ const Sports: React.FC<INewsProps> = ({
             ? startEnd(articleResponse.articles.length - 1)
             : onPrevButton();
         }}
-        className="add-class"
+        className="left-button"
+        darkMode={darkMode}
       >
-        <img src={PrevIcon} alt="arrow pointing left" />
+        <PreviousButtonIconComponent />
       </Buttons>
 
       <ArticleContentContainer2
@@ -66,8 +67,10 @@ const Sports: React.FC<INewsProps> = ({
             ? startBeginning()
             : onNextButton();
         }}
+        className="right-button"
+        darkMode={darkMode}
       >
-        <img src={NextIcon} alt="arrow pointing right" />
+        <NextButtonIconComponent />
       </Buttons>
     </SportsStyles>
   ) : (
@@ -97,6 +100,28 @@ const SportsStyles = styled.div<DarkModeProps>`
   align-items: center;
   border: none;
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+  position: relative;
+
+  button {
+    opacity: 0;
+    position: absolute;
+    transition: all 0.5s ease;
+    top: 0;
+
+    &.left-button {
+      left: 0;
+    }
+
+    &.right-button {
+      right: 0;
+    }
+  }
+
+  &:hover {
+    button {
+      opacity: 1;
+    }
+  }
 `;
 
 const textFlash = keyframes`
