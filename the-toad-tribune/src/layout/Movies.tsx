@@ -105,8 +105,8 @@ const MoviesStyles = styled.div<DarkModeProps>`
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
   display: flex;
   justify-content: center;
-  align-items: center;
   padding-top: 1rem;
+  padding-left: 1rem;
   position: relative;
 
   button {

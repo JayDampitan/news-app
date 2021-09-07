@@ -70,7 +70,7 @@ const Politics: React.FC<INewsProps> = ({
         className="right-button"
         darkMode={darkMode}
       >
-        <PreviousButtonIconComponent />
+        <NextButtonIconComponent />
       </Buttons>
     </PoliticsStyles>
   ) : (
@@ -97,11 +97,9 @@ const PoliticsStyles = styled.div<DarkModeProps>`
   border-left: none;
   border-top: none;
   border-right: none;
-  padding-left: 0.25em;
-  padding-right: 0.25em;
+  padding: 0.25em;
   cursor: pointer;
   display: flex;
-  align-items: center;
   justify-content: center;
   margin-top: 1vh;
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
