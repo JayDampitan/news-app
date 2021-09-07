@@ -1,4 +1,3 @@
-import Ads from "./Ads";
 import Animals from "./Animals";
 import Layout from "./Layout";
 import MainArticle from "./MainArticle";
@@ -11,7 +10,6 @@ import Weather from "./Weather";
 import SearchResults from "./SearchResults";
 
 export {
-  Ads,
   Animals,
   Layout,
   MainArticle,

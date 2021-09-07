@@ -1,5 +1,3 @@
-import { AdsResponse, getAds, IAdsProp, IAdsResponse } from "./adsApi";
-
 import {
   ArticleResponse,
   getNewsEverything,
@@ -31,9 +29,7 @@ import {
 } from "./weatherApi";
 
 export {
-  AdsResponse,
   ArticleResponse,
-  getAds,
   getNewsEverything,
   getNewsTopHeadlines,
   getWeather,
@@ -45,8 +41,6 @@ export {
 };
 
 export type {
-  IAdsProp,
-  IAdsResponse,
   IArticle,
   IGeoCoords,
   IGeolocationPositionError,

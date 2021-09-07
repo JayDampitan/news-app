@@ -15,7 +15,6 @@ import { ReactComponent as PreviousButtonIconComponent } from "../assets/prev-bu
 import { dateConverter } from "../utils/dateConverter";
 import { keyframes } from "styled-components";
 
-
 const Animals: React.FC<INewsProps> = ({
   articleResponse,
   darkMode,
