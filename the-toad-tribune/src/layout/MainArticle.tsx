@@ -2,8 +2,8 @@ import styled from "styled-components";
 import type { INewsProps } from "../api";
 import { usePagination } from "../hooks";
 import { Buttons } from "../commons";
-import PrevIcon from "../commons/prev.png";
-import NextIcon from "../commons/next.png";
+import { ReactComponent as NextButtonIconComponent } from "../assets/next-button.svg";
+import { ReactComponent as PreviousButtonIconComponent } from "../assets/prev-button.svg";
 import { DarkModeProps } from "../api/newsApi";
 import { dateConverter } from "../utils/dateConverter";
 import { keyframes } from "styled-components";
@@ -27,9 +27,10 @@ const MainArticle: React.FC<INewsProps> = ({
             ? startEnd(articleResponse.articles.length - 1)
             : onPrevButton();
         }}
-        className="add-class"
+        className="left-button"
+        darkMode={darkMode}
       >
-        <img src={PrevIcon} alt="arrow pointing left" />
+        <PreviousButtonIconComponent />
       </Buttons>
 
       <h3 className="main-article-title">Top Headlines</h3>
@@ -62,8 +63,10 @@ const MainArticle: React.FC<INewsProps> = ({
             ? startBeginning()
             : onNextButton();
         }}
+        className="right-button"
+        darkMode={darkMode}
       >
-        <img src={NextIcon} alt="arrow pointing right" />
+        <NextButtonIconComponent />
       </Buttons>
     </MainArticleStyles>
   ) : (
@@ -111,6 +114,27 @@ const MainArticleStyles = styled.div<DarkModeProps>`
 
   .img-container {
     width: 70%;
+  }
+
+  button {
+    opacity: 0;
+    position: absolute;
+    transition: all 0.5s ease;
+    top: 0;
+
+    &.left-button {
+      left: 0;
+    }
+
+    &.right-button {
+      right: 0;
+    }
+  }
+
+  &:hover {
+    button {
+      opacity: 1;
+    }
   }
 `;
 

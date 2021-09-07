@@ -40,7 +40,7 @@ export const HeaderContainer2 = styled.div`
   margin-top: 0.2rem;
 
   h3 {
-    margin: 0.5rem;
+    margin: 0.25rem;
     text-align: center;
     line-height: 1.5rem;
     font-family: 'Oswald', sans-serif;
