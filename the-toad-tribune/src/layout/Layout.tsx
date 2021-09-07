@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { DarkModeProps } from "../api/newsApi";
 
 interface LayoutProps {
-  Ads: JSX.Element;
   Animals: JSX.Element;
   darkMode: Boolean;
   isMainLayout: Boolean;
@@ -21,7 +20,6 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({
-  Ads,
   Animals,
   darkMode,
   isMainLayout,
@@ -42,7 +40,6 @@ const Layout: React.FC<LayoutProps> = ({
       case "MainLayout":
         return (
           <MainLayoutStyles darkMode={darkMode}>
-            {/* {Ads} */}
             {Animals}
             {MainArticle}
             {Movies}

@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import {
-  AdsResponse,
   ArticleResponse,
-  getAds,
   getNewsEverything,
   getNewsTopHeadlines,
   getWeather,
@@ -13,7 +11,6 @@ import {
   WeatherResponse,
 } from "./api";
 import type {
-  IAdsResponse,
   IArticle,
   IGeolocationPositionError,
   IGeolocationPositionSuccess,
@@ -25,7 +22,6 @@ import type {
 import { Snackbar } from "./components";
 
 import {
-  Ads,
   Animals,
   Layout,
   MainArticle,
@@ -42,7 +38,6 @@ import MoreInfo from "./layout/MoreInfo";
 const SubApp = () => {
   const defaultArticleResponse = new ArticleResponse();
   const defaultNewsResponse = new NewsResponse();
-  const defaultAdsResponse = new AdsResponse();
   const defaultWeatherResponse = new WeatherResponse();
 
   const [mainArticle, setMainArticle] =
@@ -58,7 +53,6 @@ const SubApp = () => {
 
   const [stonksArticle, setStonksArticle] =
     useState<INewsResponse>(defaultNewsResponse);
-  const [ads, setAds] = useState<IAdsResponse>(defaultAdsResponse);
   const [weather, setWeather] = useState<IWeatherResponse>(
     defaultWeatherResponse
   );
@@ -148,10 +142,6 @@ const SubApp = () => {
     });
   };
 
-  const adsDataGrabber = () => {
-    getAds().then((res) => setAds(res));
-  };
-
   const weatherDataGrabber = () => {
     const successGeo = async (position: IGeolocationPositionSuccess) => {
       const { latitude, longitude } = position.coords;
@@ -193,14 +183,12 @@ const SubApp = () => {
   useEffect(() => {
     // Commented out for a reason
     newsDataGrabber();
-    // adsDataGrabber();
     weatherDataGrabber();
   }, []);
 
   return (
     <div>
       <Layout
-        Ads={<Ads adsDataGrabber={adsDataGrabber} adsResponse={ads} />}
         Animals={
           <Animals
             articleResponse={animalArticle}
