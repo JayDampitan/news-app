@@ -41,7 +41,7 @@ export const HeaderContainer2 = styled.div`
 
   h3 {
     margin: 0.25rem;
-    text-align: center;
+    text-align: left;
     line-height: 1.5rem;
     font-family: 'Oswald', sans-serif;
   }
@@ -58,6 +58,7 @@ export const HeaderContainer2 = styled.div`
 
 export const DescriptionContainer2 = styled.div`
   font-family: "Times New Roman", Times, serif;
+  margin: 1rem;
 
   p::first-letter {
     font-size: 30px;
