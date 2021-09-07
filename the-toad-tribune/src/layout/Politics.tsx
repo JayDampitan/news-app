@@ -70,7 +70,7 @@ const Politics: React.FC<INewsProps> = ({
         className="right-button"
         darkMode={darkMode}
       >
-        <PreviousButtonIconComponent />
+        <NextButtonIconComponent />
       </Buttons>
     </PoliticsStyles>
   ) : (
