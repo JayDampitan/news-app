@@ -25,6 +25,11 @@ export const ImageContainer2 = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media only screen and (max-width: 1199px) {
+    max-width: 65%;
+    height: 100%;
+  }
+
   img {
     width: 100%;
     height: 100%;
@@ -38,6 +43,10 @@ export const HeaderContainer2 = styled.div`
   align-items: flex-start;
   flex-direction: column;
   margin-top: 0.2rem;
+
+  @media only screen and (max-width: 1199px) {
+    padding: 5px;
+  }
 
   h3 {
     margin: 0.25rem;
