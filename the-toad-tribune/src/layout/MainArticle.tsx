@@ -105,6 +105,7 @@ const MainArticleStyles = styled.div<DarkModeProps>`
   @media only screen and (max-width: 1199px) {
     grid-area: 2/2/6/9;
     border-left: none;
+    overflow: auto;
   }
 
   .main-article-title {
