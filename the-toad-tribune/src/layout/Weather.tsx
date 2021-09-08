@@ -15,7 +15,7 @@ const Weather: React.FC<IWeatherProp> = ({ darkMode, weatherResponse }) => {
             <img src={weatherResponse.current.weather_icons[0]} />
             <div>{weatherResponse.current.temperature}°F</div>
           </div>
-          <div>{weatherResponse.location.localtime.split(" ")[0]}</div>
+          <div className="weather-localtime">{weatherResponse.location.localtime.split(" ")[0]}</div>
         </>
       ) : (
         <div className="baby-sun-container">
@@ -57,7 +57,7 @@ const WeatherStyles = styled.div<DarkModeProps>`
 
   @media only screen and (max-width: 1199px) {
     grid-area: 8/7/10/9;
-    margin-top: 0;
+    justify-content: start;
   }
 
   & .temp-location {
@@ -69,6 +69,11 @@ const WeatherStyles = styled.div<DarkModeProps>`
     align-items: center;
     flex-direction: column;
 
+    @media only screen and (max-width: 1199px) {
+      width: 35%;
+      margin-top: 25px;
+    }
+
     div {
       margin-top: 5%;
     }
@@ -78,8 +83,18 @@ const WeatherStyles = styled.div<DarkModeProps>`
     height: 60px;
     width: 60px;
     border-radius: 50%;
+
+    @media only screen and (max-width: 1199px) {
+      width: 100%;
+      height: 100%;
+    }
   }
   
+  & .weather-localtime {
+    @media only screen and (max-width: 1199px) {
+      margin-top: 25px;
+    }
+  }
 
   .baby-sun-container {
     height: 100%;
