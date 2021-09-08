@@ -105,6 +105,9 @@ const AnimalsStyles = styled.div<DarkModeProps>`
 
   @media only screen and (max-width: 1199px) {
     grid-area: 7/6/8/9;
+    margin-bottom: 0;
+    border-top: double;
+    border-bottom: double;
   }
 
   button {

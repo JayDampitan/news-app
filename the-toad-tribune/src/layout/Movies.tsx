@@ -111,6 +111,7 @@ const MoviesStyles = styled.div<DarkModeProps>`
 
   @media only screen and (max-width: 1199px) {
     grid-area: 8/5/10/7;
+    border-top: none;
   }
 
   button {

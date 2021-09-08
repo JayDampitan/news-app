@@ -108,6 +108,8 @@ const StonksStyles = styled.div<DarkModeProps>`
 
   @media only screen and (max-width: 1199px) {
     grid-area: 6/6/7/9;
+    border-right: none;
+    border-left: none;
   }
 
   button {

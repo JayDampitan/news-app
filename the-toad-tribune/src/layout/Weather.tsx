@@ -57,6 +57,7 @@ const WeatherStyles = styled.div<DarkModeProps>`
 
   @media only screen and (max-width: 1199px) {
     grid-area: 8/7/10/9;
+    margin-top: 0;
   }
 
   & .temp-location {
