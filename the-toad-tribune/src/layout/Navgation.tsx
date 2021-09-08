@@ -205,6 +205,8 @@ const NavTitle = styled.h1`
     justify-content: center;
     font-size: 15px;
     width: 95px;
+    height: 60px;
+    margin-top: 10px
   }
 
   & span:not(:last-child) {
@@ -292,16 +294,18 @@ const NavSearch = styled.input<DarkModeProps>`
 
   @media only screen and (max-width: 599px) {
     width: 100px;
+    height: 20px;
     font-size: 12px;
+    margin-top: 32px;
     margin-right: 20px;
     padding-left: 5px;
     padding-right: 5px;
   }
-
+  
   @media only screen and (max-width: 479px) {
     width: 80px;
     font-size: 10px;
-    margin-top: 15px;
+    margin-top: 20px;
     margin-right: 10px;
     padding-left: 3px;
     padding-right: 3px;
@@ -310,7 +314,7 @@ const NavSearch = styled.input<DarkModeProps>`
   @media only screen and (max-width: 379px) {
     width: 90px;
     font-size: 10px;
-    margin-top: 7px;
+    margin-top: 23px;
   }
 
   ::placeholder {
