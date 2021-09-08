@@ -55,10 +55,51 @@ const MoreInfoStyles = styled.div<DarkModeProps>`
   overflow: auto;
   background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+
+  h1{
+    font-size: 40px;
+
+    @media only screen and (max-width: 1199px) {
+      font-size: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    @media only screen and (max-width: 899px) {
+      font-size: 25px;
+    }
+
+    @media only screen and (max-width: 599px) {
+      font-size: 20px;
+    }
+
+    @media only screen and (max-width: 479px) {
+      font-size: 15px;
+    }
+
+    @media only screen and (max-width: 379px) {
+      font-size: 20px;
+    }
+  }
   
   a{
     text-decoration: none !important;
     color: ${(props) => (props.darkMode ? "#ffffff7f" : "#0200005a")};
+  }
+
+  span{
+
+    @media only screen and (max-width: 1199px) {
+      font-size: 15px;
+    }
+
+    @media only screen and (max-width: 899px) {
+      font-size: 13px;
+    }
+
+    @media only screen and (max-width: 599px) {
+      font-size: 11px;
+    }
   }
 
   .content-container {
@@ -69,6 +110,7 @@ const MoreInfoStyles = styled.div<DarkModeProps>`
     p:first-child::first-letter {
       font-size: 30px;
     }
+    
   }
 
   .image-container {
@@ -83,8 +125,18 @@ const MoreInfoStyles = styled.div<DarkModeProps>`
       border-radius: 15px;
       border: 1px solid grey;
     }
+    
+    @media only screen and (max-width: 1199px) {
+      height: 45vh;
+    }
+
+    @media only screen and (max-width: 899px) {
+      height: 40vh;
+    }
+
+    @media only screen and (max-width: 599px) {
+      height: 25vh;
+    }
   }
 
-  p {
-  }
 `;
