@@ -4,11 +4,16 @@ import { makeLoremIpsum } from "../utils/loremIpsum";
 import { DarkModeProps } from "../api/newsApi";
 import { dateConverter } from "../utils/dateConverter";
 
-const MoreInfo: React.FC<IMoreInfoPageProps> = ({ darkMode, selectedArticle }) => {
+const MoreInfo: React.FC<IMoreInfoPageProps> = ({
+  darkMode,
+  selectedArticle,
+}) => {
   const getContent = () => {
     return (
       <div className="content-container">
-        <p>{selectedArticle.content?.split("…")[0]} {makeLoremIpsum()}</p>
+        <p>
+          {selectedArticle.content?.split("…")[0]} {makeLoremIpsum()}
+        </p>
         <p>{makeLoremIpsum()}</p>
         <p>{makeLoremIpsum()}</p>
         <p>{makeLoremIpsum()}</p>
@@ -21,8 +26,6 @@ const MoreInfo: React.FC<IMoreInfoPageProps> = ({ darkMode, selectedArticle }) =
     );
   };
 
-
-
   return (
     <MoreInfoStyles darkMode={darkMode}>
       <h1> {selectedArticle.title}</h1>
@@ -30,7 +33,9 @@ const MoreInfo: React.FC<IMoreInfoPageProps> = ({ darkMode, selectedArticle }) =
       <span>Author: {selectedArticle.author}</span>
       <span>Source: {selectedArticle.source.name}</span>
       <span>Published: {dateConverter(selectedArticle.publishedAt)}</span>
-      <a href={selectedArticle.url} target="_blank" rel="noreferrer">Link To Article</a>
+      <a href={selectedArticle.url} target="_blank" rel="noreferrer">
+        Link To Article
+      </a>
       <div className="image-container">
         <img src={selectedArticle.urlToImage} alt={selectedArticle.title} />
       </div>
@@ -56,8 +61,10 @@ const MoreInfoStyles = styled.div<DarkModeProps>`
   background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 
-  h1{
+  h1 {
     font-size: 40px;
+    margin: 25px;
+    line-height: 30px;
 
     @media only screen and (max-width: 1199px) {
       font-size: 30px;
@@ -70,24 +77,21 @@ const MoreInfoStyles = styled.div<DarkModeProps>`
     }
 
     @media only screen and (max-width: 599px) {
-      font-size: 20px;
+      font-size: 23px;
     }
 
     @media only screen and (max-width: 479px) {
-      font-size: 15px;
-    }
-
-    @media only screen and (max-width: 379px) {
       font-size: 20px;
     }
   }
-  
-  a{
+
+  a {
     text-decoration: none !important;
     color: ${(props) => (props.darkMode ? "#ffffff7f" : "#0200005a")};
   }
 
-  span{
+  span {
+    line-height: 20px;
 
     @media only screen and (max-width: 1199px) {
       font-size: 15px;
@@ -103,14 +107,26 @@ const MoreInfoStyles = styled.div<DarkModeProps>`
   }
 
   .content-container {
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     width: 60vw;
 
+    @media only screen and (max-width: 899px) {
+      width: 75%;
+    }
+
+    @media only screen and (max-width: 599px) {
+      width: 80%;
+    }
+
     p:first-child::first-letter {
       font-size: 30px;
     }
-    
+
+    p {
+      line-height: 25px;
+    }
   }
 
   .image-container {
@@ -121,22 +137,21 @@ const MoreInfoStyles = styled.div<DarkModeProps>`
     margin: 3vh;
 
     img {
+      width: 100%;
       height: 100%;
       border-radius: 15px;
       border: 1px solid grey;
+      margin: 25px;
     }
-    
+
     @media only screen and (max-width: 1199px) {
-      height: 45vh;
+      margin: 20px;
+      height: 90%;
+      width: 90%;
     }
 
     @media only screen and (max-width: 899px) {
-      height: 40vh;
-    }
-
-    @media only screen and (max-width: 599px) {
-      height: 25vh;
+      height: 100%;
     }
   }
-
 `;
