@@ -147,6 +147,13 @@ const MainArticleContentContainer = styled.div`
   max-height: 90%;
   max-width: 90%;
   display: flex;
+
+  @media only screen and (max-width: 1199px) {
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const Image = styled.img`
