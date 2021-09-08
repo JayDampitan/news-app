@@ -97,6 +97,10 @@ const NavigationStyles = styled.div<DarkModeProps>`
   border-left: none;
   background-color: ${(props) => (props.darkMode ? "#1a1a1a" : "#e3dac9")};
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
+  
+  @media only screen and (max-width: 379px) {
+    justify-content: space-around;
+  }
 
   .logo-container {
     display: flex;
@@ -127,10 +131,6 @@ const NavigationStyles = styled.div<DarkModeProps>`
       margin: 0.5vh 0 1vh 2vh;
     }
   }
-
-  @media only screen and (max-width: 379px) {
-    justify-content: space-around;
-  }
 `;
 
 const NavLogo = styled.div`
@@ -144,14 +144,6 @@ const NavLogo = styled.div`
   justify-content: center;
   cursor: pointer;
   border: double;
-
-  img {
-    height: 90%;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-right: 7px;
-  }
 
   @media only screen and (max-width: 899px) {
     max-width: 60px;
@@ -172,6 +164,14 @@ const NavLogo = styled.div`
   @media only screen and (max-width: 379px) {
     margin: 1rem 0rem 0 0.625rem;
   }
+
+  img {
+    height: 90%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 7px;
+  }
 `;
 
 const NavTitle = styled.h1`
@@ -183,6 +183,29 @@ const NavTitle = styled.h1`
   margin: 0;
   padding: 0;
   letter-spacing: 3.5px;
+
+  @media only screen and (max-width: 1199px) {
+    font-size: 50px;
+  }
+
+  @media only screen and (max-width: 899px) {
+    font-size: 35px;
+  }
+
+  @media only screen and (max-width: 599px) {
+    font-size: 25px;
+  }
+
+  @media only screen and (max-width: 479px) {
+    font-size: 20px;
+  }
+
+  @media only screen and (max-width: 379px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 15px;
+    width: 95px;
+  }
 
   & span:not(:last-child) {
     margin-right: 20px;
@@ -219,29 +242,6 @@ const NavTitle = styled.h1`
       font-size: 20px;
     }
   }
-
-  @media only screen and (max-width: 1199px) {
-    font-size: 50px;
-  }
-
-  @media only screen and (max-width: 899px) {
-    font-size: 35px;
-  }
-
-  @media only screen and (max-width: 599px) {
-    font-size: 25px;
-  }
-
-  @media only screen and (max-width: 479px) {
-    font-size: 20px;
-  }
-
-  @media only screen and (max-width: 379px) {
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 15px;
-    width: 95px;
-  }
 `;
 
 const NavSearchContainer = styled.div`
@@ -276,38 +276,6 @@ const NavSearch = styled.input<DarkModeProps>`
   border-left: none;
   border-right: none;
   border-top: none;
-
-  ::placeholder {
-    color: ${(props) => (props.darkMode ? "#e3dac9 !important" : "#1a1a1a")};
-  }
-
-  &.error {
-    border-bottom-color: red;
-
-    ::placeholder,
-    ::-webkit-input-placeholder {
-      color: red;
-    }
-  }
-
-  ::placeholder,
-  ::-webkit-input-placeholder {
-    color: black;
-    text-align: center;
-    font-size: 20px;
-
-    @media only screen and (max-width: 899px) {
-      font-size: 16px;
-    }
-
-    @media only screen and (max-width: 599px) {
-      font-size: 14px
-    }
-
-    @media only screen and (max-width: 479px) {
-      font-size: 11px;
-    }
-  }
 
   @media only screen and (max-width: 1199px) {
     width: 180px;
@@ -344,6 +312,38 @@ const NavSearch = styled.input<DarkModeProps>`
     font-size: 10px;
     margin-top: 7px;
   }
+
+  ::placeholder {
+    color: ${(props) => (props.darkMode ? "#e3dac9 !important" : "#1a1a1a")};
+  }
+
+  &.error {
+    border-bottom-color: red;
+
+    ::placeholder,
+    ::-webkit-input-placeholder {
+      color: red;
+    }
+  }
+
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color: black;
+    text-align: center;
+    font-size: 20px;
+
+    @media only screen and (max-width: 899px) {
+      font-size: 16px;
+    }
+
+    @media only screen and (max-width: 599px) {
+      font-size: 14px
+    }
+
+    @media only screen and (max-width: 479px) {
+      font-size: 11px;
+    }
+  }
 `;
 
 const NavSearchError = styled.span`
@@ -355,11 +355,6 @@ const NavSearchError = styled.span`
   opacity: 0;
   transform: translateY(-16px);
   transition: all 0.3s;
-
-  &.error {
-    opacity: 1;
-    transform: translateY(3px);
-  }
 
   @media only screen and (max-width: 1199px) {
     width: 180px;
@@ -386,6 +381,11 @@ const NavSearchError = styled.span`
 
   @media only screen and (max-width: 379px) {
     width: 90px;
+  }
+
+  &.error {
+    opacity: 1;
+    transform: translateY(3px);
   }
 `;
 
