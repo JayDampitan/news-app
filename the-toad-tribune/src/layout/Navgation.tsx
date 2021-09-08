@@ -121,6 +121,15 @@ const NavigationStyles = styled.div<DarkModeProps>`
       font-size: 12px;
       margin: 0.5vh 0 1vh 0vh;
     }
+
+    @media only screen and (max-width: 379px) {
+      font-size: 11px;
+      margin: 0.5vh 0 1vh 2vh;
+    }
+  }
+
+  @media only screen and (max-width: 379px) {
+    justify-content: space-around;
   }
 `;
 
@@ -159,6 +168,10 @@ const NavLogo = styled.div`
     max-height: 40px;
     margin: 1rem 0.625rem 0 0.625rem;
   }
+
+  @media only screen and (max-width: 379px) {
+    margin: 1rem 0rem 0 0.625rem;
+  }
 `;
 
 const NavTitle = styled.h1`
@@ -176,6 +189,10 @@ const NavTitle = styled.h1`
 
     @media only screen and (max-width: 899px) {
       margin-right: 10px;
+    }
+
+    @media only screen and (max-width: 379px) {
+      margin-right: 2px;
     }
   }
 
@@ -197,6 +214,10 @@ const NavTitle = styled.h1`
     @media only screen and (max-width: 479px) {
       font-size: 25px;
     }
+
+    @media only screen and (max-width: 379px) {
+      font-size: 20px;
+    }
   }
 
   @media only screen and (max-width: 1199px) {
@@ -214,6 +235,13 @@ const NavTitle = styled.h1`
   @media only screen and (max-width: 479px) {
     font-size: 20px;
   }
+
+  @media only screen and (max-width: 379px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 15px;
+    width: 95px;
+  }
 `;
 
 const NavSearchContainer = styled.div`
@@ -226,6 +254,10 @@ const NavSearchContainer = styled.div`
 
   @media only screen and (max-width: 599px) {
     margin-left: 10px
+  }
+
+  @media only screen and (max-width: 479px) {
+    margin-left: 0;
   }
 `;
 
@@ -306,6 +338,12 @@ const NavSearch = styled.input<DarkModeProps>`
     padding-left: 3px;
     padding-right: 3px;
   }
+
+  @media only screen and (max-width: 379px) {
+    width: 90px;
+    font-size: 10px;
+    margin-top: 7px;
+  }
 `;
 
 const NavSearchError = styled.span`
@@ -344,6 +382,10 @@ const NavSearchError = styled.span`
     font-size: 8px;
     padding-left: 3px;
     padding-right: 3px
+  }
+
+  @media only screen and (max-width: 379px) {
+    width: 90px;
   }
 `;
 
