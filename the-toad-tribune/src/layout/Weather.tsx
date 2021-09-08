@@ -62,6 +62,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
 
   & .temp-location {
     font-weight: 700;
+
+    @media only screen and (max-width: 899px) {
+      text-align: center;
+    }
   }
 
   .icon-temp-container {
