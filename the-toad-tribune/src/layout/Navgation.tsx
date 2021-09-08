@@ -103,11 +103,19 @@ const NavigationStyles = styled.div<DarkModeProps>`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
   }
 
   .nav-text {
     margin: 1vh 0 1vh 3vh;
+
+    @media only screen and (max-width: 899px) {
+      margin: 1vh 0 1vh 1.5vh;
+    }
+
+    @media only screen and (max-width: 599px) {
+      font-size: 14px;
+      margin: 1vh 0 1vh 0vh;
+    }
   }
 `;
 
@@ -130,6 +138,16 @@ const NavLogo = styled.div`
     margin-right: auto;
     padding-right: 7px;
   }
+
+  @media only screen and (max-width: 899px) {
+    max-width: 60px;
+    max-height: 60px;
+    margin: 1rem 1rem 0 2rem;
+  }
+
+  @media only screen and (max-width: 599px) {
+    margin: 1rem 1rem 0 1rem;
+  }
 `;
 
 const NavTitle = styled.h1`
@@ -144,16 +162,52 @@ const NavTitle = styled.h1`
 
   & span:not(:last-child) {
     margin-right: 20px;
+
+    @media only screen and (max-width: 899px) {
+      margin-right: 10px;
+    }
   }
 
   & span::first-letter {
     font-size: 70px;
+
+    @media only screen and (max-width: 1199px) {
+      font-size: 55px;
+    }
+
+    @media only screen and (max-width: 899px) {
+      font-size: 40px;
+    }
+
+    @media only screen and (max-width: 599px) {
+      font-size: 30px;
+    }
+  }
+
+  @media only screen and (max-width: 1199px) {
+    font-size: 50px;
+  }
+
+  @media only screen and (max-width: 899px) {
+    font-size: 35px;
+  }
+
+  @media only screen and (max-width: 599px) {
+    font-size: 25px;
   }
 `;
 
 const NavSearchContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 899px) {
+    margin-left: 20px;
+  }
+
+  @media only screen and (max-width: 599px) {
+    margin-left: 10px
+  }
 `;
 
 const NavSearch = styled.input<DarkModeProps>`
@@ -190,12 +244,42 @@ const NavSearch = styled.input<DarkModeProps>`
     color: black;
     text-align: center;
     font-size: 20px;
+
+    @media only screen and (max-width: 899px) {
+      font-size: 16px;
+    }
+
+    @media only screen and (max-width: 599px) {
+      font-size: 14px
+    }
+  }
+
+  @media only screen and (max-width: 1199px) {
+    width: 180px;
+    font-size: 18px;
+    margin-right: 60px;
+  }
+
+  @media only screen and (max-width: 899px) {
+    width: 130px;
+    font-size: 13px;
+    margin-right: 30px;
+  }
+
+  @media only screen and (max-width: 599px) {
+    width: 100px;
+    font-size: 12px;
+    margin-top: 35px;
+    margin-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 `;
 
 const NavSearchError = styled.span`
   color: red;
   font-size: 13px;
+  width: 250px;
   padding-left: 10px;
   padding-right: 10px;
   opacity: 0;
@@ -205,6 +289,22 @@ const NavSearchError = styled.span`
   &.error {
     opacity: 1;
     transform: translateY(3px);
+  }
+
+  @media only screen and (max-width: 1199px) {
+    width: 180px;
+  }
+
+  @media only screen and (max-width: 899px) {
+    font-size: 10px;
+    width: 130px;
+  }
+
+  @media only screen and (max-width: 599px) {
+    font-size: 9px;
+    width: 100px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 `;
 
