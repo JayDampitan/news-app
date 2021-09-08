@@ -103,6 +103,10 @@ const AnimalsStyles = styled.div<DarkModeProps>`
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
   position: relative;
 
+  @media only screen and (max-width: 1199px) {
+    grid-area: 7/6/8/9;
+  }
+
   button {
     opacity: 0;
     position: absolute;

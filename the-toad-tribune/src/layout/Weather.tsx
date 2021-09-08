@@ -55,6 +55,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
   margin-top: 1vh;
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 
+  @media only screen and (max-width: 1199px) {
+    grid-area: 8/7/10/9;
+  }
+
   & .temp-location {
     font-weight: 700;
   }

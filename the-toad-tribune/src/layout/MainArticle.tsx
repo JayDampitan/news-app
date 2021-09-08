@@ -102,6 +102,10 @@ const MainArticleStyles = styled.div<DarkModeProps>`
   align-items: center;
   position: relative;
 
+  @media only screen and (max-width: 1199px) {
+    grid-area: 2/2/6/9;
+  }
+
   .main-article-title {
     position: absolute;
     margin-bottom: 2rem;
