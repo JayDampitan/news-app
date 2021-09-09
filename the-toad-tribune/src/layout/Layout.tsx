@@ -93,5 +93,3 @@ const MainLayoutStyles = styled.div<DarkModeProps>`
   position: fixed;
 `;
 
-
-

@@ -56,7 +56,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   }, [searchResults]);
 
   const getNextPage = () => {
-    setPageNumber((prevPageNumber:number) => prevPageNumber + 1);
+    setPageNumber((prevPageNumber: number) => prevPageNumber + 1);
 
     const searchStuff = new NewsEverythingRequest({
       q: searchValue,
@@ -77,7 +77,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   };
 
   const getPrevPage = () => {
-    setPageNumber((prevPageNumber:number) => prevPageNumber - 1);
+    setPageNumber((prevPageNumber: number) => prevPageNumber - 1);
 
     const searchStuff = new NewsEverythingRequest({
       q: searchValue,
@@ -120,7 +120,8 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             {article.title}
           </span>
           <span>
-            {article.author} - {dateConverter(article?.publishedAt)} - {article.source.name}
+            {article.author} - {dateConverter(article?.publishedAt)} -{" "}
+            {article.source.name}
           </span>
           <a href={article.url} target="_blank" rel="noreferrer">
             Link to Article
@@ -136,7 +137,8 @@ const SearchResults: React.FC<SearchResultsProps> = ({
       {renderResults()}
       {searchResults.articles.length > 0 && (
         <div className="btn-container">
-          <div className="down-btn"
+          <div
+            className="down-btn"
             onClick={() => {
               pageNumber > 1 && getPrevPage();
             }}
@@ -200,7 +202,7 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
         width: 1.6rem;
 
         & g {
-          fill: ${(props) => (props.darkMode) ? "#e3dac9" : "#1a1a1a"}
+          fill: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
         }
       }
 
@@ -212,6 +214,7 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
 
   a {
     width: 6.4rem;
+    margin: 10px
   }
 `;
 
@@ -226,6 +229,12 @@ const ArticleStyles = styled.div`
   border-left: none;
   border-right: none;
   justify-content: space-between;
+  overflow: hidden;
+
+  /* @media only screen and (max-width: 1199px) {
+    height: 30%;
+
+  } */
 `;
 
 const ImageContainer = styled.div`
@@ -241,6 +250,34 @@ const ImageContainer = styled.div`
     border: 1px solid black;
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 1199px) {
+    margin-left: 15px;
+    width: 80%; 
+    height: 80%;
+    margin-top: 13px;
+  }
+
+  @media only screen and (max-width: 899px) {
+    width: 70%; 
+    height: 70%
+  }
+
+  @media only screen and (max-width: 599px) {
+    width: 65%;
+    height: 65%
+  }
+
+  @media only screen and (max-width: 479px) {
+    width: 60%;
+    height: 60%
+  }
+
+  @media only screen and (max-width: 379px) {
+    margin-left: 15px;
+    width: 50%;
+    height: 50%
+  }
 `;
 
 const ArticleInfoContainerStyles = styled.div<DarkModeProps>`
@@ -249,10 +286,63 @@ const ArticleInfoContainerStyles = styled.div<DarkModeProps>`
   padding: 0 1rem;
   max-width: 75%;
   min-width: 75%;
+  overflow: scroll;
+  scrollbar-width: none;
 
-  a{
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+
+  span:first-of-type {
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  span {
+    margin: 15px;
+
+    @media only screen and (max-width: 899px) {
+      font-size: 14px;
+    }
+
+    @media only screen and (max-width: 599px) {
+      font-size: 13px;
+    }
+
+    @media only screen and (max-width: 479px) {
+      font-size: 13px;
+    }
+
+    @media only screen and (max-width: 379px) {
+      font-size: 12px;
+    }
+  }
+  
+  
+
+  a {
     text-decoration: none !important;
     color: ${(props) => (props.darkMode ? "#ffffff7f" : "#0200005a")};
   }
 
+  p {
+    margin: 15px;
+      
+    @media only screen and (max-width: 1199px) {
+      font-size: 14px;
+    }
+
+    @media only screen and (max-width: 899px) {
+      font-size: 13px;
+    }
+
+    @media only screen and (max-width: 599px) {
+      font-size: 12px;
+    }
+
+    @media only screen and (max-width: 379px) {
+      font-size: 12px;
+    }
+  }
 `;

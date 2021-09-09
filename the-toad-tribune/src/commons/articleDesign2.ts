@@ -7,6 +7,7 @@ export const ArticleContentContainer2 = styled.div`
   align-items: center;
   flex-direction: column;
   overflow: scroll;
+  scrollbar-width: none;
 
   h3 {
     margin: 0 0 1rem 0;
