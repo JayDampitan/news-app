@@ -88,6 +88,10 @@ export const DescriptionContainer2 = styled.div`
   font-family: "Times New Roman", Times, serif;
   margin: 1rem;
 
+  @media only screen and (max-width: 599px) {
+    margin: 0 0 0 2rem;
+  }
+
   p::first-letter {
     font-size: 30px;
     margin: 0.9rem 0;
