@@ -40,13 +40,13 @@ const Layout: React.FC<LayoutProps> = ({
       case "MainLayout":
         return (
           <MainLayoutStyles darkMode={darkMode}>
-            {Animals}
-            {MainArticle}
-            {Movies}
             {Navigation}
+            {MainArticle}
             {Politics}
-            {Sports}
             {Stonks}
+            {Sports}
+            {Animals}
+            {Movies}
             {Weather}
           </MainLayoutStyles>
         );
