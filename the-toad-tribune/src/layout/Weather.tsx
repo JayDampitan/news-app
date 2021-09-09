@@ -116,6 +116,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
     overflow: hidden;
     position: relative;
 
+    @media only screen and (max-width: 599px) {
+      height: 330px;
+    }
+
     img {
       position: absolute;
       height: 150px;
