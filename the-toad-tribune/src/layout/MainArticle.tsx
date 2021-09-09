@@ -108,10 +108,18 @@ const MainArticleStyles = styled.div<DarkModeProps>`
     overflow: auto;
   }
 
+  @media only screen and (max-width: 599px) {
+    flex-direction: column;
+  }
+
   .main-article-title {
     position: absolute;
     margin-bottom: 2rem;
     top: 0;
+
+    @media only screen and (max-width: 599px) {
+      position: initial;
+    }
   }
 
   h3 {
