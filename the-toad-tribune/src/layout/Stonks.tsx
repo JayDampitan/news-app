@@ -106,6 +106,25 @@ const StonksStyles = styled.div<DarkModeProps>`
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
   position: relative;
 
+  @media only screen and (max-width: 1199px) {
+    grid-area: 6/6/7/9;
+    border-right: none;
+    border-left: none;
+  }
+
+  @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+    grid-area: 8/5/10/7;
+    border-left: double;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    border-bottom: double;
+  }
+
+  @media only screen and (max-width: 599px) {
+    border-bottom: double;
+  }
+
   button {
     opacity: 0;
     position: absolute;

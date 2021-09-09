@@ -40,13 +40,13 @@ const Layout: React.FC<LayoutProps> = ({
       case "MainLayout":
         return (
           <MainLayoutStyles darkMode={darkMode}>
-            {Animals}
-            {MainArticle}
-            {Movies}
             {Navigation}
+            {MainArticle}
             {Politics}
-            {Sports}
             {Stonks}
+            {Sports}
+            {Animals}
+            {Movies}
             {Weather}
           </MainLayoutStyles>
         );
@@ -91,6 +91,24 @@ const MainLayoutStyles = styled.div<DarkModeProps>`
   grid-template-columns: 8% 12% 12% 12% 12% 12% 12% 12% 8%;
   grid-template-rows: repeat(9, 1fr);
   position: fixed;
+
+  @media only screen and (max-width: 1199px) {
+    grid-template-columns: 4.5% 13% 13% 13% 13% 13% 13% 13% 4.5%;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  @media only screen and (max-width: 599px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
 `;
 
 

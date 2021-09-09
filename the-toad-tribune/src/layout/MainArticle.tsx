@@ -102,10 +102,36 @@ const MainArticleStyles = styled.div<DarkModeProps>`
   align-items: center;
   position: relative;
 
+  @media only screen and (max-width: 1199px) {
+    grid-area: 2/2/6/9;
+    border-left: none;
+    overflow: auto;
+  }
+
+  @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+    grid-area: 2/2/5/9;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    flex-direction: column;
+  }
+
+  @media only screen and (max-width: 599px) {
+    flex-direction: column;
+  }
+
   .main-article-title {
     position: absolute;
     margin-bottom: 2rem;
     top: 0;
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      position: initial;
+    }
+
+    @media only screen and (max-width: 599px) {
+      position: initial;
+    }
   }
 
   h3 {
@@ -142,6 +168,13 @@ const MainArticleContentContainer = styled.div`
   max-height: 90%;
   max-width: 90%;
   display: flex;
+
+  @media only screen and (max-width: 1199px) {
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const Image = styled.img`
@@ -156,17 +189,33 @@ const MainArticleHeaderContainer = styled.div`
   flex-direction: column;
 
   .main-content {
+    @media only screen and (max-width: 479px) {
+      text-align: center;
+    }
+
     h3 {
       margin: 0 0 0 2rem;   
       font-family: 'Oswald', sans-serif;
+
+      @media only screen and (max-width: 479px) {
+        margin: 0;
+      }
     }
     h4 {
       margin: 2rem 0 0 3rem;
       font-family: 'Rubik', sans-serif;
+
+      @media only screen and (max-width: 479px) {
+        margin: 2rem 0 0 0;
+      }
     }
     h5 {
       margin: 0 0 0 3rem;
       font-family: 'Rubik', sans-serif;
+
+      @media only screen and (max-width: 479px) {
+        margin: 0;
+      }
     }
   }
 `;
@@ -174,6 +223,11 @@ const MainArticleHeaderContainer = styled.div`
 const MainArticleDescriptionConatiner = styled.div`
   margin: 0 0 0 2rem;
   font-family: 'Times New Roman', Times, serif;
+
+  @media only screen and (max-width: 479px) {
+    margin: 0;
+    text-align: center;
+  }
 
   p::first-letter {
     font-size: 30px;

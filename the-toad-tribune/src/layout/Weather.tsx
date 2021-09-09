@@ -15,7 +15,7 @@ const Weather: React.FC<IWeatherProp> = ({ darkMode, weatherResponse }) => {
             <img src={weatherResponse.current.weather_icons[0]} />
             <div>{weatherResponse.current.temperature}°F</div>
           </div>
-          <div>{weatherResponse.location.localtime.split(" ")[0]}</div>
+          <div className="weather-localtime">{weatherResponse.location.localtime.split(" ")[0]}</div>
         </>
       ) : (
         <div className="baby-sun-container">
@@ -55,14 +55,56 @@ const WeatherStyles = styled.div<DarkModeProps>`
   margin-top: 1vh;
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
 
+  @media only screen and (max-width: 1199px) {
+    grid-area: 8/7/10/9;
+    justify-content: start;
+  }
+
+  @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+    grid-area: 5/6/6/9;
+    flex-direction: row;
+    justify-content: space-around;
+    border-left: none;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    border: none;
+  }
+
+  @media only screen and (max-width: 599px) {
+    border: none;
+  }
+
   & .temp-location {
     font-weight: 700;
+
+    @media only screen and (max-width: 899px) {
+      text-align: center;
+    }
   }
 
   .icon-temp-container {
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    @media only screen and (max-width: 1199px) {
+      width: 35%;
+      margin-top: 25px;
+    }
+
+    @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+      width: 9%;
+      margin-top: 0;
+    }
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      width: 15%;
+    }
+
+    @media only screen and (max-width: 599px) {
+      width: 15%;
+    }
 
     div {
       margin-top: 5%;
@@ -73,8 +115,22 @@ const WeatherStyles = styled.div<DarkModeProps>`
     height: 60px;
     width: 60px;
     border-radius: 50%;
+
+    @media only screen and (max-width: 1199px) {
+      width: 100%;
+      height: 100%;
+    }
   }
   
+  & .weather-localtime {
+    @media only screen and (max-width: 1199px) {
+      margin-top: 25px;
+    }
+
+    @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+      margin-top: 0;
+    }
+  }
 
   .baby-sun-container {
     height: 100%;
@@ -83,6 +139,14 @@ const WeatherStyles = styled.div<DarkModeProps>`
     justify-content: center;
     overflow: hidden;
     position: relative;
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      height: 330px;
+    }
+
+    @media only screen and (max-width: 599px) {
+      height: 330px;
+    }
 
     img {
       position: absolute;
