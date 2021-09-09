@@ -59,6 +59,10 @@ export const HeaderContainer2 = styled.div`
     width: 98%;
   }
 
+  @media only screen and (max-width: 479px) {
+    align-items: center;
+  }
+
   h3 {
     margin: 0.25rem;
     text-align: left;
@@ -67,6 +71,11 @@ export const HeaderContainer2 = styled.div`
 
     @media only screen and (max-width: 599px) {
       margin: 0 0 0 2rem;
+    }
+
+    @media only screen and (max-width: 479px) {
+      margin: 0;
+      text-align: center;
     }
   }
 
@@ -77,6 +86,10 @@ export const HeaderContainer2 = styled.div`
     @media only screen and (max-width: 599px) {
       margin: 2rem 0 0 3rem;
     }
+
+    @media only screen and (max-width: 479px) {
+      margin: 2rem 0 0 0;
+    }
   }
   h5 {
     margin: 0.2rem 0 0 0.4rem;
@@ -84,6 +97,10 @@ export const HeaderContainer2 = styled.div`
 
     @media only screen and (max-width: 599px) {
       margin: 0 0 0 3rem;
+    }
+
+    @media only screen and (max-width: 479px) {
+      margin: 0;
     }
   }
 `;
@@ -94,6 +111,11 @@ export const DescriptionContainer2 = styled.div`
 
   @media only screen and (max-width: 599px) {
     margin: 0 0 0 2rem;
+  }
+
+  @media only screen and (max-width: 479px) {
+    margin: 0;
+    text-align: center;
   }
 
   p::first-letter {
