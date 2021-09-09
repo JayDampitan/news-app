@@ -8,6 +8,13 @@ export const ArticleContentContainer2 = styled.div`
   flex-direction: column;
   overflow: scroll;
 
+  @media only screen and (max-width: 599px) {
+    max-width: 90%;
+    max-height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   h3 {
     margin: 0 0 1rem 0;
   }
@@ -53,15 +60,27 @@ export const HeaderContainer2 = styled.div`
     text-align: left;
     line-height: 1.5rem;
     font-family: 'Oswald', sans-serif;
+
+    @media only screen and (max-width: 599px) {
+      margin: 0 0 0 2rem;
+    }
   }
 
   h4 {
     margin: 0.9rem 0 0 0.4rem;
     font-family: 'Rubik', sans-serif;
+
+    @media only screen and (max-width: 599px) {
+      margin: 2rem 0 0 3rem;
+    }
   }
   h5 {
     margin: 0.2rem 0 0 0.4rem;
     font-family: 'Rubik', sans-serif;
+
+    @media only screen and (max-width: 599px) {
+      margin: 0 0 0 3rem;
+    }
   }
 `;
 
