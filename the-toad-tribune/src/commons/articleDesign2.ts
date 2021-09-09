@@ -55,6 +55,10 @@ export const HeaderContainer2 = styled.div`
     padding: 5px;
   }
 
+  @media only screen and (max-width: 599px) {
+    width: 98%;
+  }
+
   h3 {
     margin: 0.25rem;
     text-align: left;
