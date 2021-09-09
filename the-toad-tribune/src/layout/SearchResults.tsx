@@ -123,9 +123,6 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             {article.author} - {dateConverter(article?.publishedAt)} -{" "}
             {article.source.name}
           </span>
-          <a href={article.url} target="_blank" rel="noreferrer">
-            Link to Article
-          </a>
           <p>{article.description}</p>
         </ArticleInfoContainerStyles>
       </ArticleStyles>
@@ -223,7 +220,7 @@ const ArticleStyles = styled.div`
   padding: 1rem;
   margin: 0.5rem;
   width: 90%;
-  height: 8rem;
+  height: 12rem;
   border: double;
   border-top: none;
   border-left: none;
@@ -231,10 +228,29 @@ const ArticleStyles = styled.div`
   justify-content: space-between;
   overflow: hidden;
 
-  /* @media only screen and (max-width: 1199px) {
-    height: 30%;
+  @media only screen and (max-width: 899px) {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
 
-  } */
+  @media only screen and (max-width: 599px) {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 479px) {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 379px) {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -243,6 +259,8 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 3vh;
+  
 
   img {
     height: 100%;
@@ -256,27 +274,23 @@ const ImageContainer = styled.div`
     width: 80%; 
     height: 80%;
     margin-top: 13px;
+    margin-right: 3vw;
   }
 
   @media only screen and (max-width: 899px) {
-    width: 70%; 
-    height: 70%
+    height: 20vh;
   }
 
   @media only screen and (max-width: 599px) {
-    width: 65%;
-    height: 65%
+    height: 20vh;
   }
 
   @media only screen and (max-width: 479px) {
-    width: 60%;
-    height: 60%
+    height: 15vh;
   }
 
   @media only screen and (max-width: 379px) {
-    margin-left: 15px;
-    width: 50%;
-    height: 50%
+    height: 15vh;
   }
 `;
 
@@ -286,13 +300,13 @@ const ArticleInfoContainerStyles = styled.div<DarkModeProps>`
   padding: 0 1rem;
   max-width: 75%;
   min-width: 75%;
-  overflow: scroll;
-  scrollbar-width: none;
+  overflow: hidden;
 
-  ::-webkit-scrollbar {
-    display: none;
-    width: 0;
-  }
+  @media only screen and (max-width: 899px) {
+      align-items: center;
+    }
+
+
 
   span:first-of-type {
     font-weight: 700;
@@ -301,25 +315,8 @@ const ArticleInfoContainerStyles = styled.div<DarkModeProps>`
 
   span {
     margin: 15px;
-
-    @media only screen and (max-width: 899px) {
-      font-size: 14px;
-    }
-
-    @media only screen and (max-width: 599px) {
-      font-size: 13px;
-    }
-
-    @media only screen and (max-width: 479px) {
-      font-size: 13px;
-    }
-
-    @media only screen and (max-width: 379px) {
-      font-size: 12px;
-    }
   }
-  
-  
+    
 
   a {
     text-decoration: none !important;
