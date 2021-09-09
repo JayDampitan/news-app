@@ -60,6 +60,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
     justify-content: start;
   }
 
+  @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+    grid-area: 5/6/6/9;
+  }
+
   @media only screen and (max-width: 599px) {
     border: none;
   }

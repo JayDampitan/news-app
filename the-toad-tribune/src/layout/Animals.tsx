@@ -110,6 +110,10 @@ const AnimalsStyles = styled.div<DarkModeProps>`
     border-bottom: double;
   }
 
+  @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+    grid-area: 6/6/8/9;
+  }
+
   button {
     opacity: 0;
     position: absolute;

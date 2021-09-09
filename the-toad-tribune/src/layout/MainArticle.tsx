@@ -108,6 +108,10 @@ const MainArticleStyles = styled.div<DarkModeProps>`
     overflow: auto;
   }
 
+  @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+    grid-area: 2/2/5/9;
+  }
+
   @media only screen and (max-width: 599px) {
     flex-direction: column;
   }
