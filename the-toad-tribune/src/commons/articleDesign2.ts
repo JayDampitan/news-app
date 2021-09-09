@@ -7,6 +7,7 @@ export const ArticleContentContainer2 = styled.div`
   align-items: center;
   flex-direction: column;
   overflow: scroll;
+  scrollbar-width: none;
 
   @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
     max-width: 90%;

@@ -111,5 +111,3 @@ const MainLayoutStyles = styled.div<DarkModeProps>`
   }
 `;
 
-
-
