@@ -109,6 +109,26 @@ const MoviesStyles = styled.div<DarkModeProps>`
   padding-left: 1rem;
   position: relative;
 
+  @media only screen and (max-width: 1199px) {
+    grid-area: 8/5/10/7;
+    padding-left: 0;
+    border-top: none;
+  }
+
+  @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+    grid-area: 8/7/10/9;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    border-bottom: double;
+    border-left: none;
+  }
+
+  @media only screen and (max-width: 599px) {
+    border-bottom: double;
+    border-left: none;
+  }
+
   button {
     opacity: 0;
     position: absolute;
