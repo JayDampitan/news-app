@@ -60,6 +60,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
     justify-content: start;
   }
 
+  @media only screen and (max-width: 599px) {
+    border: none;
+  }
+
   & .temp-location {
     font-weight: 700;
 

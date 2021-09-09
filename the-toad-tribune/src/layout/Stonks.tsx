@@ -112,6 +112,10 @@ const StonksStyles = styled.div<DarkModeProps>`
     border-left: none;
   }
 
+  @media only screen and (max-width: 599px) {
+    border-bottom: double;
+  }
+
   button {
     opacity: 0;
     position: absolute;

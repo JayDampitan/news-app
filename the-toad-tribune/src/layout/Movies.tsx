@@ -115,6 +115,11 @@ const MoviesStyles = styled.div<DarkModeProps>`
     border-top: none;
   }
 
+  @media only screen and (max-width: 599px) {
+    border-bottom: double;
+    border-left: none;
+  }
+
   button {
     opacity: 0;
     position: absolute;
