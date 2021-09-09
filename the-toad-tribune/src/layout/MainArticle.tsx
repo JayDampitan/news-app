@@ -177,17 +177,33 @@ const MainArticleHeaderContainer = styled.div`
   flex-direction: column;
 
   .main-content {
+    @media only screen and (max-width: 479px) {
+      text-align: center;
+    }
+
     h3 {
       margin: 0 0 0 2rem;   
       font-family: 'Oswald', sans-serif;
+
+      @media only screen and (max-width: 479px) {
+        margin: 0;
+      }
     }
     h4 {
       margin: 2rem 0 0 3rem;
       font-family: 'Rubik', sans-serif;
+
+      @media only screen and (max-width: 479px) {
+        margin: 2rem 0 0 0;
+      }
     }
     h5 {
       margin: 0 0 0 3rem;
       font-family: 'Rubik', sans-serif;
+
+      @media only screen and (max-width: 479px) {
+        margin: 0;
+      }
     }
   }
 `;
@@ -195,6 +211,11 @@ const MainArticleHeaderContainer = styled.div`
 const MainArticleDescriptionConatiner = styled.div`
   margin: 0 0 0 2rem;
   font-family: 'Times New Roman', Times, serif;
+
+  @media only screen and (max-width: 479px) {
+    margin: 0;
+    text-align: center;
+  }
 
   p::first-letter {
     font-size: 30px;
