@@ -95,6 +95,13 @@ const MainLayoutStyles = styled.div<DarkModeProps>`
   @media only screen and (max-width: 1199px) {
     grid-template-columns: 4.5% 13% 13% 13% 13% 13% 13% 13% 4.5%;
   }
+
+  @media only screen and (max-width: 599px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
 `;
 
 
