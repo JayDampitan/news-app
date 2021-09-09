@@ -111,6 +111,11 @@ const PoliticsStyles = styled.div<DarkModeProps>`
     border-right: double;
   }
 
+  @media only screen and (max-width: 599px) {
+    margin-top: 1vh;
+    padding: 1rem;
+  }
+
   button {
     opacity: 0;
     position: absolute;
