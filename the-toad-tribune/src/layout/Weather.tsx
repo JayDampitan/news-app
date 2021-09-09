@@ -62,6 +62,9 @@ const WeatherStyles = styled.div<DarkModeProps>`
 
   @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
     grid-area: 5/6/6/9;
+    flex-direction: row;
+    justify-content: space-around;
+    border-left: none;
   }
 
   @media only screen and (max-width: 599px) {
@@ -84,6 +87,11 @@ const WeatherStyles = styled.div<DarkModeProps>`
     @media only screen and (max-width: 1199px) {
       width: 35%;
       margin-top: 25px;
+    }
+
+    @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+      width: 9%;
+      margin-top: 0;
     }
 
     @media only screen and (max-width: 599px) {
@@ -109,6 +117,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
   & .weather-localtime {
     @media only screen and (max-width: 1199px) {
       margin-top: 25px;
+    }
+
+    @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+      margin-top: 0;
     }
   }
 
