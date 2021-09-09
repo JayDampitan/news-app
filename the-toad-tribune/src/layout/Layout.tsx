@@ -91,6 +91,10 @@ const MainLayoutStyles = styled.div<DarkModeProps>`
   grid-template-columns: 8% 12% 12% 12% 12% 12% 12% 12% 8%;
   grid-template-rows: repeat(9, 1fr);
   position: fixed;
+
+  @media only screen and (max-width: 1199px) {
+    grid-template-columns: 4.5% 13% 13% 13% 13% 13% 13% 13% 4.5%;
+  }
 `;
 
 
