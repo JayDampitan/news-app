@@ -116,6 +116,11 @@ const NavigationStyles = styled.div<DarkModeProps>`
       margin: 1vh 0 1vh 1.5vh;
     }
 
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      font-size: 14px;
+      margin: 1vh 0 1vh 0vh;
+    }
+
     @media only screen and (max-width: 599px) {
       font-size: 14px;
       margin: 1vh 0 1vh 0vh;
@@ -149,6 +154,10 @@ const NavLogo = styled.div`
     max-width: 60px;
     max-height: 60px;
     margin: 1rem 1rem 0 2rem;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    margin: 1rem 1rem 0 1rem;
   }
 
   @media only screen and (max-width: 599px) {
@@ -192,6 +201,10 @@ const NavTitle = styled.h1`
     font-size: 35px;
   }
 
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    font-size: 25px;
+  }
+
   @media only screen and (max-width: 599px) {
     font-size: 25px;
   }
@@ -232,6 +245,10 @@ const NavTitle = styled.h1`
       font-size: 40px;
     }
 
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      font-size: 30px;
+    }
+
     @media only screen and (max-width: 599px) {
       font-size: 30px;
     }
@@ -252,6 +269,10 @@ const NavSearchContainer = styled.div`
 
   @media only screen and (max-width: 899px) {
     margin-left: 20px;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    margin-left: 10px;
   }
 
   @media only screen and (max-width: 599px) {
@@ -290,6 +311,16 @@ const NavSearch = styled.input<DarkModeProps>`
     font-size: 13px;
     margin-top: 35px;
     margin-right: 30px;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    width: 100px;
+    height: 20px;
+    font-size: 12px;
+    margin-top: 32px;
+    margin-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 
   @media only screen and (max-width: 599px) {
@@ -340,6 +371,10 @@ const NavSearch = styled.input<DarkModeProps>`
       font-size: 16px;
     }
 
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      font-size: 14px;
+    }
+
     @media only screen and (max-width: 599px) {
       font-size: 14px
     }
@@ -367,6 +402,13 @@ const NavSearchError = styled.span`
   @media only screen and (max-width: 899px) {
     font-size: 10px;
     width: 130px;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    font-size: 9px;
+    width: 100px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 
   @media only screen and (max-width: 599px) {

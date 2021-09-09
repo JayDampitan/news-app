@@ -117,6 +117,10 @@ const StonksStyles = styled.div<DarkModeProps>`
     border-left: double;
   }
 
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    border-bottom: double;
+  }
+
   @media only screen and (max-width: 599px) {
     border-bottom: double;
   }

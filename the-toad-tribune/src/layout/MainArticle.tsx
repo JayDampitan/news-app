@@ -112,6 +112,10 @@ const MainArticleStyles = styled.div<DarkModeProps>`
     grid-area: 2/2/5/9;
   }
 
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    flex-direction: column;
+  }
+
   @media only screen and (max-width: 599px) {
     flex-direction: column;
   }
@@ -120,6 +124,10 @@ const MainArticleStyles = styled.div<DarkModeProps>`
     position: absolute;
     margin-bottom: 2rem;
     top: 0;
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      position: initial;
+    }
 
     @media only screen and (max-width: 599px) {
       position: initial;

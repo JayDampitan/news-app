@@ -115,6 +115,12 @@ const PoliticsStyles = styled.div<DarkModeProps>`
     grid-area: 5/2/8/6;
   }
 
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    margin-top: 1vh;
+    padding: 1rem;
+    border-right: none;
+  }
+
   @media only screen and (max-width: 599px) {
     margin-top: 1vh;
     padding: 1rem;

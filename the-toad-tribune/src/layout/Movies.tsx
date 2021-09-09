@@ -119,6 +119,11 @@ const MoviesStyles = styled.div<DarkModeProps>`
     grid-area: 8/7/10/9;
   }
 
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    border-bottom: double;
+    border-left: none;
+  }
+
   @media only screen and (max-width: 599px) {
     border-bottom: double;
     border-left: none;

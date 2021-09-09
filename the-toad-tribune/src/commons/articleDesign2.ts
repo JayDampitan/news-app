@@ -8,6 +8,13 @@ export const ArticleContentContainer2 = styled.div`
   flex-direction: column;
   overflow: scroll;
 
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    max-width: 90%;
+    max-height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   @media only screen and (max-width: 599px) {
     max-width: 90%;
     max-height: 90%;
@@ -55,6 +62,10 @@ export const HeaderContainer2 = styled.div`
     padding: 5px;
   }
 
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    width: 98%;
+  }
+
   @media only screen and (max-width: 599px) {
     width: 98%;
   }
@@ -68,6 +79,10 @@ export const HeaderContainer2 = styled.div`
     text-align: left;
     line-height: 1.5rem;
     font-family: 'Oswald', sans-serif;
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      margin: 0 0 0 2rem;
+    }
 
     @media only screen and (max-width: 599px) {
       margin: 0 0 0 2rem;
@@ -83,6 +98,10 @@ export const HeaderContainer2 = styled.div`
     margin: 0.9rem 0 0 0.4rem;
     font-family: 'Rubik', sans-serif;
 
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      margin: 2rem 0 0 3rem;
+    }
+
     @media only screen and (max-width: 599px) {
       margin: 2rem 0 0 3rem;
     }
@@ -94,6 +113,10 @@ export const HeaderContainer2 = styled.div`
   h5 {
     margin: 0.2rem 0 0 0.4rem;
     font-family: 'Rubik', sans-serif;
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      margin: 0 0 0 3rem;
+    }
 
     @media only screen and (max-width: 599px) {
       margin: 0 0 0 3rem;
@@ -108,6 +131,10 @@ export const HeaderContainer2 = styled.div`
 export const DescriptionContainer2 = styled.div`
   font-family: "Times New Roman", Times, serif;
   margin: 1rem;
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    margin: 0 0 0 2rem;
+  }
 
   @media only screen and (max-width: 599px) {
     margin: 0 0 0 2rem;

@@ -67,6 +67,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
     border-left: none;
   }
 
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    border: none;
+  }
+
   @media only screen and (max-width: 599px) {
     border: none;
   }
@@ -92,6 +96,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
     @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
       width: 9%;
       margin-top: 0;
+    }
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      width: 15%;
     }
 
     @media only screen and (max-width: 599px) {
@@ -131,6 +139,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
     justify-content: center;
     overflow: hidden;
     position: relative;
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      height: 330px;
+    }
 
     @media only screen and (max-width: 599px) {
       height: 330px;

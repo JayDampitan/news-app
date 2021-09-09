@@ -96,6 +96,13 @@ const MainLayoutStyles = styled.div<DarkModeProps>`
     grid-template-columns: 4.5% 13% 13% 13% 13% 13% 13% 13% 4.5%;
   }
 
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
   @media only screen and (max-width: 599px) {
     display: block;
     width: 100%;
