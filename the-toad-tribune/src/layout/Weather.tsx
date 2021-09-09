@@ -82,6 +82,10 @@ const WeatherStyles = styled.div<DarkModeProps>`
       margin-top: 25px;
     }
 
+    @media only screen and (max-width: 599px) {
+      width: 15%;
+    }
+
     div {
       margin-top: 5%;
     }
