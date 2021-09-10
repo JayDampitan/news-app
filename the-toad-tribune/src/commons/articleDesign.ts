@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
 export const ArticleContentContainer = styled.div`
-  /* max-height: 90%;
-  max-width: 90%; */
-  /* margin: 1rem 0.5rem; */
   overflow: hidden;
 `;
 
 export const HeaderContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: left;
   margin-top: 0;
 `;
 export const TitleContainer = styled.div`
@@ -39,6 +36,7 @@ p::first-letter {
   font-size: 30px;
   margin: 0.9rem 0 ;
 }
+
 `;
 
 export const ImageContainer = styled.div`

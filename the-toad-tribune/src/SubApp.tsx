@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import {
-  AdsResponse,
   ArticleResponse,
-  getAds,
   getNewsEverything,
   getNewsTopHeadlines,
   getWeather,
@@ -13,11 +11,8 @@ import {
   WeatherResponse,
 } from "./api";
 import type {
-  IAdsResponse,
   IArticle,
-  IGeolocationPositionError,
   IGeolocationPositionSuccess,
-  IMoreInfoPageProps,
   INewsResponse,
   IWeatherResponse,
 } from './api';
@@ -25,7 +20,6 @@ import type {
 import { Snackbar } from "./components";
 
 import {
-  Ads,
   Animals,
   Layout,
   MainArticle,
@@ -42,7 +36,6 @@ import MoreInfo from "./layout/MoreInfo";
 const SubApp = () => {
   const defaultArticleResponse = new ArticleResponse();
   const defaultNewsResponse = new NewsResponse();
-  const defaultAdsResponse = new AdsResponse();
   const defaultWeatherResponse = new WeatherResponse();
 
   const [mainArticle, setMainArticle] =
@@ -58,7 +51,6 @@ const SubApp = () => {
 
   const [stonksArticle, setStonksArticle] =
     useState<INewsResponse>(defaultNewsResponse);
-  const [ads, setAds] = useState<IAdsResponse>(defaultAdsResponse);
   const [weather, setWeather] = useState<IWeatherResponse>(
     defaultWeatherResponse
   );
@@ -76,7 +68,6 @@ const SubApp = () => {
   
   const [serverErrorMessage, setServerErrorMessage] = useState<string>("");
 
-
   const [pageNumber, setPageNumber] = useState<number>(1);
 
   const [darkMode, setdarkMode] = useState<Boolean>(true);
@@ -88,7 +79,7 @@ const SubApp = () => {
         setMainArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
     });
@@ -99,7 +90,7 @@ const SubApp = () => {
         setAnimalArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
     });
@@ -110,7 +101,7 @@ const SubApp = () => {
         setSportsArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
     });
@@ -120,7 +111,7 @@ const SubApp = () => {
         setPoliticsArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
   });
@@ -131,7 +122,7 @@ const SubApp = () => {
         setMoviesArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
     });
@@ -142,14 +133,10 @@ const SubApp = () => {
         setStonksArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
     });
-  };
-
-  const adsDataGrabber = () => {
-    getAds().then((res) => setAds(res));
   };
 
   const weatherDataGrabber = () => {
@@ -191,16 +178,13 @@ const SubApp = () => {
   };
 
   useEffect(() => {
-    // Commented out for a reason
     newsDataGrabber();
-    // adsDataGrabber();
     weatherDataGrabber();
   }, []);
 
   return (
     <div>
       <Layout
-        Ads={<Ads adsDataGrabber={adsDataGrabber} adsResponse={ads} />}
         Animals={
           <Animals
             articleResponse={animalArticle}

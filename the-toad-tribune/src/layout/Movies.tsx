@@ -9,8 +9,8 @@ import {
   ImageContainer2,
 } from "../commons";
 import { DarkModeProps } from "../api/newsApi";
-import PrevIcon from "../commons/prev.png";
-import NextIcon from "../commons/next.png";
+import { ReactComponent as NextButtonIconComponent } from "../assets/next-button.svg";
+import { ReactComponent as PreviousButtonIconComponent } from "../assets/prev-button.svg";
 import { dateConverter } from "../utils/dateConverter";
 import { keyframes } from "styled-components";
 
@@ -33,8 +33,10 @@ const Movies: React.FC<INewsProps> = ({
             ? startEnd(articleResponse.articles.length - 1)
             : onPrevButton();
         }}
+        className="left-button"
+        darkMode={darkMode}
       >
-        <img src={PrevIcon} alt="arrow pointing left" />
+        <PreviousButtonIconComponent />
       </Buttons>
 
       <ArticleContentContainer2
@@ -65,8 +67,10 @@ const Movies: React.FC<INewsProps> = ({
             ? startBeginning()
             : onNextButton();
         }}
+        className="right-button"
+        darkMode={darkMode}
       >
-        <img src={NextIcon} alt="arrow pointing right" />
+        <NextButtonIconComponent />
       </Buttons>
     </MoviesStyles>
   ) : (
@@ -101,8 +105,50 @@ const MoviesStyles = styled.div<DarkModeProps>`
   color: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
   display: flex;
   justify-content: center;
-  align-items: center;
   padding-top: 1rem;
+  padding-left: 1rem;
+  position: relative;
+
+  @media only screen and (max-width: 1199px) {
+    grid-area: 8/5/10/7;
+    padding-left: 0;
+    border-top: none;
+  }
+
+  @media only screen and (max-width: 1199px) and (min-width: 992px) and (orientation: landscape) {
+    grid-area: 8/7/10/9;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    border-bottom: double;
+    border-left: none;
+  }
+
+  @media only screen and (max-width: 599px) {
+    border-bottom: double;
+    border-left: none;
+  }
+
+  button {
+    opacity: 0;
+    position: absolute;
+    transition: all 0.5s ease;
+    top: 0;
+
+    &.left-button {
+      left: 0;
+    }
+
+    &.right-button {
+      right: 0;
+    }
+  }
+
+  &:hover {
+    button {
+      opacity: 1;
+    }
+  }
 `;
 
 const textFlash = keyframes`

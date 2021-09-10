@@ -7,6 +7,21 @@ export const ArticleContentContainer2 = styled.div`
   align-items: center;
   flex-direction: column;
   overflow: scroll;
+  scrollbar-width: none;
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    max-width: 90%;
+    max-height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media only screen and (max-width: 599px) {
+    max-width: 90%;
+    max-height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   h3 {
     margin: 0 0 1rem 0;
@@ -25,6 +40,11 @@ export const ImageContainer2 = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media only screen and (max-width: 1199px) {
+    max-width: 65%;
+    height: 100%;
+  }
+
   img {
     width: 100%;
     height: 100%;
@@ -39,25 +59,92 @@ export const HeaderContainer2 = styled.div`
   flex-direction: column;
   margin-top: 0.2rem;
 
+  @media only screen and (max-width: 1199px) {
+    padding: 5px;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    width: 98%;
+  }
+
+  @media only screen and (max-width: 599px) {
+    width: 98%;
+  }
+
+  @media only screen and (max-width: 479px) {
+    align-items: center;
+  }
+
   h3 {
-    margin: 0.5rem;
-    text-align: center;
+    margin: 0.25rem;
+    text-align: left;
     line-height: 1.5rem;
     font-family: 'Oswald', sans-serif;
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      margin: 0 0 0 2rem;
+    }
+
+    @media only screen and (max-width: 599px) {
+      margin: 0 0 0 2rem;
+    }
+
+    @media only screen and (max-width: 479px) {
+      margin: 0;
+      text-align: center;
+    }
   }
 
   h4 {
     margin: 0.9rem 0 0 0.4rem;
     font-family: 'Rubik', sans-serif;
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      margin: 2rem 0 0 3rem;
+    }
+
+    @media only screen and (max-width: 599px) {
+      margin: 2rem 0 0 3rem;
+    }
+
+    @media only screen and (max-width: 479px) {
+      margin: 2rem 0 0 0;
+    }
   }
   h5 {
     margin: 0.2rem 0 0 0.4rem;
     font-family: 'Rubik', sans-serif;
+
+    @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+      margin: 0 0 0 3rem;
+    }
+
+    @media only screen and (max-width: 599px) {
+      margin: 0 0 0 3rem;
+    }
+
+    @media only screen and (max-width: 479px) {
+      margin: 0;
+    }
   }
 `;
 
 export const DescriptionContainer2 = styled.div`
   font-family: "Times New Roman", Times, serif;
+  margin: 1rem;
+
+  @media only screen and (max-width: 991px) and (min-width: 600px) and (orientation: landscape) {
+    margin: 0 0 0 2rem;
+  }
+
+  @media only screen and (max-width: 599px) {
+    margin: 0 0 0 2rem;
+  }
+
+  @media only screen and (max-width: 479px) {
+    margin: 0;
+    text-align: center;
+  }
 
   p::first-letter {
     font-size: 30px;

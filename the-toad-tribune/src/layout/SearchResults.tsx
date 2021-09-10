@@ -56,7 +56,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   }, [searchResults]);
 
   const getNextPage = () => {
-    setPageNumber((prevPageNumber:number) => prevPageNumber + 1);
+    setPageNumber((prevPageNumber: number) => prevPageNumber + 1);
 
     const searchStuff = new NewsEverythingRequest({
       q: searchValue,
@@ -68,7 +68,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
         setSearchResults(results);
       }
 
-      if (results.status === "error") {
+      if (results.status === "error" || results.status === "fail") {
         setSnackbarMessage(results.message);
       }
     });
@@ -77,7 +77,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   };
 
   const getPrevPage = () => {
-    setPageNumber((prevPageNumber:number) => prevPageNumber - 1);
+    setPageNumber((prevPageNumber: number) => prevPageNumber - 1);
 
     const searchStuff = new NewsEverythingRequest({
       q: searchValue,
@@ -89,7 +89,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
         setSearchResults(results);
       }
 
-      if (results.status === "error") {
+      if (results.status === "error" || results.status === "fail") {
         setSnackbarMessage(results.message);
       }
     });
@@ -120,11 +120,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             {article.title}
           </span>
           <span>
-            {article.author} - {dateConverter(article?.publishedAt)} - {article.source.name}
+            {article.author} - {dateConverter(article?.publishedAt)} -{" "}
+            {article.source.name}
           </span>
-          <a href={article.url} target="_blank" rel="noreferrer">
-            Link to Article
-          </a>
           <p>{article.description}</p>
         </ArticleInfoContainerStyles>
       </ArticleStyles>
@@ -136,7 +134,8 @@ const SearchResults: React.FC<SearchResultsProps> = ({
       {renderResults()}
       {searchResults.articles.length > 0 && (
         <div className="btn-container">
-          <div className="down-btn"
+          <div
+            className="down-btn"
             onClick={() => {
               pageNumber > 1 && getPrevPage();
             }}
@@ -200,7 +199,7 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
         width: 1.6rem;
 
         & g {
-          fill: ${(props) => (props.darkMode) ? "#e3dac9" : "#1a1a1a"}
+          fill: ${(props) => (props.darkMode ? "#e3dac9" : "#1a1a1a")};
         }
       }
 
@@ -212,6 +211,7 @@ const ArticleContainerStyles = styled.div<DarkModeProps>`
 
   a {
     width: 6.4rem;
+    margin: 10px
   }
 `;
 
@@ -220,12 +220,37 @@ const ArticleStyles = styled.div`
   padding: 1rem;
   margin: 0.5rem;
   width: 90%;
-  height: 8rem;
+  height: 12rem;
   border: double;
   border-top: none;
   border-left: none;
   border-right: none;
   justify-content: space-between;
+  overflow: hidden;
+
+  @media only screen and (max-width: 899px) {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 599px) {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 479px) {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 379px) {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -234,12 +259,38 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 3vh;
+  
 
   img {
     height: 100%;
     border-radius: 10px;
     border: 1px solid black;
     cursor: pointer;
+  }
+
+  @media only screen and (max-width: 1199px) {
+    margin-left: 15px;
+    width: 80%; 
+    height: 80%;
+    margin-top: 13px;
+    margin-right: 3vw;
+  }
+
+  @media only screen and (max-width: 899px) {
+    height: 20vh;
+  }
+
+  @media only screen and (max-width: 599px) {
+    height: 20vh;
+  }
+
+  @media only screen and (max-width: 479px) {
+    height: 15vh;
+  }
+
+  @media only screen and (max-width: 379px) {
+    height: 15vh;
   }
 `;
 
@@ -249,10 +300,46 @@ const ArticleInfoContainerStyles = styled.div<DarkModeProps>`
   padding: 0 1rem;
   max-width: 75%;
   min-width: 75%;
+  overflow: hidden;
 
-  a{
+  @media only screen and (max-width: 899px) {
+      align-items: center;
+    }
+
+
+
+  span:first-of-type {
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  span {
+    margin: 15px;
+  }
+    
+
+  a {
     text-decoration: none !important;
     color: ${(props) => (props.darkMode ? "#ffffff7f" : "#0200005a")};
   }
 
+  p {
+    margin: 15px;
+      
+    @media only screen and (max-width: 1199px) {
+      font-size: 14px;
+    }
+
+    @media only screen and (max-width: 899px) {
+      font-size: 13px;
+    }
+
+    @media only screen and (max-width: 599px) {
+      font-size: 12px;
+    }
+
+    @media only screen and (max-width: 379px) {
+      font-size: 12px;
+    }
+  }
 `;
