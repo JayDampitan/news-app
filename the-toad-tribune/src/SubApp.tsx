@@ -68,7 +68,6 @@ const SubApp = () => {
   
   const [serverErrorMessage, setServerErrorMessage] = useState<string>("");
 
-
   const [pageNumber, setPageNumber] = useState<number>(1);
 
   const [darkMode, setdarkMode] = useState<Boolean>(true);
@@ -80,7 +79,7 @@ const SubApp = () => {
         setMainArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
     });
@@ -91,7 +90,7 @@ const SubApp = () => {
         setAnimalArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
     });
@@ -102,7 +101,7 @@ const SubApp = () => {
         setSportsArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
     });
@@ -112,7 +111,7 @@ const SubApp = () => {
         setPoliticsArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
   });
@@ -123,7 +122,7 @@ const SubApp = () => {
         setMoviesArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
     });
@@ -134,7 +133,7 @@ const SubApp = () => {
         setStonksArticle(res)
       }
 
-      if (res.status === 'error') {
+      if (res.status === 'error' || res.status === "fail") {
         setServerErrorMessage(res.message);
       }
     });

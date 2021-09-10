@@ -106,7 +106,7 @@ export class NewsEverythingRequest implements INewsEverythingRequest {
 export const getNewsEverything = async (
   request: INewsEverythingRequest
 ): Promise<NewsResponse> => {
-  const endpoint = `${process.env.REACT_APP_NEWS_API}/everything`;
+  const endpoint = `${process.env.REACT_APP_NODE_NEWS_API}/everything`;
 
   let queryString = `${endpoint}/?apiKey=${request.apiKey}&q=${request.q}&qInTitle=${request.qInTitle}`;
 
@@ -188,7 +188,7 @@ export class NewsTopHeadlinesRequest implements INewsTopHeadlinesRequest {
 export const getNewsTopHeadlines = async (
   request: INewsTopHeadlinesRequest
 ): Promise<NewsResponse> => {
-  const endpoint = `${process.env.REACT_APP_NEWS_API}/top-headlines`;
+  const endpoint = `${process.env.REACT_APP_NODE_NEWS_API}/top-headlines`;
 
   let queryString = `${endpoint}/?apiKey=${request.apiKey}&q=${request.q}`;
 

@@ -68,7 +68,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
         setSearchResults(results);
       }
 
-      if (results.status === "error") {
+      if (results.status === "error" || results.status === "fail") {
         setSnackbarMessage(results.message);
       }
     });
@@ -89,7 +89,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
         setSearchResults(results);
       }
 
-      if (results.status === "error") {
+      if (results.status === "error" || results.status === "fail") {
         setSnackbarMessage(results.message);
       }
     });
